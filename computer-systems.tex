@@ -5,7 +5,7 @@
 ]{article}
 
 \title{Computer Systems}
-\author{Martin de Spirlet}
+\author{Martin}
 \date{}
 
 % Set document geometry
@@ -47,10 +47,15 @@
 \usepackage{sfmath} % Sans-serif mathematics
 \usepackage[binary-units,group-digits=false]{siunitx} % A comprehensive (SI) units package
 % \usepackage{subcaption} % Support for sub-captions
-
+\usepackage[normalem]{ulem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{tcolorbox}
+\usepackage{adjustbox}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref} % Extensive support for hypertext in LaTeX % hyperref loaded by pdfx
 % \usepackage[nameinlink,noabbrev]{cleveref} % Intelligent cross-referencing % cleveref must be loaded after hyperref
-
+\usepackage{longtable}
+\usepackage{tabularx}
 % Set list parameters (using enumitem package)
 \setlist{nosep}
 
@@ -90,27 +95,27 @@
   \centering
   \begin{tabular}{rrl}
     \toprule
-    Week & Unit & Title \\
+    Unit & Title \\
     \midrule
-     1 &  1 & Data Representation and Manipulation \\[1ex]
-     2 &  2 & Introduction to Computer Architecture \\
-       &  3 & Instructions, Assembly Language and Machine Code \\[1ex]
-     3 &  4 & Compilation, Interpretation and the JVM \\
-       &  5 & Subroutines and Stacks \\[1ex]
-     4 &  6 & The JVM and Java Bytecode \\
-       &  7 & Complexity of Algorithms \\[1ex]
-     5 &  9 & Introduction to Operating Systems \\
-       & 10 & Computer Architecture and OS Structures \\[1ex]
-     6 & 11 & Process Management \\
-       & 12 & Process Scheduling \\[1ex]
-     7 & 14 & Concurrency and Synchronisation \\[1ex]
-     8 & 15 & Deadlocks \\
-       & 16 & Introduction to Networks \\[1ex]
-     9 & 16 & Introduction to Networks \\
-       & 17 & Application Layer \\
-       & 18 & Transport Layer \\[1ex]
-    10 & 19 & Network Layer \\
-       & 20 & Network Security \\
+       1 & Data Representation and Manipulation \\[1ex]
+       2 & Introduction to Computer Architecture \\
+       3 & Instructions, Assembly Language and Machine Code \\[1ex]
+       4 & Compilation, Interpretation and the JVM \\
+       5 & Subroutines and Stacks \\[1ex]
+       6 & Introduction to Operating Systems \\
+       7 & Complexity of Algorithms \\[1ex]
+       10 & Computer Architecture and OS Structures \\[1ex]
+       11 & Process Management \\
+       12 & Process Scheduling \\[1ex]
+       14 & Concurrency and Synchronisation \\[1ex]
+       15 & Deadlocks \\
+       16 & Introduction to Networks \\[1ex]
+       16 & Introduction to Networks \\
+       17 & Application Layer \\
+       18 & Transport Layer \\[1ex]
+       19 & Network Layer \\
+       20 & Network Security \\
+       21 & \sout{The JVM and Java Bytecode} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -137,34 +142,22 @@
 \section{Subroutines and Stacks}
 \input{unit-5/notes.tex}
 
-\section[The JVM and Java Bytecode]{The Java Virtual Machine and Java Bytecode}
+\section{Introduction to Operating Systems}
 \input{unit-6/notes.tex}
-
-\section{Complexity of Algorithms}
 \input{unit-7/notes.tex}
 
-\stepcounter{section}
-
-\section{Introduction to Operating Systems}
+\section{Process Management and Scheduling}
+\input{unit-8/notes-1.tex}
+\input{unit-8/notes-2.tex}
+\section{Complexity of Algorithms}
 \input{unit-9/notes.tex}
+\stepcounter{section}
 
 \section[Computer Architecture and OS Structures]{Computer Architecture and Operating System Structures}
-\input{unit-10/notes.tex}
-
-\section{Process Management}
-\input{unit-11/notes.tex}
-
-\section{Process Scheduling}
-\input{unit-12/notes.tex}
-
-\stepcounter{section}
 
 \section{Concurrency and Synchronisation}
 \input{unit-14/notes-1.tex}
 \input{unit-14/notes-2.tex}
-
-\section{Deadlocks}
-\input{unit-15/notes.tex}
 
 \section{Introduction to Networks}
 \input{unit-16/notes-1.tex}
@@ -180,7 +173,14 @@
 \input{unit-19/notes-1.tex}
 \input{unit-19/notes-2.tex}
 
-\section{Network Security}
+\section{Quiz Answer Shee}
+\input{unit-22/notes.tex}
+
+\section[The JVM and Java Bytecode]{The Java Virtual Machine and Java Bytecode}
+\input{unit-21/notes.tex}
+\section{\sout{Deadlocks}}
+\input{unit-15/notes.tex}
+\section{\sout{Network Security}}
 \input{unit-20/notes.tex}
 
 \end{document}

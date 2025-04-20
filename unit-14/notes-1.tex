@@ -5,7 +5,7 @@
 A computer system typically has multiple users or user applications working independently.
 The OS must protect the memory of one process from interference from another process.
 It also interleaves the execution of processes to maximise the resource utilisation and responsiveness of the system.
-To do so, it must preserve the state of each process so that its execution may resume.
+To do so, \textcolor{red}{it must preserve the state of each process so that its execution may resume.}
 
 Concurrent execution of processes was originally intended solely for the maximisation of utilisation due to the great cost of computer systems, but nowadays it is intended to satisfy the expectations of users who wish to execute multiple tasks concurrently.
 
@@ -124,12 +124,22 @@ Race conditions can occur due to
   \item outdated information --- processes or threads operating with stale or dirty copies of memory values in registers or local variables.
 \end{itemize}
 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-14/figures/01.png}
+  \caption*{Synchronization of Processes}
+\end{figure}
+
+Context switches may occur at any time
+Process 2 has its result overwritten by process 1
+Process 1 operates with outdated information
+
 \subsection{Critical Section Problem}
 
 \subsubsection{Critical Section}
 
 In order to avoid race conditions, it is necessary to control the concurrent execution of critical sections.
-This is achieved through strict serialisation, or mutual exclusion, causing the critical sections to behave as atomic operations.
+\textcolor{red}{This is achieved through strict serialisation, or mutual exclusion,} causing the critical sections to behave as atomic operations.
 
 An entry protocol is executed before entering a critical section.
 The process requests permission to enter the critical section.
@@ -200,16 +210,24 @@ A process will wait while the lock is true, then when it is false, set the lock 
 When its critical section is complete, it will set the lock to false.
 However, in this implementation, the lock itself is a shared resource and a race condition may occur on it.
 Atomic instructions must be used for a shared lock.
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-14/figures/02.png}
+  \caption*{Shared Lock Problem}
+\end{figure}
 \subsubsection{Busy-Waiting (Polling and Spinning)}
 
 In this solution, a process continuously evaluates whether a lock has become available.
 The lock is represented by a data item held in shared memory.
 This causes the process to consume CPU cycles without any progress.
 A process busy-waiting may prevent another process holding the lock from executing and completing its critical section and from releasing the lock.
-
+\textcolor{blue}{Spin locks are used at kernel level (special HW instructions).}
 \subsubsection{Busy-Waiting (Strict Alternation)}
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-14/figures/03.png}
+  \caption*{Busy Waiting}
+\end{figure}
 This solution imposes a strict alternation between two processes; a process waits for its turn.
 A token is used as a shared variable.
 This is usually a process ID set by the previous process that indicates which process is next to enter.
@@ -221,7 +239,6 @@ However, there is still a problem of liveness and progression since multiple pro
 If one of the processes is delayed in its non-critical section, it cannot enter its critical section when it is its turn, and other processes will be blocked.
 
 \subsection{Hardware Solutions}
-
 \subsubsection{Disabling Interrupts}
 
 In uniprocessor systems, concurrent processes cannot be overlapped, only interleaved.

@@ -1,30 +1,68 @@
 \subsection{Forwarding and Routing}
-
-The network layer implements host-to-host communication.
+The Network Layer provides the host-to-host communication service for the Internet.The key protocol on this layer is the Internet Protocol (IP).
+\newline
+The Network Layer provides a ‘Best Effort’ service.
+\newline
+There are therefore no guarantees: no speed, delay or bandwidth guarantees; nor any in-order delivery guarantee and not even any guarantee of delivery itself!
+\newline
 On the sending side, it encapsulates segments into datagrams.
 On the receiving side, it delivers segments to the transport layer.
 Network layer protocols exist in every host and router.
 A router examines the header fields of all IP datagrams passing through it.
-
-The network layer performs forwarding and routing.
-Forwarding is the movement of packets from the router input to the appropriate router output.
-Routing is the determination of the route taken by packets from their source to their destination.
-
-A routing algorithm determines the end-to-end path through the network.
-A forwarding table determines local forwarding within a router.
-Before datagrams can flow, the end hosts and intermediate routers establish a virtual connection.
-
-\subsection{Network Service Model}
-
+\newline
+\sout{
 Channels for transporting datagrams can have different service models.
 Services for individual datagrams include guaranteed delivery or guaranteed delivery with less than a specified delay.
 Services for a flow of datagrams include ordered delivery, guaranteed minimum bandwidth and restrictions on changes in packet spacing.
+}
+\newline
+The network layer (router) performs forwarding and routing.
+\begin{itemize}
+  \item Forwarding is the movement of packets from the router input to the appropriate router output.A forwarding table determines local forwarding within a router.
+    \begin{itemize}
+      \item Like the process of planning a road trip from source to destination which includes many interchanges/junctions
+    \end{itemize}
+  \item Routing is the determination of the route taken by packets from their source to their destination.A routing algorithm determines the end-to-end path through the network.
+    \begin{itemize}
+      \item Like the process of going through an interchange/junction and choosing an appropriate exit lane
+    \end{itemize}
+\end{itemize}
+Before datagrams can flow, the end hosts and intermediate routers establish a virtual connection.
 
-The network layer of the Internet provides a single service known as `best effort' service.
-Packets are neither guaranteed to be received in order, nor is their eventual delivery guaranteed.
-There is also no guarantee on end-to-end delay or minimum bandwidth.
-
-\subsection{Router Input Ports}
+\subsection{Router Architecture}
+\begin{itemize}
+  \item Input Port – Forwarding
+    \begin{itemize}
+      \item Using the IP packet header’s destination IP address…
+      \item …and the Forwarding Table in the input port’s memory…
+      \item …lookup the appropriate router output port
+    \end{itemize}
+  \item Input Port - Queueing
+    \begin{itemize}
+      \item Goal: Complete input port processing as fast as packets arrives (at ‘line speed’)
+      \item But if packets arrive faster than the forwarding rate, they will queue in the input port buffer.
+    \end{itemize}
+  \item Switching Fabrics
+    \begin{itemize}
+      \item Transfer packets from the input buffers to the appropriate output buffer
+      \item Various different architectures, with different advantages and disadvantages
+    \end{itemize}
+  \item Switching Rate: The rate at which packets can be transferred from inputs to outputs
+    \begin{itemize}
+      \item Often measured in terms of the line rate
+      \item For n inputs, a switching rate of n times the line rate is desirable.
+    \end{itemize}
+  \item Output Port – Queueing
+    \begin{itemize}
+      \item But if packets arrive faster than the transmission rate, they will queue in the output port buffer.
+      \item A scheduling discipline chooses among the queued datagrams whom is next for transmission.
+    \end{itemize}
+  \item Output Port – Packet Loss
+    \begin{itemize}
+      \item As we have previously discussed, queueing/buffers lead to packet loss
+      \item This can happen in both the output buffer and the input buffer (i.e. if the input buffer fills up because the switching fabric is slower than the input ports)
+    \end{itemize}
+\end{itemize}
 
 The input port of a router consists of a physical layer that receives the data stream from the network and a data link layer that strips the Ethernet header and forwards the remaining IP datagram to the network layer.
 Within the network layer, the input port acts as a decentralised switch by performing lookup, forwarding and queueing.
@@ -42,7 +80,15 @@ Input port queuing can occur when the fabric is slower than the input ports comb
 Packets may be lost due to buffer overflow.
 Head-of-line (HOL) blocking occurs when a datagram at the head of a queue prevents other datagrams from moving forward.
 
-\subsection{Router Switching Fabrics}
+\subsubsection{Longest Prefix Matching}
+When looking up a forwarding table entry for a given IP destination address, we use Longest Prefix Matching
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=15cm]{unit-19/figures/01.png}
+  \caption{Longest Prefix Matching}
+\end{figure}
+\subsection{\sout{Router Switching Fabrics}}
 
 The three types of switching fabric are
 \begin{enumerate}
@@ -79,7 +125,7 @@ To overcome bus bandwidth limitations, a crossbar with \(m\) inputs and \(n\) ou
 Crossbars support the forwarding of multiple packets in parallel since a crossbar switch is non-blocking.
 Crossbars require an advanced design that allows datagrams to be fragmented into cells of fixed length that are transmitted through multiple switching fabrics.
 
-\subsection{Router Output Ports}
+\subsection{\sout{Router Output Ports}}
 
 Buffering is required when datagrams arrive from the switching fabric faster than the transmission rate.
 A scheduling discipline chooses among the queued datagrams for transmission.
@@ -127,7 +173,8 @@ The offset of a fragment is the quotient of the size of the data (the difference
 
 \subsection{IP Addressing}
 
-An IP address is a \SI{32}{\bit} identifier for the host and router interface.
+An IP address is a \SI{32}{\bit} identifier for the host and router interface.More specifically, they identify each individual host or router interface
+\newline
 An interface is a connection between the host or router and the physical link.
 A router typically has multiple interfaces.
 A host can have multiple interfaces for different connection devices, such as Ethernet and wireless.
@@ -141,11 +188,21 @@ Hosts in a subnet can communicate without intervention by the router.
 
 Classless Interdomain Routing (CIDR) produces addresses of the format \texttt{a.b.c.d/x}, where \(x\) is the number of bits in the subnet portion of the address.
 This allows the subnet portion of the address to be an arbitrary length.
-
+\newline
+in the subnet part of the address
+\begin{itemize}
+  \item Remember: 32 bits in total!
+  \item So, host part has 32 - x bits
+\end{itemize}
+\begin{tcolorbox}
+    \color{blue}
+    \Huge
+    \uline{223.1.3}\textcolor{red}{.2} \\
+    \large
+    \textcolor{blue}{\uline{subnet part}} \hspace{0.5cm} \textcolor{red}{host part}
+\end{tcolorbox}
 A host can be given a fixed IP address by the system admin, or a dynamic IP address from a DHCP server.
-
 \subsection{Dynamic Host Configuration Protocol (DHCP)}
-
 The goal of the Dynamic Host Configuration Protocol (DHCP) is to allow a host to dynamically obtain its IP address from the network server when it joins.
 A host can renew its lease on the address in use, or the address can be reused for a different host that connects.
 
@@ -170,7 +227,50 @@ Only one address is needed from the ISP for all hosts in the network.
 
 A NAT router must replace the source IP address of every outgoing datagram with the NAT IP address and a new port number, store every translation pair in a NAT translation table, and replace the NAT IP address and port number of every incoming datagram with the corresponding source IP address and port number.
 
+\begin{itemize}
+  \item As far as the outside world is concerned, all the hosts in a single local network use the same IP Address
+    \begin{itemize}
+      \item So only one IP Address is needed from the ISP for all devices on the network
+      \item Local network devices can have their IP Addresses changed by the router without notifying the outside world
+      \item And we can even change ISPs without changing the addresses of devices in the local network
+    \end{itemize}
+  \item Due to NAT, devices inside a local network are not explicitly addressable or even visible to the outside world – a security plus
+\end{itemize} 
+
 NAT uses a \SI{16}{\bit} port number to allow many simultaneous connections with a single IP address.
 NAT is controversial since a router should only process up to the network layer.
 This violation of the end-to-end agreement must be taken into account by application designers.
 The address shortage could instead be solved by using IPv6 addresses.
+\begin{figure}
+  \centering
+  \includegraphics[width=15cm]{unit-19/figures/02.png}
+  \includegraphics[width=15cm]{unit-19/figures/03.png}
+  \caption*{NAT}
+\end{figure}
+
+\begin{center}
+\begin{tikzpicture}
+
+% Ethernet Frame (outermost)
+\draw[fill=red!80, draw=black, thick] (0,0) rectangle (14,4);
+\node at (7,3.8) {\bfseries \textcolor{black}{Ethernet Frame}};
+
+% IP Packet
+\draw[fill=cyan!70, draw=black, thick] (1,0.5) rectangle (13,3.5);
+\node at (7,3.3) {\bfseries \textcolor{black}{IP Packet}};
+
+% TCP/UDP Segment
+\draw[fill=green!70, draw=black, thick] (2,1.1) rectangle (12,3.1);
+\node at (7,2.8) {\bfseries \textcolor{black}{TCP/UDP Segment}};
+
+% Application Message (innermost)
+\draw[fill=purple!60, draw=black, thick] (3,1.6) rectangle (11,2.6);
+\node at (7,2.1) {\bfseries \textcolor{black}{Application Message}};
+\end{tikzpicture}
+\end{center}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=15cm]{unit-19/figures/04.png}
+  \caption*{NAT}
+\end{figure}

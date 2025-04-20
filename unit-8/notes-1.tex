@@ -53,9 +53,9 @@ A process image is divided into segments.
   \centering
   \begin{tabular}{r|c|l}
     \hline
-    max & Stack          & \multirow{2}{*}{Stack segment} \\
-        & \(\downarrow\) &                                \\
+    max & Stack          & Stack segment \\
     \cline{2-3}
+        & \(\downarrow\) &                                \\
         & \(\uparrow\)   & \multirow{3}{*}{Data segment}  \\
         & Heap           &                                \\
     \cline{2-2}
@@ -73,6 +73,11 @@ Each invoked program results in the creation of a separate process with its own 
 Each image appears to cover the entire address space.
 In reality, these are virtual addresses mapped to physical addresses.
 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-8/figures/01.png}
+  \caption*{Process memory Layout}
+\end{figure}
 \subsection{Process Control Block (PCB)}
 
 The information associated with each process is stored as a process control block (PCB), which is also known as a task control block (TCB).
@@ -108,12 +113,16 @@ When it is dispatched to a CPU, its state changes to `running'.
 From there, it may time out, in which case its state reverts to `ready', or it may need to wait for an event to occur, in which case its state changes to `blocked'.
 Alternatively, it may be released from execution, in which case its state changes to `terminated'.
 A process in the `blocked' state moves to the `ready' state once the event it is waiting for occurs.
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-8/figures/02.png}
+  \caption*{Process memory Layout}
+\end{figure}
 \subsection{Process Scheduling}
 
 Process scheduling is used to maximise CPU usage and minimise response time by quickly switching processes onto the CPU for time sharing.
 A process will `give up' the CPU if it sends an I/O request or after a certain period of time as elapsed.
-When a process gives up the CPU, it is added to the ready queue or a device queue.
+When a process gives up the CPU, it is added to the ready queue. 
 The process scheduler selects available processes in the ready queue for the next execution.
 
 The OS maintains various scheduling queues.
@@ -140,10 +149,10 @@ The long-term scheduler controls the degree of multiprogramming.
 
 An I/O-bound process spends more time performing I/O than computations.
 It uses many short CPU bursts.
-
+\newline
 A CPU-bound process spends more time performing computations.
 It uses a few long CPU bursts.
-
+\newline
 The long-term scheduler attempts to schedule a good process mix.
 
 \subsubsection{Context Switching}
@@ -157,6 +166,11 @@ The time required is dependent upon hardware support.
 Some hardware provides multiple sets of registers per CPU\@.
 This allows multiple contexts to be loaded simultaneously.
 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-8/figures/03.png}
+  \caption*{CPU Switch from Process to Process}
+\end{figure}
 \subsubsection{Dispatch Events}
 
 Context switches (dispatch events) are triggered by clock interrupts.
@@ -237,7 +251,11 @@ The program may perform different instructions in either of these cases.
 
 For example, the child process may execute the \texttt{exec()} system call, which takes a program name as a parameter.
 This system call replaces the content of the child process image with a process image of the specified program.
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-8/figures/04.png}
+  \caption*{C program to create a separate process in UNIX}
+\end{figure}
 The \texttt{exec()} system call has a number of variations with different suffixes that describe what parameters are passed to the new process image.
 These variations are \texttt{execl()}, \texttt{execle()}, \texttt{execlp()}, \texttt{execv()}, \texttt{execve()} and \texttt{execvp()}.
 
@@ -278,7 +296,7 @@ A `zombie process' is a process that has terminated but still has an entry in th
 This occurs when a child process terminates.
 It allows a parent process to read the exit codes of its children.
 
-\subsection{Execution of the Operating System}
+\subsection{\sout{Execution of the Operating System}}
 
 An OS may be designed so that it executes
 \begin{itemize}

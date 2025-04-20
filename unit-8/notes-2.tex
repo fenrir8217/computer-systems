@@ -4,7 +4,11 @@
 
 Process scheduling is the process of selecting the next process in the ready queue to be executed by the CPU\@.
 Scheduling decisions take place when events interrupt the execution of a process.
-Such events include clock interrupts, I/O interrupts, system calls and signals.
+Such events include 
+Clock Interrupts (i.e. process running → ready state)
+I/O Interrupts (i.e. process waiting → ready state)
+Operating System Calls (read, write, process ready → waiting)
+Signals (e.g. Semaphores)
 
 Process execution is a cycle of CPU execution and I/O waiting.
 Processes on a batch system are CPU-bound, whereas processes on an interactive system are I/O-bound with very short CPU bursts.
@@ -56,6 +60,47 @@ Using this algorithm, the average process waiting time can vary greatly.
 If a long process arrives before a short process, the waiting time for the second process will be long.
 If the short process arrives first, the second process will have a short waiting time.
 
+Suppose the processes arrive in the order: P1 , P2 , P3. Gantt Chart as follows:
+\renewcommand{\arraystretch}{2} % row height
+
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\centering\arraybackslash}m{4cm}|}
+\hline
+\textbf{Process} & \textbf{Burst Time} \\
+\hline
+P\textsubscript{1} & 24 \\
+\hline
+P\textsubscript{2} & 3 \\
+\hline
+P\textsubscript{3} & 3 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{tikzpicture}
+  % Draw the timeline
+  \draw[thick] (0,0) -- (10,0); % Total length
+  \draw[thick] (0,0) -- (0,1.5);   % Left side
+  \draw[thick] (8,0) -- (8,1.5);   % Divider for P1 end
+  \draw[thick] (9,0) -- (9,1.5);   % Divider for P2 end
+  \draw[thick] (10,0) -- (10,1.5); % Right side
+  \draw[thick] (0,1.5) -- (10,1.5);% Top side
+
+  % Labels for processes
+  \node at (4,0.75) {P\textsubscript{1}};
+  \node at (8.5,0.75) {P\textsubscript{2}};
+  \node at (9.5,0.75) {P\textsubscript{3}};
+
+  % Time labels
+  \node at (0,-0.4) {0};
+  \node at (8,-0.4) {24};
+  \node at (9,-0.4) {27};
+  \node at (10,-0.4) {30};
+\end{tikzpicture}
+
+Waiting time for P1 = 0; P2 = 24; P3 = 27
+Average waiting time: (0 + 24 + 27)/3 = 17ms
+
 \subsubsection{Shortest Job First (SJF)}
 
 Using the shortest job first (SJF) scheduling algorithm, each process is associated with an estimate of the length of its next CPU bust.
@@ -101,6 +146,7 @@ Non-preemptive priority scheduling would simply place that process at the head o
 
 Priority scheduling can result in the indefinite blocking or starvation of low-priority processes if the system receives a steady stream of processes with higher priority.
 These processes may eventually run after a very long waiting time, or may be lost if the system crashes before that point.
+\newline
 This can be solved by increasing priority with age.
 
 \subsubsection{Round-Robin (RR)}
@@ -126,3 +172,21 @@ If the time quantum is too short, there would be a large number of expensive con
 Ideally, the time quantum should be much larger than the context switch time.
 If the context switch time is \( n \)\si{\percent} of the time quantum, approximately \( n \)\si{\percent} of CPU time would be devoted to context switching.
 Modern systems typically have time quanta between \SIlist{10;100}{\milli\second} and context switches of less than \SI{10}{\micro\second}.
+
+
+\subsubsection{Appandix}
+Introduction to Operating Systems:
+Definition and role of an OS in managing hardware and software resources.
+Components of a computer system (Hardware, OS, Application, Users).
+Operating System Services \& Evolution:
+Key functions like process management, memory management, I/O operations, file systems, and security.
+Transition from Uniprogramming to Multiprogramming, and Time-Sharing systems.
+
+Computer Architecture \& OS Structures
+Bootstrapping process, Main Memory and I/O structure.
+Overview of how I/O devices interact with the system.
+Types of I/O mechanisms and their role in performance.
+Process Management \& Scheduling
+The concept of processes, their lifecycle (process states), and operations on processes.
+Scheduling criteria: efficiency, fairness, response time, throughput, etc.
+Common Scheduling Algorithms including FCFS, SJF, SRTF, Priority \& Round-Robin.

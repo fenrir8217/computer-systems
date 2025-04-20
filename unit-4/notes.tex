@@ -1,4 +1,6 @@
+
 \subsection{Levels of Programming Languages}
+
 
 High-level programming languages, such as Java, C, C++ and C\# are close to the English language and, therefore, easy for humans to read and write.
 Code written in these languages is more concerned with problem-solving than implementation.
@@ -35,6 +37,7 @@ Alternatively, the interpreter reads the source statement by statement, converti
 The assembler calculates relative addresses for jumps and produces relocatable machine code.
 
 The linker combines assembled parts into a whole.
+
 Alternatively, the loader places the code directly into memory.
 
 \subsection{High-Level Program Execution}
@@ -60,56 +63,19 @@ Compilers are also hardware-dependent, so cannot run on different platforms.
 A compiler runs on the same platform as the target machine.
 A cross-compiler can produce code that will run only on a separate platform.
 
-A compiler can be divided into a front-end and a back-end.
-Both perform their operations in a sequence of phases that each generate a data structure to be used by the following phase.
 
 \clearpage
 
-Front-end:
 \begin{enumerate}
   \item Lexical analysis
   \item Syntax analysis
   \item Semantic analysis
   \item Intermediate code generation
-\end{enumerate}
-
-Back-end:
-\begin{enumerate}[resume]
   \item Optimisation
   \item Code generation
 \end{enumerate}
 
 \subsubsection{Lexical Analysis}
-
-During lexical analysis, the compiler breaks the source code into meaningful words known as `lexemes' and generates a sequence of tokens from the lexemes.
-A lexeme is a word recognised by the compiler according to the language specification.
-This includes keywords, identifiers, operators etc.
-A token is an object describing a lexeme.
-Along with the value of the lexeme, it includes information about the type of the lexeme (keyword, identifier, operator etc.).
-
-\subsubsection{Syntax Analysis (Parsing)}
-
-During syntax analysis, the compiler interprets the structure of the source code.
-This is known as `parsing' and involves grouping tokens into higher-level constructs.
-This phase produces an abstract syntax tree (AST).
-
-This is also the phase where syntax errors are detected.
-If no error is found, the compiler continues to the semantic analysis phase.
-
-\subsubsection{Semantic Analysis}
-
-During semantic analysis, the compiler interprets the meaning of the AST\@.
-The compiler checks that the program is consistent with the rules of the source language.
-
-The compiler can deal with ambiguity in a number of ways.
-
-\begin{itemize}
-  \item Type inference (the compiler annotates nodes in the AST with inferred type information)
-  \item Type checking (the compiler checks that all values assigned to variables are of the correct type)
-  \item Symbol management (the compiler uses a symbol table to determine whether variables have been declared or whether multiple variables with the same name exist in the same scope)
-\end{itemize}
-
-Semantic analysis produces an annotated AST.
 
 \subsubsection{Intermediate Code Generation}
 
@@ -158,3 +124,35 @@ Virtual machines are used in languages such as Java, Pascal and C\#.
 Java compilers generate bytecode that is interpreted by the JVM\@.
 This requires a JVM to exist on the target machine.
 The JVM may translate portions of bytecode to machine code at runtime via just-in-time (JIT) compilation if it finds those portions are used frequently.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-4/figures/01.png}
+  \caption*{Java}
+\end{figure}
+
+\subsection{Java Virtual Machines}
+Portability of Java
+why not compile Java to machine code?
+\begin{enumerate}
+\item need to generate code for each target machine
+\item cannot exchange executable code 
+\end{enumerate}
+The Sun Java solution
+\begin{enumerate}
+\item design machine architecture (JVM) specifically for the Java language
+\item translate Java source code into JVM code (bytecode)
+\item write software interpreter for JVM in C (widely available)
+\item Thus bytecode can be exchanged ,remote execution is possible
+\end{enumerate}
+
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-4/figures/02.png}
+  \caption*{The JVM Architecture}
+\end{figure}
+The architecture
+\begin{enumerate}
+  \item It is a stack machine! Closer to modern high-level languages than the von Neumann machine (Register machines).
+  \item Memory: 32-bit words (=4 bytes)
+\end{enumerate}

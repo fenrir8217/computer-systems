@@ -1,260 +1,135 @@
-\subsection[Execution on the JVM]{Execution on the Java Virtual Machine}
+\subsection{Early Computers}
 
-The \texttt{javac} compiler compiles Java source code in \texttt{.java} files to intermediate-level Java bytecode in \texttt{.class} files.
-As long as there is a JVM on another platform, the bytecode can be run on that platform without recompilation.
-This feature is known as `portability'.
+Early computers used magnetic tape decks for storage and used paper tape for input and output.
+Each program was keyed in by hand to control the required system function.
+There was a distinct lack of monitors.
+The `operators' controlled the loading of magnetic tapes, fed in cards and paper tape, and maintained the system.
+This `operation' was tedious, expensive and error-prone.
 
-The JRE loads Java bytecode files, verifies their internal consistency and executes their methods using the JVM\@.
-Different CPUs or operating systems can run the same Java bytecode but use different JREs.
+As computers became faster and more powerful, the role of the operators became a limiting factor.
+An automated system was required in order to free the operators from mundane tasks.
+Such a system is known as an `operating system'.
 
-\subsection{Stack Frames}
+\subsection{Operating System (OS)}
 
-Every time a method is called in Java, a stack frame is constructed for it.
-Each frame has
+An operating system (OS) is a layer of system software that acts as an intermediary between a computer user and the underlying hardware.
+The main function of an OS is to dynamically allocate the shared system resources to executing programs.
+
+From the perspective of a user, the OS is designed for ease of use.
+It provides a convenient interface for executing user programs, and hides the complexity of the hardware implementation.
+
+From the perspective of the system, the OS is intimately involved with the hardware and acts as a resource manager for CPU time, memory, file storage, I/O devices etc.
+Requests for these resources may be numerous and conflicting.
+
+It also acts as a control system between I/O devices and user programs.
+It manages execution to prevent errors and improper use, such as one program attempting to view the memory of another.
+
+A program that controls the execution of application programs.
+An interface between applications and hardware.
+
+Main Objectives of an OS:
 \begin{itemize}
-  \item a reference to the frame of its calling method,
-  \item space for local variables,
-  \item space for an operand stack
-  \item a PC and SP (for the JVM, not the CPU), and
-  \item other items.
+ \item Convenience
+ \item Efficiency
+ \item Ability to Evolve
 \end{itemize}
 
-\subsubsection{Variable and Operand Storage}
 
-All local variables and operand stack entries are stored as \num{4}~bytes.
-The \texttt{long} and \texttt{double} data types, which need \num{8}~bytes, are stored as two consecutive entries.
+\subsection{Components of a Computer System}
 
-\begin{table}[htp]
-  \centering
-  \caption*{Storage of data types.}
-  \begin{tabular}{lrrr}
-    \toprule
-    Data type & \multicolumn{2}{c}{Size} & Slots \\
-    \cmidrule(l{0.25em}r{0.25em}){2-3}
-    & / \si{\bit} & / \si{\byte} & \\
-    \midrule
-    \texttt{bool}   & 1 &   & 1 \\
-    \texttt{byte}   &   & 1 & 1 \\
-    \texttt{char}   &   & 2 & 1 \\
-    \texttt{short}  &   & 2 & 1 \\
-    \texttt{int}    &   & 4 & 1 \\
-    \texttt{float}  &   & 4 & 1 \\
-    reference       &   & 4 & 1 \\
-    \texttt{long}   &   & 8 & 2 \\
-    \texttt{double} &   & 8 & 2 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+The main components of a computer system are the
+\begin{itemize}
+  \item hardware (the basic computing resources),
+  \item operating system (controls and coordinates use of hardware),
+  \item application programs (use the system resources to solve computing problems): compilers, text editors, email clients, webs browsers, games
+  \item users (people, machines and other computers).
+\end{itemize}
 
-\newpage
+Services provided by the OS include
+\begin{itemize}
+  \item program development,
+  \item program execution,
+  \item access to I/O devices,
+  \item access to files,
+  \item system access,
+  \item error detection and response, and
+  \item accounting.
+\end{itemize}
+The most frequently used functions of the OS are stored in its `kernel'.
+Role of an Operating System
+A computer is a set of resources for the movement, storage, and processing of data and for the control of these functions.
+The OS is responsible for managing these resources
 
-\subsubsection{Local Variables}
+\subsection{Evolution of Operating Systems}
 
-In the context of Java bytecode, local variables include:
-\begin{enumerate}
-  \item \texttt{this} reference (for non-static methods only)
-  \begin{itemize}
-    \item a reference to the object on which the method was called
-    \item stored as local variable in slot~\num{0}
-  \end{itemize}
-  \item Parameters of the method
-  \begin{itemize}
-    \item stored from slot~\num{0} onwards for static methods
-    \item stored from slot~\num{1} onwards for non-static methods
-  \end{itemize}
-  \item Variables declared inside the method
-  \begin{itemize}
-    \item stored in slots immediately after parameters
-  \end{itemize}
-\end{enumerate}
+\subsubsection{Serial Processing}
 
-Instance variables and class (static) variables are not stored as local variables since they are defined outside of methods.
+Serial processing was used in the earliest computers.
+This relied on human operators rather than an OS\@.
+Users had access to the computer in `series'.
 
-\subsubsection{Slot Numbers}
+One problem with serial processing concerned scheduling.
+Most installations used a sign-up sheet for the reservation of computer time.
+Mistakes in the estimations of time allocations would result in wasted computer time.
+A considerable amount of time was also spent simply setting up the program to run.
 
-Java bytecode does not refer to local variables by their identifiers in the source code.
-Instead, it refers to them by their slot numbers.
-A local variable of the \texttt{long} or \texttt{double} data types takes the number of the first of its pair of slots.
+\subsubsection{Simple Batch Systems}
 
-\begin{figure}[htp]
-  \centering
-  \begin{tabular}{c || c|c|c|c || c|c|c|c || c|c|c|c || c || c || c}
-    \hline
-    \ldots &
-    \hphantom{1} & \hphantom{2} & \hphantom{3} & \hphantom{4} &
-    \hphantom{1} & \hphantom{2} & \hphantom{3} & \hphantom{4} &
-    \hphantom{1} & \hphantom{2} & \hphantom{3} & \hphantom{4} &
-    \ldots &
-    operand stack &
-    \ldots \\
-    \hline
-    \multicolumn{1}{c||}{} &
-    \multicolumn{4}{c||}{slot 0} &
-    \multicolumn{4}{c||}{slot 1} &
-    \multicolumn{4}{c||}{slot 2} &
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{} &
-    \multicolumn{1}{c}{} \\
-  \end{tabular}
-  \caption*{Local variable slots in the stack frame.}
-\end{figure}
+Since early computers were very expensive, it was important to maximise processor utilisation.
+In simple batch systems, the user no longer had direct access to the processor.
+Computer operators would batch jobs together and place them on an input device.
+The loading of programs and management of jobs was handled by software known as a `monitor'.
 
-\subsubsection{Stack Overflow}
+The resident monitor always resides in memory.
+After it reads in a job, the processor executes instructions from the memory containing the monitor until it reaches an error or ending condition.
+Control then passes back to the monitor.
 
-The operand stack can never overflow.
-The Java compiler calculates exactly how much space is required and the loader checks each method to verify that no operand stack underflow or overflow is possible.
-Operand stack overflow is different from stack overflow, which occurs when a new frame is needed, but there is not sufficient memory.
+In this system, processor execution alternates between user programs and the monitor.
+As a result, main memory and processor time is given to the monitor.
+Despite this overhead, simple batch systems improved the utilisation of the processor.
 
-\subsection{Java Bytecode Instructions}
+\subsubsection{Multiprogrammed Batch Systems}
 
-Each Java bytecode instruction takes up at least one byte (for its opcode).
-It may also have one or more operand bytes.
-For each opcode, there is a corresponding mnemonic.
+In uniprogrammed systems, the processor executes a program until it reaches an I/O instruction.
+It must then wait for the I/O instruction to complete before it continues.
 
-A single operand may consist of multiple bytes.
-In this case, the operand is stored with its most significant byte first (in the smaller address).
-This order is known as `big endian'.
+In multiprogrammed systems, when one job must wait for I/O to complete, the processor can switch to another job.
 
-\subsubsection{Arithmetic}
+\subsubsection{Time Sharing Systems}
 
-Each arithmetic instruction has a prefix letter that denotes the data type on which it operates.
-For example, the \texttt{iadd} instruction pops two entries from the operand stack, adds them as if they are of the type \texttt{int}, and pushes them back onto the stack.
+Time sharing systems are used to handle multiple interactive jobs.
+Multiple users access the system simultaneously through terminals.
+The OS interleaves the execution of each user program in short bursts or quanta of computation.
 
 \begin{table}[htp]
   \centering
-  \caption*{Mnemonic prefixes.}
+  \caption*{Comparison of multiprogrammed batch and time sharing systems.}
   \begin{tabular}{lll}
     \toprule
-    Data type & Prefix & Addition \\
+    Operating system & Principal objective & Source of directives \\
     \midrule
-    \texttt{byte}   & \texttt{b} & \\
-    \texttt{short}  & \texttt{s} & \\
-    \texttt{int}    & \texttt{i} & \texttt{iadd} \\
-    \texttt{long}   & \texttt{l} & \texttt{ladd} \\
-    \texttt{float}  & \texttt{f} & \texttt{fadd} \\
-    \texttt{double} & \texttt{d} & \texttt{dadd} \\
-    reference       & \texttt{a} & \\
+    Multiprogrammed batch & Maximise processor use & Commands provided with job \\
+    Time sharing & Minimise response time & Commands entered at terminal \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Errors are likely to occur if an instruction is used on the wrong data type.
-For example, calling \texttt{fadd} on \texttt{int} entries will result in the wrong answer since the instruction expects entries in floating point representation.
-If there is only one operand on the stack and the instruction expects two, operand stack underflow will occur.
-This can occur when \texttt{ladd} is called on \texttt{int} entries.
+\subsection{Operating System Start and Firmare}
 
-No checks are performed during execution.
-The JRE verifies the bytecode when the class is loaded.
-This includes checking that types are used consistently.
+\subsubsection{Firmware}
 
-\subsubsection{Pushing}
+A small `bootstrap' program is loaded when a computer is started.
+This program is stored in read-only memory (ROM) or electrically erasable programmable read-only memory (EEPROM) so that it cannot easily be altered, either accidentally or maliciously.
+The program is, therefore, known as `firmware'.
 
-The \texttt{bipush <1\_byte\_operand>} instruction has two prefixes: \texttt{b} for \texttt{byte} and \texttt{i} for \texttt{int}.
-This instruction sign extends its \texttt{byte} operand (\SI{1}{\byte}) to an \texttt{int} value (\SI{4}{\byte}) and pushes the result to the operand stack.
-Similarly, there exists an \texttt{sipush <2\_byte\_operand>} instruction to push a \texttt{short} to the operand stack as an \texttt{int}.
+The bootstrap program initialises all CPU registers, device controllers and memory contents, and loads the OS kernel into memory.
+Once the firmware is loaded, some services are provided outside the kernel.
+These are loaded at boot time to become system processes or system `daemons', and run the entire time the kernel is running.
+On Unix systems, the first system process is `init'.
+Once all these processes are loaded, the OS waits for events to occur.
 
-There exist seven instructions for pushing common integer constants to the operand stack that do not require an operand.
-Instructions that take no operand help to save space in the bytecode.
+Events such as a user clicking a mouse button or a program attempting to access a file are known as `interrupts'.
+Hardware may trigger an interrupt by sending a signal to the CPU\@.
+Software triggers an interrupt by executing a special operation known as a `system call'.
 
-\begin{table}[htp]
-  \centering
-  \caption*{Instructions for pushing common integer constants.}
-  \begin{tabular}{lr}
-    \toprule
-    Instruction & Value pushed \\
-    \midrule
-    \texttt{iconst\_m1} & -1 \\
-    \texttt{iconst\_0}  &  0 \\
-    \texttt{iconst\_1}  &  1 \\
-    \texttt{iconst\_2}  &  2 \\
-    \ldots & \ldots \\
-    \texttt{iconst\_5}  &  5 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Load instructions of the form \texttt{iload <slot\_number>} push local variables (indicated by their slot numbers) onto the operand stack.
-There are special load instructions that take no operand for pushing values stored in common slots to the operand stack (\texttt{iload\_0}, \texttt{iload\_1}, \texttt{iload\_2}, \texttt{iload\_3}).
-
-\subsubsection{Popping}
-
-Store instructions pop entries from the operand stack into local variable slots.
-For example, \texttt{istore <slot\_number>} or \texttt{istore\_2}.
-
-\subsubsection{Jumps}
-
-In Java bytecode, the source and destination of a jump must be within the same method.
-It is not possible to jump to another method.
-
-Unconditional jumps are achieved with the \texttt{goto <2\_byte\_offset>} instruction.
-The operand is a \SI{2}{\byte} offset that is added to the address of the instruction to calculate the address of the next instruction to execute.
-There exists a version of this instruction that takes a \SI{4}{\byte} operand to allow for larger jumps: \texttt{goto\_w <4\_byte\_offset>}.
-
-Conditional jumps are achieved with instructions of the form \texttt{ifeq <offset>} and \texttt{if\_icmpeq <offset>}.
-
-\subsection{Call and Return}
-
-\subsubsection{The Stack}
-
-If method \texttt{A} calls a static method \texttt{B(p0, p1)} that returns a result:
-\begin{enumerate}
-  \item method~\texttt{A} calculates the arguments on its operand stack,
-  \item a stack frame is constructed for method~\texttt{B},
-  \begin{itemize}
-    \item the arguments are popped from the operand stack of method~\texttt{A},
-    \item the values are used to initialise the local variables \texttt{p0} and \texttt{p1} of method~\texttt{B},
-  \end{itemize}
-  \item method~\texttt{B} calculates the result on its stack frame
-  \item the result is pushed to the operand stack of method~\texttt{A}, and
-  \item execution returns to method~\texttt{A}, discarding the stack frame of method~\texttt{B}.
-\end{enumerate}
-
-On the operand stack of method~\texttt{A}, this has the effect of
-
-\begin{equation*}
-  \ldots, \textnormal{p0}, \textnormal{p1} \quad \rightarrow \quad \ldots, \textnormal{result}
-\end{equation*}
-
-Each frame has its own PC\@.
-While method~\texttt{B} is under execution, its PC is used.
-When execution returns to method~\texttt{A}, it resumes with its old PC value.
-The local variables of method~\texttt{A} are unchanged by method~\texttt{B}.
-
-Linked frames have the effect of a return stack.
-A chain of linked frames in the JVM is officially known as a stack.
-
-\subsubsection{Runtime Constant Pool}
-
-The class variables, instance variables and methods of a class may be used by other classes.
-Since classes are compiled separately, the compiler does not know the address of these items in other classes.
-Hence, the class, source file and bytecode file must share the same name to create a `symbolic reference'.
-
-In addition to class variables, instance variables and method definitions, each class in Java has a runtime constant pool that contains read-only constants used in the class.
-This includes literal constants, symbolic references to methods and their classes, types and more.
-
-Each pool entry has an index.
-Each stack frame includes a pointer to the constant pool of its class in its space for `other items'.
-
-\subsubsection{Static Method Calls}
-
-Static methods are called using the \texttt{invokestatic <2\_byte\_index>} instruction.
-The operand is an index in the runtime constant pool of the class of the current method.
-The indexed constant pool entry is a symbolic reference to the requested class and method.
-
-The JVM uses this information to find the address of the class, the size needed for the new frame, and the address of the bytecode for the method.
-
-\subsubsection{Method Returns}
-
-The return instruction for void methods is \texttt{return}.
-This has no effect on the operand stack of the caller.
-
-For methods that return a result, the instruction is of the form \texttt{ireturn}.
-This pops the result from the operand stack of the current frame and pushes it to the operand stack of the caller.
-
-After either of these return instructions, the current frame is discarded and execution continues on the frame of the caller, resuming from its PC.
-
-\subsection{Java Disassembler}
-
-The Java `disassembler' (\texttt{javap}) converts Java bytecode to mnemonics with the \texttt{-c} option.
-For example, \texttt{MyClass.class} can be viewed with \texttt{javap -c MyClass}.
-Jump instruction operands in disassembler output show the destination instruction address rather than the offset used in the bytecode.
+The CPU reacts to an interrupt by suspending its current execution, immediately transferring execution to a fixed address (usually the starting address of the service routine for the interrupt), executes the interrupt service routine, and finally resumes execution where it was originally interrupted.

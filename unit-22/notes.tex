@@ -1,0 +1,246 @@
+\subsection{Topic 1: Data Representation – Exercise Sheet [Solutions]}
+
+\textbf{Q\#1:} We have discussed Binary, Denary (aka Decimal), and Hexadecimal number systems in class. Complete the following table, doing the necessary conversions (without using a calculator and with a little-bit of self learning using the notes given below).\\[10pt]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Decimal} & \textbf{Binary} & \textbf{Octal} & \textbf{Hexadecimal} \\
+\hline
+175 & 10101111 & 257 & AF \\
+\hline
+204 & \textbf{11001100} & 314 & CC \\
+\hline
+503 & 111110111 & 767 & 1F7 \\
+\hline
+3995 & 111110011011 & 7633 & \textbf{F9B} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Notes:} \textit{The \textbf{octal number system} is a base-8 numeral system that uses digits from 0 to 7. It is commonly used in computing as a more compact way to represent binary numbers, with each octal digit corresponding to a group of three binary digits. Octal is less commonly used today but was historically useful in systems like UNIX file permissions and in early computing architectures. For example, the binary number \texttt{110010} can be grouped as \texttt{110 010} and represented as \texttt{62} in octal. For more details, please read \textit{Chapter \#2, Section 2.2.4} of \textit{Forouzan}.}
+
+\vspace{1.5em}
+
+\textbf{Q\#2:} In a positional number system with base $b$, the largest integer number that can be represented using $k$ digits is $b^k - 1$. Find the largest number in each of the following systems with \textbf{six} digits.
+
+\begin{itemize}
+    \item[(a)] Binary \quad $2^6 - 1 = 63$
+    \item[(b)] Decimal \quad $10^6 - 1 = 999999$
+    \item[(c)] Hexadecimal \quad $16^6 - 1 = 16777215$
+    \item[(d)] Octal \quad $8^6 - 1 = 262143$
+\end{itemize}
+\textbf{Q\#3:} Without converting, find the minimum number of digits needed in the destination system for each of the following cases:
+\begin{itemize}
+    \item[a)] Five-digit decimal number converted to binary
+    \item[b)] Four-digit decimal converted to octal
+    \item[c)] Seven-digit decimal converted to hexadecimal
+    \newline
+    \textcolor{blue}{
+    \item[a)] A five-digit decimal number can range between 00000-99999. We will consider 99999 as an example
+value to be represented in binary. Taking log2 (99999) = log10 (99999) / log10 (2) = 16.61 ~= 17 bits.
+    \item[b)] A four-digit decimal number can range between 0000-9999. We will consider 9999 as an example
+value to be represented in octal. Taking log8 (9999) = log10 (9999) / log10 (8) = 4.43 ~= 5 digits.
+    \item[c)] A seven-digit decimal number can range between 0000000-9999999. We will consider 9999999 as
+an example value to be represented in hexadecimal.
+Taking log16 (9999999) = log10 (9999999) / log10 (16) = 5.81 ~= 6 digits.
+    }
+\end{itemize}
+
+\textbf{Q\#4:} A company has decided to assign a unique bit pattern to each employee. If the company has 900
+employees, what is the minimum number of bits needed to create this system of representation? How
+many patterns are unassigned? If the company hires another 300 employees, should it increase the
+number of bits? Explain your answer.
+\newline
+For 900 employees, the minimum number of bits needed will be: log2 (900) = 9.81 ~= 10 bits
+Using 10 bits, we can represent 210 = 1024 different patterns. Assuming we don’t use the first pattern
+(0000000000)2 (as it doesn’t look good to call someone as employee zero!) and start with
+(0000000001)2, we will still have 1023 – 900 = 123 available patterns.
+If the company hires 300 more employees, they will require log2 (1200) = 10.23 ~= 11 bits, hence they
+will need to increase the pattern size by 1 more bit.
+
+\textbf{Q\#5:} An audio signal is sampled 8000 times per second. Each sample is represented by 256 different
+levels. How many bits per second are needed to represent this signal?
+\newline
+For each sample, we have 256 different levels, therefore, we need log2 (256) = 8 bits / sample.
+Sampling rate is 8000 times/second, therefore, we need 8000 * 8 = 64000 bits/second = 64kbps.
+
+\subsection{Topic 1: Data Representation – Exercise Sheet \#2 \textnormal{[Solutions]}}
+
+\textbf{Q\#1:} Convert the following negative decimal integers into sign-and-magnitude and two’s complement representations (using 16 bits):
+
+\begin{longtable}{|c|c|c|}
+\hline
+\textbf{Decimal Number} & \textbf{Sign-and-Magnitude Representation} & \textbf{Two’s Complement Representation} \\
+\hline -153 & 1000 0000 1001 1001 & 1111 1111 0110 0111 \\
+\hline -421 & 1000 0001 1010 0101 & 1111 1110 0101 1011 \\
+\hline -3276 & 1000 1100 1100 1100 & 1111 0011 0011 0100 \\
+\hline -36317 & 
+\begin{tabular}[c]{@{}c@{}}1000 1101 1101 1101\\ (Out of range, represents -3549)\end{tabular} & 
+\begin{tabular}[c]{@{}c@{}}0111 0010 0010 0011\\ (Out of range, represents 29219)\end{tabular} \\
+\hline
+\end{longtable}
+
+\subsection*{Q\#2:}
+Convert the following binary numbers (using 16 bits) into decimal equivalent using sign-and-magnitude and two’s complement interpretations:
+
+\begin{longtable}{|c|c|c|}
+\hline
+\textbf{Binary Representation} & \textbf{Decimal using Sign-and-Magnitude} & \textbf{Decimal using Two’s Complement} \\
+\hline
+0000 0000 1011 1101 & 189 & 189 \\
+\hline
+1000 1100 1011 1001 & -3257 & -29511 \\
+\hline
+1000 1111 0000 1010 & -3850 & -28918 \\
+\hline
+1111 1111 1111 1111 & -32767 & -1 \\
+\hline
+\end{longtable}
+\pagebreak
+\subsection*{Q\#3:}
+Calculate the range of numbers that could be represented using different representations:
+
+% \begin{tabular}{|p{1.5in}|p{1.5in}|}\hline
+% Persian Cat     & Dachsund Dog\\\hline
+% A long-haired\newline domestic cat,\newline with a broad\newline round head. &
+% A short-legged, long-bodied, hound-type dog breed.\\\hline
+% \end{tabular}
+% \begin{adjustbox}{width=\textwidth}
+\begin{table}[htbp]
+\begin{tabularx}{\textwidth}{| X | X | X | X |}
+\hline
+\textbf{No of Bits} & \textbf{Unsigned Numbers(Min to Max)} & \textbf{Sign-and-Magnitude (Min to Max)} & \textbf{Two’s Complement (Min to Max)} \\
+% \textbf{Decimal Number} & 
+% \begin{tabular}[c]{@{}c@{}}\textbf{Sign-and-Magnitude} \\ \textbf{Representation}\end{tabular} & 
+% \begin{tabular}[c]{@{}c@{}}\textbf{Two’s Complement} \\ \textbf{Representation}\end{tabular} \\
+
+\hline
+8 & 0 to 255 & -127 to +127 & -128 to +127 \\
+\hline
+16 & 0 to 65535 & -32767 to +32767 & -32768 to +32767 \\
+\hline
+32 & 0 to 4294967295 & -2147483647 to +2147483647 & -2147483648 to +2147483647 \\
+\hline
+64 & 0 to 1.844674407$\times$10\textsuperscript{19} & 
+-9.223372037$\times$10\textsuperscript{18} to +9.223372037$\times$10\textsuperscript{18} & 
+-9.223372037$\times$10\textsuperscript{18} to +9.223372037$\times$10\textsuperscript{18} \\
+\hline
+128 & 0 to 3.402823669$\times$10\textsuperscript{38} & 
+-1.701411835$\times$10\textsuperscript{38} to +1.701411835$\times$10\textsuperscript{38} & 
+-1.701411835$\times$10\textsuperscript{38} to +1.701411835$\times$10\textsuperscript{38} \\
+\hline
+\end{tabularx}
+\end{table}
+% \end{adjustbox}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{| X | X | X |}
+    % \begin{tabularx}{\textwidth}{bss}
+        \hline
+        Alpha     & Beta     & Gamma     \\ \hline
+        0         & 2        & 4         \\ \hline
+        1         & 3        & 5         \\ \hline
+    \end{tabularx}
+\end{table}
+
+
+
+
+\subsection*{Q\#4:}
+What would be the result of adding a number to its one’s complement? What would be the result of adding an integer to its two’s complement?
+
+When you add a number to its one's complement, the result is always a bit pattern where all the bits are set to 1. The value of this number will depend on how we interpret it. For example, when using sign-and-magnitude representation (11111111\textsubscript{2}) will be equal to (-127)\textsubscript{10}, and in two’s complement representation it will be equal to (-1)\textsubscript{10}. In general, for an $n$-bit number, the result of adding a number to its one's complement will be $2^n - 1$.
+
+When you add an integer to its two’s complement, the result is always zero. When you add the number $x$ and its two’s complement, the binary result overflows, leaving a sum of zero. This is because the two’s complement is effectively the negative representation of the original number in the binary system.
+
+\subsection*{Q\#5:}
+Normalize the following binary floating-point numbers. Explicitly show the value of the exponent after normalization.\\
+\textbf{a)} 1100.0111 \quad \textbf{b)} 10111.0011 × 2\textsuperscript{-5} \quad \textbf{c)} 0.0000010101 \quad \textbf{d)} 1101.001101 × 2\textsuperscript{7}
+
+The normalized representations are given below:
+\begin{itemize}
+  \item a) 1.1000111 × 2\textsuperscript{3}
+  \item b) 1.01110011 × 2\textsuperscript{1}
+  \item c) 1.0101 × 2\textsuperscript{6}
+  \item d) 1.101001101 × 2\textsuperscript{10}
+\end{itemize}
+
+\subsection*{Q\#6:}
+Convert the following decimal real numbers into fixed point representation, both in sign-and-magnitude and two’s complement representations (using 16 bits). For fixed point sign-and-magnitude, use 10 bits (including sign bit) for the integer part and 6 bits for the fractional part.
+
+{\small
+\begin{longtable}{|c|c|c|}
+\hline
+\textbf{Decimal Number} & 
+\begin{tabular}[c]{@{}c@{}}\textbf{Fixed Point Sign-and-Magnitude}\\ \textbf{Representation (10.6 format)}\end{tabular} & 
+\begin{tabular}[c]{@{}c@{}}\textbf{Fixed Point Two’s Complement}\\ \textbf{Representation (10.6 format)}\end{tabular} \\
+\hline
+11.40625 & 0000001011.011010 & 0000001011.011010 \\
+\hline
+141.8125 & 0010001101.110100 & 0010001101.110100 \\
+\hline
+-412.21875 & 1110011100.001110 & 1001100011.110010 \\
+\hline
+-465.09375 & 1111010001.000110 & 1000101110.111010 \\
+\hline
+\end{longtable}
+}
+
+\textbf{Note:} For 2’s complement representation of a negative real number, we initially assume the number to be positive, convert to binary in the same way as fixed point conversion and apply two’s complement on the binary representation to get the final answer.
+
+
+\subsection*{Q\#9:}
+Given the following numbers in IEEE 754 (32-bit) floating point format with 8-bit exponent, calculate the decimal real numbers.
+
+{\small
+\begin{longtable}{|c|p{10cm}|}
+\hline
+\textbf{IEEE 754 Floating Point Representation (32-bit)} & \textbf{Decimal Number} \\
+\hline
+0\ 1000\ 0111\ 101\ 1100\ 1100\ 0000\ 0000\ 0000 & 
+Sign bit: 0 (+ve) \newline
+Biased Exponent: (10000111)\textsubscript{2} = 135 \newline
+Real Exponent: 135 – 127 = 8 \newline
+Stored Mantissa: (.10111001100000000000000)\textsubscript{2} \newline
+Actual Mantissa: (1.10111001100000000000000)\textsubscript{2} \newline
+Normalized representation: 1.101110011 × 2\textsuperscript{8} \newline
+Binary number: 11011100.11 \newline
+Decimal value: \textbf{441.5} \\
+\hline
+0\ 0111\ 1000\ 011\ 0000\ 0000\ 0000\ 0000\ 0000 & 
+Sign bit: 0 (+ve) \newline
+Biased Exponent: (01111000)\textsubscript{2} = 120 \newline
+Real Exponent: 120 – 127 = -7 \newline
+Stored Mantissa: (.01100000000000000000000)\textsubscript{2} \newline
+Actual Mantissa: (1.01100000000000000000000)\textsubscript{2} \newline
+Normalized representation: 1.011 × 2\textsuperscript{-7} \newline
+Binary number: 0.0000001011 \newline
+Decimal value: \textbf{0.010742188} \\
+\hline
+1\ 1000\ 1010\ 101\ 0101\ 0000\ 0100\ 0000\ 0000 & 
+Sign bit: 1 (-ve) \newline
+Biased Exponent: (10001010)\textsubscript{2} = 138 \newline
+Real Exponent: 138 – 127 = 11 \newline
+Stored Mantissa: (.10101010000010000000000)\textsubscript{2} \newline
+Actual Mantissa: (1.10101010000010000000000)\textsubscript{2} \newline
+Normalized representation: 1.1010101000001 × 2\textsuperscript{11} \newline
+Binary number: 11010101000001.00 \newline
+Decimal value: \textbf{-3408.25} \\
+\hline
+1\ 0111\ 1010\ 100\ 0000\ 0000\ 0000\ 0000\ 0000 & 
+Sign bit: 1 (-ve) \newline
+Biased Exponent: (01111010)\textsubscript{2} = 122 \newline
+Real Exponent: 122 – 127 = -5 \newline
+Stored Mantissa: (.10000000000000000000000)\textsubscript{2} \newline
+Actual Mantissa: (1.10000000000000000000000)\textsubscript{2} \newline
+Normalized representation: 1.1 × 2\textsuperscript{-5} \newline
+Binary number: 0.000011 \newline
+Decimal value: \textbf{-0.046875} \\
+\hline
+\end{longtable}
+}

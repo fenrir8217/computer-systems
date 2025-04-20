@@ -6,6 +6,23 @@ All data and instructions are stored in binary.
 Binary digits are known as `bits'.
 It is possible to build computers that use other number systems, but it is less expensive and more reliable to use basic components with only two states.
 
+A binary string is a string of any length that consists only of bits.
+A 1-bit string is called a bit.
+An 8-bit string is called a byte.
+(Less common, but very cute: a 4-bit string is called a nibble.)
+
+How many possible byte strings are
+there?
+Possible 1-bit strings = 2 = \(2 ^ 1\)
+Possible 2-bit strings = 4 = \(2 ^ 2\)
+Possible 3-bit strings = 8 = \(2 ^ 3\)
+Possible 4-bit strings = 16 = \(2 ^ 4\)
+Possible byte strings = \(2 ^ 8\) = 256
+
+So, if we are limited to a single byte
+to represent something, we can
+represent 256 different things.
+
 \subsection{Characters}
 
 Characters are represented as binary values using text encoding schemes such as ASCII and Unicode.
@@ -21,7 +38,15 @@ Strings are sequences of characters.
 \end{center}
 
 \subsubsection{Binary, Octal and Hexadecimal to Decimal}
+Method 1: Left-to-right subtraction
 
+To convert to binary , we repeatedly subtract powers of two from
+the number, from left to right, until we reach 0.
+214 in binary is 011010110
+256 128 64 32 16 8 4 2 1
+0 1 1 0 1 0 1 1 0
+
+Method 2: Right-to-left division.
 \vspace{-\baselineskip}
 
 \begin{multicols}{3}
@@ -150,6 +175,28 @@ If the number of bits in a signed number is increased, the new bits are given th
 This is known as sign extension.
 
 In Java, all integers are signed.
+
+\subsection{Representing Colour}
+
+A mixture of primary colours!
+In additive (RGB) colour models,every colour can be modelled as a mixture of red, green and blue, which is added to black.
+In subtractive (CMY) colour models,every colour can be modelled as a mixture of cyan, magenta and yellow, which is subtracted from white.
+
+So how should a given 24-bit binary word relate to a colour, which is a mixture of red, green
+and blue?
+Let’s split the 24 bits into three bytes.
+The first byte represents red,
+the next represents green and
+the last represents blue.
+Graph-80
+\subsection{Representing Text}
+ASCII is still used today, and
+using only 7 bits means that
+text files remain very
+lightweight.
+8 bits in a byte,
+1000 bytes in a Kilobyte,
+1000 Kilobytes in a Megabyte.
 
 \subsection{Real Numbers in Binary}
 

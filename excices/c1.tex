@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Topic 1: Data Representation – Exercise Sheet [Solutions]}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\textbf{Q\#1:} We have discussed Binary, Denary (aka Decimal), and Hexadecimal number systems in class. Complete the following table, doing the necessary conversions (without using a calculator and with a little-bit of self learning using the notes given below).\\[10pt]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+\textbf{Decimal} & \textbf{Binary} & \textbf{Octal} & \textbf{Hexadecimal} \\
+\hline
+175 & 10101111 & 257 & AF \\
+\hline
+204 & \textbf{11001100} & 314 & CC \\
+\hline
+503 & 111110111 & 767 & 1F7 \\
+\hline
+3995 & 111110011011 & 7633 & \textbf{F9B} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Notes:} \textbf{octal number system} is a base-8 numeral system that uses digits from 0 to 7. It is commonly used in computing as a more compact way to represent binary numbers, with each octal digit corresponding to a group of three binary digits. Octal is less commonly used today but was historically useful in systems like UNIX file permissions and in early computing architectures. For example, the binary number \texttt{110010} can be grouped as \texttt{110 010} and represented as \texttt{62} in octal. For more details, please read \textit{Chapter \#2, Section 2.2.4} of \textit{Forouzan}.
+
+\vspace{1em}
+
+\textbf{Q\#2:} In a positional number system with base $b$, the largest integer number that can be represented using $k$ digits is $b^k - 1$. Find the largest number in each of the following systems with \textbf{six} digits.
+
+\begin{itemize}
+    \item[(a)] Binary \quad $2^6 - 1 = 63$
+    \item[(b)] Decimal \quad $10^6 - 1 = 999999$
+    \item[(c)] Hexadecimal \quad $16^6 - 1 = 16777215$
+    \item[(d)] Octal \quad $8^6 - 1 = 262143$
+\end{itemize}
+
+\end{document}

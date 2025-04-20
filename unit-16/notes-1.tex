@@ -19,12 +19,17 @@ Web hooks allow applications to connect to the Internet.
 Residential, institutional and mobile access networks each have end systems connected to an edge router.
 The bandwidth of a connection is affected by the hardware and connection used.
 Radio links are shared, whereas an Ethernet cable is dedicated.
-
-Client and server hosts, and servers in data centres form the network edge.
-Access networks are the communication links between devices.
-These may be wired or wireless.
-The interconnected routers that connect the access networks are known as the `network core'.
-
+\begin{itemize}
+  \item Network Edge:
+  \newline
+  Consists of the hosts/endsystems,both clients and servers.Hosts send packets of data to their access network.
+  \item Access networks:
+  \newline
+  The physical wired/wireless communication links that connect edge systems to the core.These are the first routers that see the data packets and forward them to the network core.
+  \item Network core: 
+  \newline
+  The central network of networks: a mesh of interconnected routers.The core routes and forwards packets of data from their source to their destination.
+\end{itemize}
 Hosts break application messages into smaller chunks known as `packets' and transmit them to the access network.
 The speed at which the packet is transmitted to the access network is the link transmission rate, which is also known as `link capacity' or `link bandwidth'.
 The packet transmission delay when a packet of length \( L \)~bits is transmitted into a link with transmission rate \( R \)~bits per second is \( \frac{L}{R} \)~seconds.

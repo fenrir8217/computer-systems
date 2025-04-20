@@ -1,18 +1,28 @@
 \subsection{The von~Neumann Architecture}
 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-3/figures/03.png}
+  \caption*{System Bus}
+\end{figure}
 \subsubsection{Central Processing Unit (CPU)}
 
-The central processing unit (CPU) consists of a control unit, ALU and registers.
+The central processing unit (CPU) consists of a \textbf{control unit}, \textbf{ALU} and \textbf{registers}.
 These registers include
 \begin{itemize}
   \item the program counter (PC) (holds the address of the next instruction),
   \item the instruction register (holds the instruction currently being decoded or executed),
-  \item the address register (holds a memory address from which data will be fetched, or to which data will be returned), and
+  \item the address register (Either stores the memory address from which data will be fetched, or the address to which data will be sent and stored.)
   \item the accumulator (holds temporarily the results of ALU computations).
 \end{itemize}
 
 \subsubsection{System Bus}
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-3/figures/01.png}
+  \caption*{System Bus}
+\end{figure}
+\subsubsection{Memory}
 The system bus includes
 \begin{itemize}
   \item a control bus (carries commands from the CPU and returns status signals from devices),
@@ -52,6 +62,12 @@ However, the architecture allows for self-modifying code that can tune its perfo
 A Harvard machine stores its instructions and data in separate memories.
 This makes the machine more complex, but allows instruction fetch and data operation to occur at the same time.
 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-3/figures/04.png}
+  \caption*{System Bus}
+\end{figure}
+
 \subsection{MIPS R4000}
 
 MIPS~R4000 uses the modified Harvard architecture.
@@ -86,28 +102,38 @@ MIPS~R4000 is super-pipelined; its pipeline contains eight stages rather than th
 The additional stages exist due to the extension of the IF and MEM stages to account for cache overheads.
 When the pipeline is full, eight instructions are in process at a time --- i.e.\ the pipeline is eight-deep.
 
+\subsection{Instruction Sets}
+Programs are composed of complex combinations of simple “instructions”.
+Every machine has a unique instruction set architecture (ISA).
+This is the set of primitive instructions that the CPU can execute.
+
 \subsection{Assembly Language}
 
 Binary is the only form in which a computer can be given instructions.
-Computers can be programmed to translate instructions expressed in other forms into binary code.
-This is known as `assembly'.
+Assembly language is a human-readable alternative form of machine language that uses letters and normal numbers so people can understand it.
+Computer scans assembly code.As it encounters words it looks them up in a table to convert to binary.
+Converts numbers to binary, then assembles (puts together) the binary pieces into an instruction.
 
-Assembly language is a human-readable alternative to machine language.
-A computer can scan assembly code and convert words to binary.
-The binary is assembled into instructions.
+Most modern software is written in a high-level programming language.
+High-level languages are compiled (translated) into assembly language, which is then assembled into binary.
+These languages are preferred because they have special statement forms that help programmers describe the complicated tasks they want done.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-3/figures/05.png}
+  \caption*{System Bus}
+\end{figure}
 
-High-level languages are compiled to assembly language, which is then assembled into binary.
-
-\subsection{Instruction Sets}
-
-Every machine has a unique instruction set architecture (ISA).
-This is the set of primitive instructions that the CPU can execute.
+MIPS is a RISC (Reduced Instruction Set Computer) architecture.
+In MIPS, there are only 32 registers.
 MIPS~R4000 uses the MIPS~III ISA\@.
 Each MIPS~III instruction has a \SI{32}{\bit} representation.
 It can be represented as human-readable assembly code, or binary machine code.
 There are three types of MIPS~III instruction.
 \begin{description}
-  \item[I-type] requires one or two registers and an operand.
-  \item[R-type] requires three registers.
-  \item[J-type] requires an operand.
+  \item[I-type] Immediate: requires one or two registers and an operand.
+  \item[R-type] Register: requires three registers.
+  \item[J-type] Jump: requires an operand.
 \end{description}
+
+Commonly used variables kept in registers.
+Then use a combination of registers and memory to access a large amount of data quickly.

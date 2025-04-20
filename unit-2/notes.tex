@@ -20,8 +20,15 @@ Thus, all computers, regardless of their implementing technology, have five basi
   \item Input unit
   \item Output unit
 \end{enumerate}
-
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-2/figures/01.png}
+  \caption*{Anatomy of a Computer System}
+\end{figure}
 \subsubsection{Memory}
+Memory stores both the program while it is running and the data on which the program operates:
+Memory is organized as a sequence of discrete locations.
+In modern memory, each location is composed of 1 byte(8 bits).
 
 Memory locations have finite capacity.
 Data may not fit in a memory location.
@@ -34,6 +41,9 @@ This simply means that the computer can refer to memory locations in any order.
 
 The control unit of a computer is where the fetch/execute cycle occurs.
 It fetches a machine instruction from memory and performs other operations of the fetch/execute cycle accordingly.
+A typical machine instruction has the form:
+ADD 4000, 2000, 2080
+What it really means is that whatever numbers are stored in memory locations 2000 and 2080 be added together, and the result be stored in location 4000
 
 \subsubsection{Arithmetic Logic Unit (ALU)}
 
@@ -69,6 +79,7 @@ The PC is incremented to point at the next instruction to be fetched.
 \subsubsection{Instruction Decode (ID)}
 
 The ALU is prepared for the operation specified by the instruction.
+Decoder determines what operation the ALU will perform(ADD), and sets up the ALU.
 The decoder finds the addresses of the instruction operands.
 These addresses are passed to the ALU circuit that fetches the operands from memory in the next stage.
 The decoder also finds the destination address for the result.
@@ -77,7 +88,7 @@ This is passed to the RR circuit.
 \subsubsection{Data fetch (DF)}
 
 The operands are copied from the specified memory addresses into the ALU circuits.
-The data remains in memory and is not destroyed.
+The data remains in memory and is not destroyed. They are not destroyed).
 
 \subsubsection{Instruction Execute (EX)}
 
@@ -95,3 +106,13 @@ A computer ``knows'' very few instructions.
 The decoder hardware in the control unit recognises, and the ALU performs, of the order of \num{100} instructions.
 Everything that a computer does must be reduced to some combination of these primitive instructions.
 Computers can carry out millions of these instructions per second.
+
+\subsection{Summary}
+All computers, regardless of their implementing technology,have five basic parts or subsystems:
+The memory, a very long sequence of bytes, each with an address,stores the program and data while the program is running.
+The ALU does the actual computing.
+The Control Unit controls the activity of all other units in thecomputer system, giving them directions.
+The input and output units are the interfaces for the peripheraldevices connected to the computer.
+
+A program is executed according to the Fetch/ExecuteCycle:
+The repeating process fetches each instruction (indicated by the PC),decodes the operation, retrieves the data, performs the operation,and stores the result back into the memory.

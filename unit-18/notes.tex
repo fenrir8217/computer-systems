@@ -1,40 +1,65 @@
 \subsection{Transport Layer Services and Protocols}
 
 The transport layer services provide logical communication between application processes running on different hosts.
-Transport protocols run on end systems.
-The sender divides app messages into segments that it passes to the network layer.
-The receiver reassembles the segments into messages that it passes to the application layer.
-The Internet uses TCP and UDP transport protocols.
-
+The protocols on this layer may provide transport services (such as congestion/flow control) or they may not…
+But they do not provide any speed, delay or bandwidth guarantees!
 Whilst the network layer provides logical communication between hosts, the transport layer provides logical communication between processes.
 It therefore relies on and enhances the network layer services.
+Transport protocols run on network edge devices (hosts/end-systems)
+\begin{itemize}
+  \item Sender:
+    \begin{itemize}
+      \item Gets message (arbitrary size) from the Application Layer (via socket) ,breaks it into logical segments (specific size) , passes it on to the Network Layer
+    \end{itemize}
+  \item Receiver:
+    \begin{itemize}
+      \item Gets segments from the Network Layer,reassembles them into a message,passes it on to the Application Layer (via socket)
+    \end{itemize}
+\end{itemize}
+The Internet uses TCP and UDP transport protocols.
 
-TCP provides reliable ordered delivery with congestion control, flow control and connection setup.
+TCP provides reliable ordered delivery with congestion control, flow control and connection setup. connection oriented protocal.
 UDP provides unreliable unordered delivery.
 It is a ``best-effort'' extension of IP, meaning that it provides no guarantee of delay or bandwidth; delay and packet loss are dependent upon traffic in the network.
 
 \subsection{Multiplexing and Demultiplexing}
+\begin{itemize}
+  \item Multiplexing (sender) allows multiple data streams from different applications on a single host sharing the same network connection to reach their intened processes.
+Each stream is split into transport layer segments. At this point:
+    \begin{itemize}
+      \item A transport header is added to each segment.
+      \item The header includes the source and destination port numbers, which are essential for proper delivery at the receiver.
+    \end{itemize}
+\item Demultiplexing (receiver) When IP datagrams arrive, each contains:
+  \begin{itemize}
+    \item A source IP address and a destination IP address.
+    \item A transport layer segment with source and destination port numbers.
+  \end{itemize}
+The receiving host uses this information to determine which socket the segment belongs to. The correct segment is then passed to the corresponding application process, where the original data is reassembled.
+\end{itemize}
 
-Multiplexing at the sender allows multiple data streams from a single host to reach their intended destinations.
-A transport header is added to the data that is later used for demultiplexing.
-
-Demultiplexing at the receiver allows multiple data streams to reach their intended processes.
-The transport header information is used to deliver the received segments to the correct sockets.
-
-The host receives IP datagrams that each contain a source IP address and a destination IP address.
-Each datagram carries a transport layer segment.
-Each segment has a source port number and a destination port number.
-The host uses the IP addresses and port numbers to direct the segments to their appropriate sockets.
+In demultiplexing, the host uses port numbers (and IP addresses) to direct TCP/UDP segments to the appropriate socket
+\begin{itemize}
+  \item UDP is connectionless
+    \begin{itemize}
+      \item UDP sockets have the form {dest ip, dest port}
+      \item When a host receives a UDP segment (sometimes called a datagram), it checks the destination port and directs the segment to the socket with that port
+      \item Segments with the same destination port will be directed to the same destination socket, even if they are from different sources
+    \end{itemize}
+  \item Meanwhile, TCP is connection-oriented
+    \begin{itemize}
+      \item TCP sockets: { source ip, source port, dest ip, dest port }
+      \item Servers will therefore have a different socket for each connection
+      \item Segments are therefore sent to sockets that depend on both source and destination – i.e. they depend on the overall connection
+    \end{itemize}
+\end{itemize}
 
 \subsubsection{Connectionless Demultiplexing}
-
 When a UDP socket is created, a host-local port is assigned to it.
 When a datagram is created to send to a UDP socket, the destination IP address and port number must be specified.
 When a host receives a UDP segment, it directs the segment to the socket with the given destination port number.
 IP datagrams with the same destination port number will be directed to the same destination socket regardless of the source IP address or port number.
-
 \subsubsection{Connection-Oriented Demultiplexing}
-
 A TCP socket is identified by a tuple of the source IP address, source port number, destination IP address and destination port number.
 The demultiplexer uses all four values to direct the segment to the appropriate socket.
 The server may support many simultaneous TCP sockets each identified by its own tuple.
@@ -55,9 +80,22 @@ This is used in the Quick UDP Internet Connections (QUIC) protocol.
   \includegraphics[width=12cm,height=6cm]{unit-18/figures/common-transport-protocols.png}
 \end{table}
 
+There are benefits to using UDP as a transport protocol:
+\begin{itemize}
+  \item No connection establishment (which can add delay)
+  \item Simplicity: no connection state at sender or receiver
+  \item Smaller header size than TCP (only 8 bytes!)
+  \item No congestion control, so UDP can send data as fast as it wants
+\end{itemize}
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=12cm]{unit-18/figures/01.png}
+  \caption*{UDP Datagram}
+\end{figure}
+
 A UDP segment contains the source port number, destination port number, length of the UDP segment (including the header) in bytes, a checksum and the application data message.
 UDP exists because it is simple.
-There is no delay in establishing a connection, there is no connection state to maintain at the sender or receiver, UDP segments have a small header size and there is no congestion control mechanism (transfer rate is not limited).
+
 
 \subsubsection{UDP Checksum}
 
@@ -70,7 +108,9 @@ The receiver computes the checksum of the received segment.
 If the computed checksum is equal to the checksum field value, no error has been detected.
 If the checksums are not equal, an error has been detected.
 Even though the checksums may be equal, it does not necessarily mean that there is no error.
-
+\newline
+This checksum is not foolproof: there can still be errors nonetheless…
+\newline
 Given two \SI{16}{\bit} integers \(11110011001100110_2\) and \(1101010101010101_2\), their sum is the \SI{17}{\bit} integer \(11011101110111011_2\).
 The overflow bit is removed from the sum and added to it as the least significant bit.
 The sum of \(1_2\) and \(1011101110111011_2\) is \(1011101110111100_2\).
@@ -114,7 +154,7 @@ If the sender receives a duplicate ACK, it retransmits the current packet.
 
 \subsubsection[RDT Over a Channel with Errors and Losses (RDT3.0)]{Reliable Data Transfer Over a Channel with Errors and Losses (RDT3.0)}
 
-Assuming the underlying channel can also lose data packets, the use of checksums, sequence numbers, acknowledgements and retransmissions is not sufficient.
+Assuming the underlying channel can also lose data packets, both data and ACKs can be dropped, the use of checksums, sequence numbers, acknowledgements and retransmissions is not sufficient.
 The sender must wait a reasonable amount of time for an ACK\@.
 If no ACK is received in this time, the current packet is retransmitted.
 If the ACK was delayed or lost, the retransmitted packet will be a duplicate.
@@ -130,6 +170,24 @@ A sender allows multiple ``in-flight'' yet to be acknowledged packets.
 This requires the range of sequence numbers used to be increased.
 The sender and receiver must have a buffer.
 
+\begin{itemize}
+  \item RDT 2.0 = RDT 1.0 + ACKs + NAKs
+  \item RDT 2.1 = RDT 2.0 + Sequence Numbers + Stop and Wait
+  \item RDT 2.2 = RDT 2.1 – NAKs
+  \item RDT 3.0 = RDT 2.2 + Countdown Timer
+\end{itemize}
+RDT in Practice
+\begin{itemize}
+  \item  On the Network Layer, the IP protocol is an inherently unreliable, best-effort service
+  \item  On the Transport Layer, RDT 3.0 is assured by the TCP protocol
+    \begin{itemize}
+      \item Pipelining
+      \item Cumulative ACKs (one ACK for several messages)
+      \item Single retransmission timeout (timer is reset each time a new one is set)
+      \item Retransmissions triggered by timeout and duplicate ACKs
+    \end{itemize}
+  \item The QUIC (Transport Layer, 2012) and HTTP/2 (Application Layer, 2015) can be used hand-in-hand to add RDT support to UDP
+\end{itemize}
 \subsection{Transmission Control Protocol (TCP)}
 
 TCP provides point-to-point communication with one sender and one receiver.
@@ -216,32 +274,19 @@ If a segment is lost, there will likely be many duplicate ACKs.
 If a sender receives three ACKs for the same data (``triple duplicate ACKs''), the unacknowledged segment with the smallest sequence number is resent.
 Since the next few responses will likely indicate that the unacknowledged segment was lost, there is no need to wait for the timeout.
 
-\subsubsection{TCP Flow Control}
-
-The receiver controls the sender so that the sender does not overflow the buffer of the receiver by transmitting too much data too quickly.
-The receiver advertises its free buffer space by including a receive window size in the TCP header of receiver-to-sender segments.
-The receive buffer size is set via socket options.
-Many operating systems automatically adjust the receive buffer.
-
-The receiver sets the receive window size to the difference between receive buffer size and the difference between the number of bytes received and the number of bytes read.
-The sender ensures that the difference between the last byte sent and the last byte acknowledged is less than or equal to the receive window size.
-This ensures that the sender only sends an amount of data that can be handled by the receiver.
-
-\begin{equation*}
-  \text{receive window} = \text{receive buffer} - \left( \text{last byte received} - \text{last byte read} \right)
-\end{equation*}
-
-\begin{equation*}
-  \text{last byte sent} - \text{last byte acknowledged} \le \text{receive window}
-\end{equation*}
+\begin{table}[htp]
+  \centering
+  \includegraphics[width=10cm]{unit-18/figures/02.png}
+  \caption*{Retransmission Timeout}
+\end{table}
 
 \subsubsection{TCP Connection Management}
 
 Before exchanging data, the sender and receiver exchange a `handshake' through which they agree to establish a connection and agree on connection parameters.
-
+TCP uses a 3-Way Handshake for establishing the connection, and a 4-Way Handshake for closing the connection.
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=12cm]{unit-18/figures/three-way-handshake.png}
+  \includegraphics[width=15cm]{unit-18/figures/03.png}
   \caption*{The TCP three-way handshake.}
 \end{figure}
 
@@ -253,6 +298,36 @@ Simultaneous FIN exchanges can be handled.
 
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=12cm]{unit-18/figures/closing-connection.png}
+  \includegraphics[width=15cm]{unit-18/figures/04.png}
   \caption*{Closing a TCP connection.}
 \end{figure}
+
+\subsubsection{TCP Flow Control}
+
+The receiver controls the sender so that the sender does not overflow the buffer of the receiver by transmitting too much data too quickly.
+The receiver advertises its free buffer space by including a receive window size in the TCP header of receiver-to-sender segments.
+The receive buffer size is set via socket options.
+Many operating systems automatically adjust the receive buffer.
+
+The receiver sets the receive window size to the difference between receive buffer size and the difference between the number of bytes received and the number of bytes read.
+The sender ensures that the difference between the last byte sent and the last byte acknowledged is less than or equal to the receive window size.
+This ensures that the sender only sends an amount of data that can be handled by the receiver.
+\begin{itemize}
+  \item The receiver alters the window size of the pipeline
+    \begin{itemize}
+      \item By changing the window\_size/rwnd parameter in the TCP header
+    \end{itemize}
+  \item This parameter is changed based on how much buffer space is free
+  \item The window size is the amount of unACK’d (“in-flight”) data that the sender is allowed to send
+    \begin{itemize}
+      \item Decreasing the window size therefore limits the amount of incoming data
+    \end{itemize}
+\end{itemize}
+
+\begin{equation*}
+  \text{receive window} = \text{receive buffer} - \left( \text{last byte received} - \text{last byte read} \right)
+\end{equation*}
+
+\begin{equation*}
+  \text{last byte sent} - \text{last byte acknowledged} \le \text{receive window}
+\end{equation*}
