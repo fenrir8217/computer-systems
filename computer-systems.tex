@@ -14,7 +14,7 @@
   margin = 1in,
   % showframe,
 ]{geometry} % Flexible and complete interface to document dimensions
-
+\usepackage{bookmark}
 % \usepackage{xcolor} % Driver-independent color extensions for LaTeX and pdfLaTeX
 
 % \definecolor{custom}{HTML}{1155cc}
@@ -56,6 +56,10 @@
 % \usepackage[nameinlink,noabbrev]{cleveref} % Intelligent cross-referencing % cleveref must be loaded after hyperref
 \usepackage{longtable}
 \usepackage{tabularx}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{tcolorbox}
+\usepackage{booktabs,array,pgfplots}
 % Set list parameters (using enumitem package)
 \setlist{nosep}
 
@@ -173,14 +177,22 @@
 \input{unit-19/notes-1.tex}
 \input{unit-19/notes-2.tex}
 
-\section{Quiz Answer Shee}
+\section{Quiz Answer Sheet}
 \input{unit-22/notes.tex}
-
-\section[The JVM and Java Bytecode]{The Java Virtual Machine and Java Bytecode}
+\input{unit-22/notes-3.tex}
+\input{unit-22/notes-4.tex}
+\input{unit-22/notes-5.tex}
+\input{unit-22/notes-6.tex}
+\input{unit-22/notes-7.tex}
+\input{unit-22/notes-8.tex}
+\input{unit-22/notes-9.tex}
+\pagebreak
+\section{Appendix}
+\subsection[The JVM and Java Bytecode]{The Java Virtual Machine and Java Bytecode}
 \input{unit-21/notes.tex}
-\section{\sout{Deadlocks}}
+\subsection{Deadlocks}
 \input{unit-15/notes.tex}
-\section{\sout{Network Security}}
+\subsection{Network Security}
 \input{unit-20/notes.tex}
 
 \end{document}

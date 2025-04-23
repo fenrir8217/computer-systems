@@ -1,0 +1,129 @@
+\subsection{Topic 6: Concurrency \& Parallelism – Exercise Sheet [Solutions]}
+\subsection*{Q\#1: A supermarket has sensors on each entrance that detect when a customer enters or leaves. These
+sensors send a signal to a central computer whenever a customer enters or leaves. This computer,
+amongst other things, keeps a running count of how many people are in the shop at any one time. This
+is used to control a traffic light system that only allows customers to enter the store when the number of
+customers is below a safe limit. Last week, the store was empty - but the system refused to let anyone
+in. What went wrong? How would you fix it?} 
+\textcolor{blue}{
+The sensors at the entrances send signals to the central computer system when a customer enters or
+leaves the store. On receiving a signal, the computer either increments or decrements (depending on the
+type of signal) the count of how many customers are inside the supermarket. Now, this increment /
+decrement operation, as it is given in the question, has not been implemented properly i.e. the counter
+is a shared resource and the increment / decrement operations do not take a lock before updating it,
+which means that we can have race conditions. It is quite possible that the value of the counter will be
+incorrect after a number of these operations, causing the system to malfunction i.e. the store is empty
+and the system thinks that there are customer inside the shop.
+The obvious solution will be to implement a locking mechanism e.g. mutual exclusion before updating
+the value of counter. 
+}
+\subsection*{Q\#2: An e-commerce application sells shoes. The application stores the current stock level of each
+shoe in memory. When a pair of shoes is purchased a thread is created. The thread i) checks the current
+stock level for that shoe ii) calculates the new value and iii) updates the stock level. The stock level
+recorded is usually correct but occasionally the application shows an incorrect value.}
+\begin{itemize}
+    \item{a)} Explain the (technical) reason why the application occasionally shows an incorrect value.
+    \item{b)} Explain what changes should be made to the program to correct this behaviour.
+    \item{c)} After these changes, the system works correctly. However, the performance has degraded.
+\end{itemize}
+\textcolor{blue}{
+Explain clearly why the performance will have got worse.
+The current stock level for each shoe is stored in memory and is a shared resource. Whenever a pair of
+shoes is purchased, a thread is created, and there is a race condition where 2 threads could be updating
+the same shoe stock level value at the same time. 
+\newline
+In order to correct this problem, we need to identify the critical section and ensure that only one thread
+can be in this section at a given time. We can make use of locking mechanisms, such as a mutex to
+implement this solution. 
+\newline
+Once the solution has been implemented, performance will most obviously be affected because of a)
+the extra cost of protecting the critical section and b) because operations now need to be sequential.
+}
+\subsection*{Q\#3: Consider the following program:}
+% \documentclass{article}
+% \usepackage{listings}
+% \usepackage{xcolor}
+
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+}
+
+\begin{lstlisting}
+boolean blocked [2];
+int turn;
+void P (int id)
+{
+    while (true) {
+        blocked[id] = true;
+        while (turn != id) {
+            while (blocked[1-id])
+                /* do nothing */;
+            turn = id;
+        }
+        /* critical section */
+        blocked[id] = false;
+        /* remainder */
+    }
+}
+void main()
+{
+    blocked[0] = false;
+    blocked[1] = false;
+    turn = 0;
+    parbegin (P(0), P(1));
+}
+\end{lstlisting}
+
+The above software solution to the mutual exclusion problem for two processes has been suggested in
+the literature. Do you agree that the proposed solution is correct? If yes, explain with the help of
+supporting arguments and examples. If no, find a counter-example that demonstrates that this solution
+is incorrect and does not preserve mutual exclusion.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=20cm]{unit-22/figures/01.png}
+  \caption*{currency}
+\end{figure}
+
+\subsection*{Q\#4: Your friend Jane needs to run a simulation for her thesis and her adviser wants her to run it for a
+fixed problem size. Jane can make 90\% of the program parallel, with 10\% of it being sequential.}
+\begin{itemize}
+    \item{a)} What is the maximum speedup Jane can expect on 10 processors? 
+    \newline
+    Speedup = \( \frac{1}{(1 - f) + \frac{f}{N}} \) = \( \frac{1}{(1 - 0.9) + \frac{0.9}{10}} \) = \( \frac{1}{0.1 + 0.09} = 5.26x \)
+    \item{b)} What would be the maximum speedup on an infinite number of processors?
+    \newline
+    Max Speedup = \( \frac{1}{(1 - 0.9) + \frac{0.9}{\infty}} = \frac{1}{0.1 + 0} = 10x \)
+\end{itemize}
+\subsection*{Q\#5: You asked your friend Mike to confirm the results that you obtained from running your code,
+having 80\% of it in parallel and 20\% sequential. Your friend confirmed the same result but got it 2.5x
+times faster.}
+
+a) How many processors did he use?
+\( 2.5 = \frac{1}{(1 - 0.8) + \frac{0.8}{N}} \)
+Solving gives: \( N = 4 \)
+
+b) Will the speed-up be doubled, if we double the number of processors used?
+Speedup = \( \frac{1}{0.2 + \frac{0.8}{8}} = 3.33x \), No
+
+\subsection*{Q\#6: A program speeds up by 4x when five processors are used. Determine the percentage of the code
+running in parallel.}  
+
+Speedup = \( \frac{1}{(1 - f) + \frac{f}{5}} = 4 \)
+
+Solving gives: \( f = 0.9375 \Rightarrow 93.75\% \) of the code is parallel.
+
+\subsection*{Q\#7: Assume a system where a particular task can be parallelized to 96\%. Calculate the speedup
+gained by using 16 processors instead of one, using Amdahl’s law. If the sequential version of the task
+takes 140 seconds, how much time the parallel version will take on 16 processors?}
+
+Speedup = \( \frac{1}{(1 - 0.96) + \frac{0.96}{16}} = \frac{1}{0.04 + 0.06} = 10x \)
+Sequential version time: 140 seconds  \\
+Parallel Time = Sequential Time / Speedup = \( \frac{140}{10} = 14 \) seconds
+

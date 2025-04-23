@@ -1,0 +1,112 @@
+\subsection{Topics 9 \& 10: Transport and Network Layers – Exercise Sheet [Solutions]}
+\subsection*{Q\#1: Describe a few reasons why an application developer might choose to run an application over UDP rather than the TCP protocol?}
+\textcolor{blue}{
+An application developer might choose to run an application over UDP (User Datagram Protocol) instead of TCP (Transmission Control Protocol) for several reasons:
+\begin{enumerate}
+    \item \textbf{Speed and Low Latency:} UDP is faster than TCP because it has less overhead. It doesn't establish a connection before sending data, which reduces latency. This is crucial for real-time applications like online gaming, live streaming, and VoIP (Voice over IP) where timely delivery is more important than perfect accuracy.
+    \item \textbf{No Congestion Control:} Unlike TCP, UDP does not have built-in congestion control mechanisms. This means that applications can send data at a constant rate without being throttled during network congestion. This is beneficial for applications that require a steady stream of data.
+    \item \textbf{Broadcast and Multicast Support:} UDP supports broadcasting and multicasting, allowing data to be sent to multiple recipients simultaneously. This is useful for applications like online multiplayer games and live video broadcasts.
+    \item \textbf{Statelessness:} UDP is stateless, meaning it does not maintain any connection state between the client and server. This makes it simpler and more efficient for applications that do not need the reliability and connection management provided by TCP.
+    \item \textbf{Custom Error Handling:} Developers can implement their own error handling mechanisms tailored to the specific needs of their application, rather than relying on TCP's built-in error correction.
+    \item \textbf{Resource Efficiency:} UDP consumes fewer resources because it does not require the overhead of establishing and maintaining connections. This can be advantageous in environments with limited resources.
+\end{enumerate}
+These features make UDP a suitable choice for applications where speed, low latency, and efficiency are prioritized over reliability and guaranteed delivery.
+}
+\subsection*{Q\#2: Suppose that a Web server runs in Host C on port 80. Suppose this Web server uses persistent connections, and is currently receiving requests from two different Hosts, A and B. Are all of the requests being sent through the same socket at Host C? If they are being passed through different sockets, do both sockets have port 80? Discuss and explain.}
+\textcolor{blue}{
+When a web server on Host C uses persistent connections and receives requests from two different hosts (A and B), the requests are not sent through the same socket i.e. the Web server creates a separate ``connection socket". Each connection socket \# is identified with a four-tuple:
+\begin{center}
+(Source IP Address, Source Port \#, Destination IP Address, Destination Port \#)
+\end{center}
+Here's a detailed explanation:
+\begin{enumerate}
+    \item \textbf{Different Sockets for Different Connections:} Each TCP connection is uniquely identified by a combination of the source IP address, source port number, destination IP address, and destination port number. When Host A and Host B establish connections to the web server on Host C, each connection is assigned a unique socket. This means that Host C will have separate sockets for the connections from Host A and Host B.
+    \item \textbf{Port 80 on Host C:} Both sockets on Host C will have port 80 as the destination port because that is the port on which the web server is listening for incoming connections. However, the source ports on Hosts A and B will be different, ensuring that each connection is uniquely identified.
+    \item \textbf{Persistent Connections:} With persistent connections, the same TCP connection is reused for multiple HTTP requests and responses between a client and server. This reduces the overhead and cost of establishing new connections for each request. Despite this, each client (Host A and Host B) will still have its own separate persistent connection to the server.
+\end{enumerate}
+In summary, while both connections to the web server on Host C use port 80, they are handled by different sockets, each uniquely identified by the combination of source and destination IP addresses and port numbers.
+}
+\subsection*{Q\#3: Suppose that the round-trip delay between sender and receiver is constant and known to the sender. Would a timer still be necessary in protocol RDT 3.0, assuming that packets can be lost? Explain.}
+\textcolor{blue}{
+Yes, a timer would still be necessary in protocol RDT 3.0, even if the round-trip delay between the sender and receiver is constant and known to the sender. Here's why:
+\begin{enumerate}
+    \item \textbf{Packet Loss Detection:} The primary role of the timer in RDT 3.0 is to detect packet loss. Even if the round-trip time (RTT) is known, packets (or their acknowledgments) can still be lost in transit. The timer allows the sender to determine if an acknowledgment (ACK) has not been received within the expected time frame, indicating a potential packet loss.
+    \item \textbf{Retransmission Mechanism:} When the timer expires without receiving an ACK, the sender assumes that the packet (or its ACK) has been lost and retransmits the packet. This ensures reliable data transfer by recovering from packet losses.
+    \item \textbf{Handling Delays:} Even with a known RTT, network conditions can vary, causing delays. The timer helps manage these variations by providing a mechanism to retransmit packets if the ACK is delayed beyond the expected RTT.
+\end{enumerate}
+In summary, the timer is crucial for ensuring reliability in the presence of packet loss, regardless of whether the RTT is constant and known.
+}
+\subsection*{Q\#4: Suppose Host A sends two TCP segments back-to-back to Host B over a TCP connection. The first segment has sequence number 90; the second has sequence number 110.}
+\begin{itemize}
+\item[a)] How much data is in the first segment?
+\item[b)] Suppose that the first segment is lost but the second segment arrives at Host B. In the acknowledgment that Host B sends to Host A, what will be the acknowledgment number?
+\newline
+\textcolor{blue}{
+\item[a)] The first segment contains 20 bytes of data.
+\item[b)] The Host B will send an acknowledgment number 90.
+}
+\end{itemize}
+
+\subsection*{Q\#5: Host A and B are directly connected with a 100 Mbps link. There is one TCP connection between the two hosts, and Host A is sending to Host B an enormous file over this connection. Host A can send its application data into its TCP socket at a rate as high as 120 Mbps but Host B can read out of its TCP receive buffer at a maximum rate of 50 Mbps. Describe the effect of TCP flow control.}
+\textcolor{blue}{
+Since the link capacity is only 100 Mbps, host A’s sending rate can be at most 100 Mbps. Still, host A sends data into the receive buffer faster than Host B can remove data from the buffer. The receive buffer fills up at a rate of roughly 50 Mbps. When the buffer is full, Host B signals to Host A to stop sending data by setting RcvWindow = 0. Host A then stops sending until it receives a TCP segment with \(RcvWindow > 0\).
+Host A will thus repeatedly stop and start sending as a function of the RcvWindow values it receives from Host B. On average, the long-term rate at which Host A sends data to Host B as part of this connection is no more than 50 Mbps.
+}
+\subsection*{Q\#6: A common base used on the internet is b = 256. We need 256 symbols to represent a number in this system. Instead of creating this large number of symbols, the designers of this system have used decimal numbers to represent a symbol i.e. 0 to 255. In other words, the set of symbols is:}
+\[ S = \{0, 1, 2, \ldots, 255\} \]
+A number in this system is always in the format \textbf{S$_1$.S$_2$.S$_3$.S$_4$}, with four symbols and three dots that separate the symbols. This system is used to define internet addresses. An example of an address in this system is 10.200.14.72, which is equivalent to $10 \times 256^3 + 200 \times 256^2 + 14 \times 256^1 + 72 \times 256^0 = 1808830016$ in decimal. This number is called the \textit{dotted decimal notation}.
+
+Find the decimal value of each of the following internet addresses:
+
+\begin{itemize}
+\item[a)] 17.234.34.14 
+\item[b)] 14.56.234.56
+\item[c)] 110.14.56.78
+\item[d)] 24.56.13.11
+\newline
+\textcolor{blue}{
+\item[a)] 17.234.34.14 = $17 \times 256^3 + 234 \times 256^2 + 34 \times 256^1 + 14 \times 256^0 = 300556814$
+\item[b)] 14.56.234.56 = $14 \times 256^3 + 56 \times 256^2 + 234 \times 256^1 + 56 \times 256^0 = 238611000$
+\item[c)] 110.14.56.78 = $110 \times 256^3 + 14 \times 256^2 + 56 \times 256^1 + 78 \times 256^0 = 1846425678$
+\item[d)] 24.56.13.11 = $24 \times 256^3 + 56 \times 256^2 + 13 \times 256^1 + 11 \times 256^0 = 406326539$
+}
+\end{itemize}
+\subsection*{Q\#7: You are given two IP address/mask combinations, written using the prefix/length notation, and these have been assigned to two devices. Determine if these devices are on the same subnet or different ones. You can use the address/mask of each device to determine the subnet of each address.}
+\begin{itemize}
+\item Device A: 172.16.17.30/20
+\item Device B: 172.16.28.15/20
+\end{itemize}
+
+\textbf{Determine the Subnet for Device A:}
+
+172.16.17.30  = \underline{10101100.00010000.0001}0001.00011110 \\
+255.255.240.0 = \underline{11111111.11111111.1111}0000.00000000 \\
+Subnet Address = 10101100.00010000.00010000.00000000 = 172.16.16.0 \\
+Looking at the address bits that have a corresponding mask bit set to one, and setting all the other address bits to zero (this is equivalent to performing a logical "AND" between the mask and address), shows you to which subnet this address belongs. In this case, Device A belongs to subnet 172.16.16.0. \\
+\textbf{Determine the Subnet for Device B:}
+172.16.28.15  = \underline{10101100.00010000.0001}1100.00001111 \\
+255.255.240.0 = \underline{11111111.11111111.1111}0000.00000000 \\
+Subnet Address = 10101100.00010000.00010000.00000000 = 172.16.16.0 \\
+We can see that both devices have been assigned addresses that are part of the same subnet.
+\subsection*{Q\#8: You are working in a company and have been asked to design a network where each subnet would contain around 50 hosts. How many subnets can you create using the Network Address of 200.100.50.0? What is the range of IP addresses for each subnet?}
+We can see that 200.100.50.0 is a Class C address with a default subnet mask of 255.255.255.0 or /24. The subnet mask in Binary looks like: 11111111.11111111.11111111.00000000
+As we need around 50 hosts per subnet, we will dedicate at least 6 bits for the host part i.e. $2^6 = 64$, so the subnet mask can be extended up to /26 bits i.e.
+\begin{verbatim}
+11111111.11111111.11111111.11000000
+\end{verbatim}
+Therefore, we will have four subnets in our network, as shown in the table below:
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Subnet \#} & \textbf{Subnet Address} & \textbf{Subnet Mask} & \textbf{Host IP Address Range} \\
+\hline
+1 & 200.100.50.0 & 255.255.255.192 & 200.100.50.1 -- 200.100.50.62 \\
+\hline
+2 & 200.100.50.64 & 255.255.255.192 & 200.100.50.65 -- 200.100.50.126 \\
+\hline
+3 & 200.100.50.128 & 255.255.255.192 & 200.100.50.129 -- 200.100.50.190 \\
+\hline
+4 & 200.100.50.192 & 255.255.255.192 & 200.100.50.193 -- 200.100.50.254 \\
+\hline
+\end{tabular}
+\end{center}

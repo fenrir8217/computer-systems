@@ -6,7 +6,7 @@
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|c|c|c|c|}
 \hline
-\rowcolor{gray!20}
+% \rowcolor{gray!20}
 \textbf{Decimal} & \textbf{Binary} & \textbf{Octal} & \textbf{Hexadecimal} \\
 \hline
 175 & 10101111 & 257 & AF \\
@@ -68,6 +68,7 @@ levels. How many bits per second are needed to represent this signal?
 \newline
 For each sample, we have 256 different levels, therefore, we need log2 (256) = 8 bits / sample.
 Sampling rate is 8000 times/second, therefore, we need 8000 * 8 = 64000 bits/second = 64kbps.
+
 
 \subsection{Topic 1: Data Representation – Exercise Sheet \#2 \textnormal{[Solutions]}}
 
@@ -193,6 +194,79 @@ Convert the following decimal real numbers into fixed point representation, both
 
 \textbf{Note:} For 2’s complement representation of a negative real number, we initially assume the number to be positive, convert to binary in the same way as fixed point conversion and apply two’s complement on the binary representation to get the final answer.
 
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{booktabs}
+% \usepackage{geometry}
+% \usepackage{longtable}
+% \geometry{margin=1in}
+% \begin{document}
+
+\section*{Q\#7}
+Convert the following decimal real numbers into fixed point representation (using 8 bits). Convert the fixed point back to decimal real numbers. Do you get the same value as the original?
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{Decimal Number (Original)} & \textbf{Fixed Point Sign-and-Magnitude Representation (3.5 format)} & \textbf{Decimal Number (After Conversion)} & \textbf{Same as Original?} \\
+\midrule
+3.635 & 011.10100 & 3.625 & No \\
+-2.10 & 110.00011 & -2.09375 & No \\
+-3.33 & 111.01010 & -3.3125 & No \\
+3.14159 & 011.00100 & 3.125 & No \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\section*{Q\#8}
+Convert the following numbers into IEEE 754 (32-bit) floating point format with 8-bit exponent:
+\begin{center}
+\begin{tabular}{|>{\centering\arraybackslash}m{4cm}|>{\arraybackslash}m{10.5cm}|}
+\hline
+\textbf{Decimal Number} & \textbf{IEEE 754 Floating Point Representation (32-bit)} \\
+\hline
+\textbf{104.1875} &
+Conversion to binary gives: 1101000.0011 \newline
+Normalized representation: 1.1010000011 × 2\textsuperscript{6} \newline
+Biased Exponent: 6 + 127 = 133 = (10000101)\textsubscript{2} \newline
+Mantissa to be stored: (.1010000011 0000 0000 0000)\textsubscript{2} \newline
+Final Representation: \newline
+\texttt{0 10000101 10100000110000000000000} \\
+\hline
+\textbf{-12.640625} &
+Conversion to binary gives: 1100.101001 \newline
+Normalized representation: 1.100101001 × 2\textsuperscript{3} \newline
+Biased Exponent: 3 + 127 = 130 = (10000010)\textsubscript{2} \newline
+Mantissa to be stored: (.10010100100000000000000)\textsubscript{2} \newline
+Final Representation: \newline
+\texttt{1 10000010 10010100100000000000000} \\
+\hline
+\textbf{1125.10} &
+Conversion to binary gives: 10001100101.000110011 \newline
+Normalized representation: 1.00011001010000110011 × 2\textsuperscript{10} \newline
+Biased Exponent: 10 + 127 = 137 = (10001001)\textsubscript{2} \newline
+Mantissa to be stored: (.00011001010000110011)\textsubscript{2} \newline
+Final Representation: \newline
+\texttt{0 10001001 00011001010000110011} \\
+\hline
+\textbf{-0.0033} &
+Conversion to binary gives: 0.00000000001110100000001000011\ldots \newline
+Normalized representation: 1.10110000001000011\ldots × 2\textsuperscript{-9} \newline
+Biased Exponent: -9 + 127 = 118 = (01110110)\textsubscript{2} \newline
+Mantissa to be stored: (.10110000001000011010000)\textsubscript{2} \newline
+Final Representation: \newline
+\begin{tabular}{|c|c|c|}
+\hline
+1 & 01110110 & 10110000001000011010000 \\
+\hline
+\end{tabular}
+\\
+\hline
+\end{tabular}
+\end{center}
+
 
 \subsection*{Q\#9:}
 Given the following numbers in IEEE 754 (32-bit) floating point format with 8-bit exponent, calculate the decimal real numbers.
@@ -243,4 +317,18 @@ Binary number: 0.000011 \newline
 Decimal value: \textbf{-0.046875} \\
 \hline
 \end{longtable}
+}
+
+\section*{Q\#10:}
+The data-type \textbf{Float} (32-bit total = 23-bit mantissa, 8-bit exponent) gives us about 7–8 significant decimal digits. \\
+The data-type \textbf{Double} (64-bit total = 52-bit mantissa, 11-bit exponent) gives us about 15–16 significant decimal digits.
+
+\vspace{0.5em}
+Let's create a new data-type called \textbf{Triple}, which has 96-bits total; a 78-bit mantissa and a 17-bit exponent. Roughly how many significant decimal digits will this type give us?
+
+\textcolor{blue}{
+The mantissa has 78-bits, so (when we include the hidden bit) we get 79 significant bits; or $2^{79}$ values.
+$2^{79} = 6.044629098 \times 10^{23}$ 
+(we can work this out through various methods, e.g. using logarithms of base 10). Therefore we have
+roughly 23–24 significant decimal digits.
 }
