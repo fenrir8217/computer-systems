@@ -76,10 +76,34 @@ One notation that shows the effect of an operation, such as subtraction, on a st
   \ldots, \textnormal{val1}, \textnormal{val2} \quad \rightarrow \quad \ldots, \textnormal{val1} - \textnormal{val2}
 \end{equation*}
 
+\subsubsection{Converting Infix to Postfix (aka RPN)}
+\begin{enumerate}
+  \item Initialize an empty stack for storing operators and an empty list for the output.
+  \item Read the infix expression from left to right, one token at a time.
+  \item For each token in the infix expression:
+    \begin{itemize}
+      \item{a)} If the token is an operand (number or variable), add it directly to the output list.
+      \item{b)} If the token is an operator:
+        \begin{itemize}
+          \item{i.} While stack is not empty, pop operators from the stack and append to the output if the
+precedence of stack operators is greater than or equal to the current operator.
+          \item{ii.} Push the current operator onto the stack.
+        \end{itemize}
+      \item{c)} If the token is an opening parenthesis $($, push it onto the stack.
+      \item{d)} If the token is a closing parenthesis $)$:
+        \begin{itemize}
+          \item{i.} Pop from the stack and append to the output until an opening parenthesis is encountered.
+          \item{ii.} Discard the opening parenthesis from the stack (but don't add it to the output).
+        \end{itemize}
+    \end{itemize}
+  \item After reading the entire infix expression, pop any remaining operators from
+the stack and append them to the output list. The final output will be the postfix
+expression.
+\end{enumerate}
+\subsubsection{Stack Machines}
+
 Java bytecode uses operand stacks for calculations.
 In Java, each method call has its own operand stack.
-
-\subsubsection{Stack Machines}
 
 Stack machines use a return stack for subroutine return, and an operand stack for RPN calculations.
 Registers are not needed for calculations.

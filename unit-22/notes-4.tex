@@ -1,0 +1,238 @@
+\subsection{Topic 4: Compilation, Interpretation and Subroutines – Exercise Sheet [Solutions]}
+
+\subsection*{Q\#1: A letter means push and an asterisk means pop. Show the output of the pop operations:}
+
+\begin{itemize}
+\item[a.] M M I B * * R * * G N I * * * A H * * * \\
+\textbf{Output:} BIRMINGHAM
+
+\item[b.] A U E * * I R * * K * * \\
+\textbf{Output:} EURIKA
+\end{itemize}
+
+\subsection*{Q\#2: Convert infix expressions to postfix (RPN) using Shunting Yard algorithm.}
+\textbf{a. } $5 - 15 \times (25 + 5)$
+
+\begin{tabularx}{\textwidth}{|c|X|X|X|}
+\hline
+\textbf{Step \#} & \textbf{Output} & \textbf{Stack (Top on Right)} & \textbf{Input} \\
+\hline
+1 & Empty & Empty & $5 - 15 \times (25 + 5)$ \\
+\hline
+2 & 5 & Empty & $- 15 \times (25 + 5)$ \\
+\hline
+3 & 5 & – & $15 \times (25 + 5)$ \\
+\hline
+4 & 5 15 & – & $\times (25 + 5)$ \\
+\hline
+5 & 5 15 & – * & $(25 + 5)$ \\
+\hline
+6 & 5 15 & – * ( & $25 + 5)$ \\
+\hline
+7 & 5 15 25 & – * ( & $+ 5)$ \\
+\hline
+8 & 5 15 25 & – * ( + & 5) \\
+\hline
+9 & 5 15 25 5 & – * ( + & ) \\
+\hline
+10 & 5 15 25 5 + * – & Empty & Empty \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\textbf{b. } $4 \times (6 + 10 / 2.5 - 8)$
+
+\begin{tabularx}{\textwidth}{|c|X|X|X|}
+\hline
+\textbf{Step \#} & \textbf{Output} & \textbf{Stack (Top on Right)} & \textbf{Input} \\
+\hline
+1 & Empty & Empty & $4 \times (6 + 10 / 2.5 - 8)$ \\
+\hline
+2 & 4 & Empty & $\times (6 + 10 / 2.5 - 8)$ \\
+\hline
+3 & 4 & \(\times\) & $(6 + 10 / 2.5 - 8)$ \\
+\hline
+4 & 4 & \(\times\) ( & $6 + 10 / 2.5 - 8)$ \\
+\hline
+5 & 4 6 & \(\times\) ( & $+ 10 / 2.5 - 8)$ \\
+\hline
+6 & 4 6 & \(\times\) ( + & $10/ 2.5 - 8)$ \\
+\hline
+7 & 4 6 10 & \(\times\) ( + & $/2.5 - 8)$ \\
+\hline
+8 & 4 6 10 & \(\times\) ( + / & $2.5- 8)$ \\
+\hline
+9 & 4 6 10 2.5 & \(\times\) ( + / & $- 8)$ \\
+\hline
+10 & 4 6 10 2.5 / + & \(\times\) ( – & $8)$ \\
+\hline
+11 & 4 6 10 2.5 / + 8 & \(\times\) ( – & ) \\
+\hline
+12 & 4 6 10 2.5 / + 8 – & \(\times\) & Empty \\
+\hline
+13 & 4 6 10 2.5 / + 8 – \(\times\) & Empty & Empty \\
+\hline
+\end{tabularx}
+
+\vspace{1em}
+
+\textbf{c. } $17 + 21 / 3 \times 7 + 21$
+
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Step \#} & \textbf{Output} & \textbf{Stack (Top on Right)} & \textbf{Input} \\
+\hline
+1 & Empty & Empty & $17 + 21 / 3 \times 7 + 21$ \\
+2 & 17 & Empty & $+ 21 / 3 \times 7 + 21$ \\
+3 & 17 & + & $21 / 3 \times 7 + 21$ \\
+4 & 17 21 & + & $/ 3 \times 7 + 21$ \\
+5 & 17 21 3 & + / & $\times 7 + 21$ \\
+6 & 17 21 3 / & + & $\times 7 + 21$ \\
+7 & 17 21 3 / 7 & + * & $+ 21$ \\
+8 & 17 21 3 / 7 * & + & $21$ \\
+9 & 17 21 3 / 7 * + 21 & + & Empty \\
+10 & 17 21 3 / 7 * + 21 + & Empty & Empty \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Q\#3: Evaluate the RPN expressions obtained in the question above, using a stack to check that they
+calculate the correct answers.}
+\textbf{a. RPN: } $5\ 15\ 25\ 5\ +\ *\ -$
+
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|X|X|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\
+\hline
+1 & 5 & 5 \\
+\hline
+2 & 15 & 5 15 \\
+\hline
+3 & 25 & 5 15 25 \\
+\hline
+4 & 5 & 5 15 25 5 \\
+\hline
+5 & + & 5 15 30 \\
+\hline
+6 & * & 5 450 \\
+\hline
+7 & – & \textbf{-445} \\
+\hline
+\end{tabularx}
+\end{center}
+
+\vspace{1em}
+
+\textbf{b. RPN: } $4\ 6\ 10\ 2.5\ /\ +\ 8\ -\ *$
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\
+\hline
+1 & 4 & 4 \\
+2 & 6 & 4 6 \\
+3 & 10 & 4 6 10 \\
+4 & 2.5 & 4 6 10 2.5 \\
+5 & / & 4 6 4 \\
+6 & + & 4 10 \\
+7 & 8 & 4 10 8 \\
+8 & – & 4 2 \\
+9 & * & \textbf{8} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{c. RPN: } $17\ 21\ 3\ /\ 7\ *\ +\ 21\ +$
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\
+\hline
+1 & 17 & 17 \\
+2 & 21 & 17 21 \\
+3 & 3 & 17 21 3 \\
+4 & / & 17 7 \\
+5 & 7 & 17 7 7 \\
+6 & * & 17 49 \\
+7 & + & 66 \\
+8 & 21 & 66 21 \\
+9 & + & \textbf{87} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Q\#4:}
+Convert Java: \texttt{i = (j + k) \&\& m}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Java} & \textbf{IJVM Bytecode} & \textbf{Hex Bytecode} & \textbf{Stack (Top on Right)} \\
+\hline
+ILOAD j & ILOAD & 0x15 0x02 & [17] \\
+ILOAD k & ILOAD & 0x15 0x03 & [17, 14] \\
+IADD & IADD & 0x60 & [31] \\
+ILOAD m & ILOAD & 0x15 0x04 & [31, 45] \\
+IAND & IAND & 0x7E & [1] \\
+ISTORE i & ISTORE & 0x36 0x01 & [] \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Q\#5:}
+Bytecode for $x = (p \times q) - (r + s)$, given p=5, q=4, r=2, s=1:
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{IJVM Bytecode} & \textbf{Stack (Top on Right)} \\
+\hline
+ILOAD p & [5] \\
+ILOAD q & [5, 4] \\
+IMUL & [20] \\
+ILOAD r & [20, 2] \\
+ILOAD s & [20, 2, 1] \\
+IADD & [20, 3] \\
+ISUB & [17] \\
+ISTORE x & [] \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Q\#6 (Optional):} A palindrome is a word, phrase, number, or sequence of characters that reads the
+same backward as forward. In other words, if you reverse the order of the characters, the resulting
+string is identical to the original. Palindromes are usually case-insensitive (e.g., "Racecar" is considered
+a palindrome). Examples include "level", "radar", "civic", 121, 12321.
+To detect if a given string is a palindrome using a stack, you can utilize the stack's Last In First Out
+(LIFO) property. The basic idea is to push the characters of the string onto a stack and then pop them
+off to compare with the original string. Write a program in Python to detect if the given input string is a
+palindrome.
+
+\begin{lstlisting}[language=Python]
+def is_palindrome(input_string):
+    stack = []
+
+    for char in input_string:
+        stack.append(char)
+
+    for char in input_string:
+        if stack.pop() != char:
+            return False
+    return True
+
+# Test the function
+test_string = "radar"
+if is_palindrome(test_string):
+    print(f'"{test_string}" is a palindrome.')
+else:
+    print(f'"{test_string}" is not a palindrome.')
+\end{lstlisting}
+
+% \end{document}

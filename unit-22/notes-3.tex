@@ -1,0 +1,200 @@
+\subsection{Topics 2 \& 3: CPU, Memory, Program Execution \& MIPS Assembly – Exercise Sheet [Solutions]}
+
+\subsection*{Q\#1:}
+
+Considering the simpler view of instructions, write the machine instructions representing each of the codes below:
+
+\textbf{Memory locations/addresses:}
+\begin{itemize}
+  \item \texttt{num1 => 4040}
+  \item \texttt{num2 => 5050}
+  \item \texttt{Total => 6060}
+\end{itemize}
+
+\textbf{a.}
+\begin{lstlisting}
+int num1 = 5;
+int num2 = 14;
+int total = num1 + num2;
+\end{lstlisting}
+
+\textbf{Instruction:} \texttt{ADD 6060, 4040, 5050}
+
+\textbf{b.}
+\begin{lstlisting}
+int num1 = 50;
+int num2 = 14;
+int total = num2 - num1;
+\end{lstlisting}
+
+\textbf{Instruction:} \texttt{SUB 6060, 5050, 4040}
+
+\subsection*{Q\#2:}
+
+Consider the below state of memory, where some values are already stored in different locations:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Value} & 50 & 70 & 14 & 9 & 7 & 44 & 20 \\
+\hline
+\textbf{Address} & 2024 & 2028 & 2032 & 2036 & 2040 & 2044 & 2048 & 2052 \\
+\hline
+\end{tabular}
+\end{center}
+
+What would be the result of executing the following instructions?
+
+\begin{itemize}
+  \item (a) \texttt{ADD 2028, 2024, 2048} \hfill [\textbf{94, Stored in 2028}]
+  \item (b) \texttt{ADD 2036, 2024, 2036} \hfill [\textbf{64, Stored in 2036 and overwrites the 14}]
+  \item (c) \texttt{MUL 2028, 2044, 2052} \hfill [\textbf{140, Stored in 2028 and overwrites the 94}]
+  \item (d) \texttt{SUB 2040, 2048, 2044} \hfill [\textbf{37, Stored in 2040 and overwrites the 9}]
+  \item (e) \texttt{XOR 2052, 2040, 2044} \hfill [\textbf{34, Stored in 2052}]
+\end{itemize}
+
+\textbf{The final memory state will look like:}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Value} & 50 & 140 & 70 & 64 & 37 & 7 & 44 & 34 \\
+\hline
+\textbf{Address} & 2024 & 2028 & 2032 & 2036 & 2040 & 2044 & 2048 & 2052 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{What would change if these instructions were to be executed in the following sequence:}
+
+\begin{itemize}
+  \item (a) \texttt{XOR 2052, 2040, 2044} \hfill [\textbf{14, Stored in 2052}]
+  \item (b) \texttt{ADD 2036, 2024, 2036} \hfill [\textbf{64, Stored in 2036 and overwrites the 14}]
+  \item (c) \texttt{ADD 2028, 2024, 2048} \hfill [\textbf{94, Stored in 2028}]
+  \item (d) \texttt{SUB 2040, 2048, 2044} \hfill [\textbf{37, Stored in 2040 and overwrites the 9}]
+  \item (e) \texttt{MUL 2028, 2044, 2052} \hfill [\textbf{98, Stored in 2028 and overwrites the 94}]
+\end{itemize}
+
+\textbf{When the instructions are executed in a different order, the resultant memory state will be different:}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Value} & 50 & 98 & 70 & 64 & 37 & 7 & 44 & 14 \\
+\hline
+\textbf{Address} & 2024 & 2028 & 2032 & 2036 & 2040 & 2044 & 2048 & 2052 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Q\#3: Instruction Cycle Description}
+
+Using the figure below, describe the entire fetch / execute cycle detailing the result of each step in the cycle for the following machine instruction: \texttt{ADD 343, 546, 772}
+
+\textbf{Instruction Fetch (IF):}
+\begin{itemize}
+  \item Execution begins by moving the instruction at the address given by the PC (600) from memory to the control unit.
+  \item Bits of instruction are placed into the decoder circuit of the Control Unit.
+  \item Once instruction is fetched, the PC can be readied for fetching the next instruction.
+\end{itemize}
+
+\textbf{Instruction Decode (ID):}
+\begin{itemize}
+  \item Decoder determines what operation the ALU will perform (ADD), and sets up the ALU.
+  \item Decoder finds the memory addresses of the instruction's data (546, 772).
+  \item Decoder finds the destination address for the Result Return step and places the address in the RR circuit (343).
+\end{itemize}
+
+\textbf{Data / Operand Fetch (DF/OF):}
+\begin{itemize}
+  \item The data values to be operated on are retrieved from memory (40, 23).
+  \item Bits at specified memory locations are copied into locations in the ALU circuitry.
+  \item Data values remain unchanged in the memory.
+\end{itemize}
+
+\textbf{Instruction Execution (EX):}
+\begin{itemize}
+  \item The addition circuit adds the two source operands (40, 23) together to produce their sum (63).
+  \item Sum (63) is held in the ALU circuitry (accumulator).
+\end{itemize}
+
+\textbf{Result Return / Store (RR/ST):}
+\begin{itemize}
+  \item RR returns the result of EX (63) to the memory location specified by the destination address (343).
+\end{itemize}
+
+\subsection*{Q\#4: Pipeline Instruction Throughput}
+
+A processor is operating at 32MHz. Each instruction takes a minimum of 6 cycles to execute. The processor has a six-stage pipeline. If a program starts execution at time 0, what is the theoretical maximum number of instructions that will have completed their execution at the end of 1 millisecond?
+
+\textbf{Calculation:}
+\begin{itemize}
+  \item Speed = 32MHz = 32,000,000 cycles/second = 32,000 cycles/millisecond
+  \item With pipelining:
+    \begin{itemize}
+      \item Number of clock cycles taken by the first instruction = 6 cycles
+      \item After the first instruction has completely executed, one instruction comes out per cycle
+      \item So, number of cycles taken by each remaining instruction = 1 cycle
+    \end{itemize}
+  \item Number of executed instructions = First Instruction (1) + remaining instructions (32,000 cycles/ms – 6 cycles) = $1 + 31,994 = \boxed{31,995\ \text{instructions/ms}}$
+\end{itemize}
+
+\textit{In practice, there are factors that mean this theoretical maximum is never reached.}
+
+\subsection*{Q\#5: Loop Result in MIPS Assembly}
+
+\textbf{What is the value stored in \texttt{z} after the execution of the following MIPS assembly code, if \texttt{x=5}?}
+
+\begin{lstlisting}
+li $t0, 1
+li $t1, 2
+lw $t2, &x
+L1: bgt $t1, $t2, L2
+    mul $t0, $t0, $t1
+    addi $t1, $t1, 1
+    j L1
+L2: sw $t0, &z
+\end{lstlisting}
+
+\textbf{Explanation:}  
+The \texttt{bgt} instruction compares two registers and jumps to \texttt{L2} if the content of \texttt{\$t1} is greater than the content of \texttt{\$t2}. Equivalent Java code is:
+
+\begin{lstlisting}[language=Java]
+z = 1;
+for (i = 2; i <= x; i++) {
+    z = z * i;
+}
+\end{lstlisting}
+
+Knowing that \texttt{x = 5} and the index \texttt{i} starts from 2, the result will be:  
+\texttt{z = 1 * 2 * 3 * 4 * 5 = 120}
+
+\subsection*{Q\#6: Expression to MIPS Translation}
+
+\textbf{Expression:}  
+\[
+C = 12 \times A + 4 \times (B - 5)
+\]
+
+\textbf{Breakdown:}
+\begin{align*}
+t0 &= 12 \times A \\
+t1 &= B - 5 \\
+t2 &= 4 \times t1 \\
+C &= t0 + t2
+\end{align*}
+
+\textbf{MIPS Assembly Code and Execution Results:}
+
+\begin{lstlisting}
+lw $s0, &A        # $s0 = 10
+lw $s1, &B        # $s1 = 9
+mul $t0, $s0, 12  # $t0 = 120
+sub $t1, $s1, 5   # $t1 = 4
+mul $t2, $t1, 4   # $t2 = 16
+add $s2, $t0, $t2 # $s2 = 136
+sw $s2, &C        # store result
+\end{lstlisting}
+
+\textbf{Result:} \texttt{C = 136}
+
