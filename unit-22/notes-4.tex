@@ -168,27 +168,43 @@ calculate the correct answers.}
 \end{tabular}
 \end{center}
 
-\subsection*{Q\#4:}
+\subsection*{Q\#4: Complete the table below by converting the Java statement into IJVM Bytecode using the
+provided instruction set. You can assume that the variable i is stored in slot \#1, j in slot\#2, k in slot\#3
+and m in slot\#4. If the values of j = 17, k = 14 and m = 45, evaluate the bytecode using the stack.}
 Convert Java: \texttt{i = (j + k) \&\& m}
 
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
+% \renewcommand{\arraystretch}{1.5} % Increase row height
+% \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Centered fixed-width column
+
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
 \hline
 \textbf{Java} & \textbf{IJVM Bytecode} & \textbf{Hex Bytecode} & \textbf{Stack (Top on Right)} \\
 \hline
-ILOAD j & ILOAD & 0x15 0x02 & [17] \\
-ILOAD k & ILOAD & 0x15 0x03 & [17, 14] \\
-IADD & IADD & 0x60 & [31] \\
-ILOAD m & ILOAD & 0x15 0x04 & [31, 45] \\
-IAND & IAND & 0x7E & [1] \\
-ISTORE i & ISTORE & 0x36 0x01 & [] \\
+\multirow{6}{=}{i = (j + k) \&\& m}
+& \textcolor{blue}{ILOAD j} & 0x15 0x02 & [17] \\
+& \textcolor{blue}{ILOAD k} & 0x15 0x03 & [17, 14] \\
+& \textcolor{blue}{IADD} & 0x60 & [31] \\
+& \textcolor{blue}{ILOAD m} & 0x15 0x04 & [31, 45] \\
+& \textcolor{blue}{IAND} & 0x7E & [1] \\
+& \textcolor{blue}{ISTORE i} & 0x36 0x01 & [] \\
 \hline
-\end{tabular}
-\end{center}
+\end{tabularx}
 
-\subsection*{Q\#5:}
-Bytecode for $x = (p \times q) - (r + s)$, given p=5, q=4, r=2, s=1:
 
+\subsection*{Q\#5: Given the IJVM bytecode below, analyze and evaluate the following sequence, which calculates
+the expression x = (p * q) - (r + s) where p, q, r, and s are values stored in memory.}
+\begin{lstlisting}
+ILOAD p     // Load p onto the stack 
+ILOAD q     // Load q onto the stack 
+IMUL        // Multiply p and q, push the result onto the stack 
+ILOAD r     // Load r onto the stack 
+ILOAD s     // Load s onto the stack 
+IADD        // Add r and s, push the result onto the stack 
+ISUB        // Subtract (r + s) from (p * q), push the result to stack 
+ISTORE x    // Store the final result in x 
+\end{lstlisting}
+Calculate the final value of x given p = 5, q = 4, r = 2, and s = 1. Also, illustrate the stack contents after each instruction. Bytecode for $x = (p \times q) - (r + s)$, given p=5, q=4, r=2, s=1: 
 \begin{center}
 \begin{tabular}{|c|l|}
 \hline
@@ -206,14 +222,14 @@ ISTORE x & [] \\
 \end{tabular}
 \end{center}
 
-\subsection*{Q\#6 (Optional):} A palindrome is a word, phrase, number, or sequence of characters that reads the
+\subsection*{Q\#6 (Optional): A palindrome is a word, phrase, number, or sequence of characters that reads the
 same backward as forward. In other words, if you reverse the order of the characters, the resulting
 string is identical to the original. Palindromes are usually case-insensitive (e.g., "Racecar" is considered
 a palindrome). Examples include "level", "radar", "civic", 121, 12321.
 To detect if a given string is a palindrome using a stack, you can utilize the stack's Last In First Out
 (LIFO) property. The basic idea is to push the characters of the string onto a stack and then pop them
 off to compare with the original string. Write a program in Python to detect if the given input string is a
-palindrome.
+palindrome.}
 
 \begin{lstlisting}[language=Python]
 def is_palindrome(input_string):

@@ -1,0 +1,107 @@
+\textbf{LHM Computer Systems 2023--24}
+
+\subsection{Question 1}
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item Briefly, explain what is meant by an Instruction Set Architecture (ISA).
+        
+        \item Give and justify 2 reasons why two implementations of the same ISA, running at the same clock speed, may have very different performance profiles.
+        
+        \item Explain the factors that could affect the choice of ISA implementation for different types of applications?
+    \end{enumerate}
+    \hfill [6 marks]
+
+    \item Briefly explain and compare the concepts of compilation and interpretation of computer programs. You should make it clear what the differences are between these two approaches. Explain, clearly, the relative benefits of each of these approaches.
+    \hfill [6 marks]
+
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item Give the time complexity (using big O notation) of the following algorithm. Justify your answer.
+        
+        \begin{lstlisting}[language=Python]
+x = 0
+for i = 1 to n:
+    for j = 1 to 5*n:
+        for k = 1 to 8*n:
+            for l = 1 to 100:
+                x = x + i + j + k + l
+        \end{lstlisting}
+        
+        \item You have a choice between two algorithms that both solve the same problem. One algorithm has complexity $O(n \log n)$, the other $O(n^2)$. You have a very small amount of data. Explain with a clear justification why it may, in some circumstances, be better to choose the algorithm which has the greater time complexity.
+    \end{enumerate}
+    \hfill [8 marks]
+\end{enumerate}
+
+\newpage
+\subsection{Question 2}
+
+\begin{enumerate}[label=(\alph*)]
+    \item What is the dual mode of operation in an operating system, and why is it essential for ensuring system security and stability? Discuss three key features and benefits of dual mode operation.
+    \hfill [4 marks]
+
+    \item Consider the following set of processes:
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Processes & Arrival Time & Burst Time \\
+    \hline
+    P1 & 0ms & 7ms \\
+    P2 & 3ms & 5ms \\
+    P3 & 4ms & 2ms \\
+    P4 & 7ms & 6ms \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    Outline the schedule of these processes using the SRTF scheduling policy. Also, compute the Average Response and Turnaround times for the above processes.
+    \hfill [6 marks]
+
+    \item Device controllers play a crucial role in managing peripheral devices within a computer system. Briefly explain how device controllers handle tasks such as data transfer, error handling, and device status monitoring?
+    \hfill [4 marks]
+
+    \item Your friend Maria is working on a Protein String Matching project, which takes approx. 200 hours to run on her desktop machine using a single CPU. Overall, 25\% of her program code is sequential and cannot be parallelised. Additionally, the program spends approx. 30\% of the time doing I/O operations and the remaining 45\% of code could be parallelised. She is deliberating on two choices:
+    
+    \begin{enumerate}[label=(\roman*)]
+        \item Running her code on a server (single core), which supports hardware optimizations and reduced latency for I/O operations from 8$\mu$s to 6$\mu$s (on average).
+        
+        \item Writing a parallel version of the program and running it on a multicore server, which supports 8 CPUs.
+    \end{enumerate}
+    
+    From the above choices, which one would you recommend? Show your working to justify your advice.
+    \hfill [6 marks]
+\end{enumerate}
+\pagebreak
+\subsection{Question 3}
+Alice wants to send a message to Bob. Alice and Bob communicate using the Internet, which has five layers in its protocol stack.
+\begin{enumerate}[label=(\alph*)]
+    \item The Transport Layer protocol used for Alice and Bob’s communication is UDP. The header of a UDP message includes a 16-bit checksum value, which helps to detect errors. Alice’s message, including the header, consists of the following 48-bits (represented in hexadecimal format): 
+
+    Compute the corresponding checksum value for this message.
+    \hfill [7 marks]
+    \begin{center}
+       \textbf{DF0594C1007F}
+    \end{center}
+    \item Alice’s message passes from the network edge to the Internet’s mesh of interconnected routers, via her access network.
+
+    \begin{enumerate}[label=(\roman*)]
+        \item What kind of devices make up the network edge? \hfill [1 mark]
+
+        \item What is the ‘mesh of interconnected routers’ also known as? \hfill [1 mark]
+
+        \item Describe the role of routers in Alice and Bob’s communication. You should name and describe at least two jobs which routers perform. \hfill [4 marks]
+    \end{enumerate}
+
+    \item Alice’s message to Bob is encrypted with RSA, which is a public key encryption algorithm. A public key encryption algorithm consists of each communicator having two keys — a public key and a private key.
+
+    \begin{enumerate}[label=(\roman*)]
+        \item Describe two requirements of the public and private keys used in public key encryption. \hfill [4 marks]
+
+        \item Supposing that the two prime numbers originally chosen to generate Alice’s key pair are 3 and 11, compute a public and private key pair for her.
+
+        \textbf{Note:} In this question we use much smaller numbers than RSA would typically use. \hfill [3 marks]
+    \end{enumerate}
+\end{enumerate}
+

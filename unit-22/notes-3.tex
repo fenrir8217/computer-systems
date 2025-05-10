@@ -1,9 +1,6 @@
-\subsection{Topics 2 \& 3: CPU, Memory, Program Execution \& MIPS Assembly – Exercise Sheet [Solutions]}
+\textbf{Topics 2 \& 3: CPU, Memory, Program Execution \& MIPS Assembly – Exercise Sheet [Solutions]}
 
-\subsection*{Q\#1:}
-
-Considering the simpler view of instructions, write the machine instructions representing each of the codes below:
-
+\subsection{Q\#1: Considering the simpler view of instructions, write the machine instructions representing each of the codes below:}
 \textbf{Memory locations/addresses:}
 \begin{itemize}
   \item \texttt{num1 => 4040}
@@ -28,15 +25,11 @@ int total = num2 - num1;
 \end{lstlisting}
 
 \textbf{Instruction:} \texttt{SUB 6060, 5050, 4040}
-
-\subsection*{Q\#2:}
-
-Consider the below state of memory, where some values are already stored in different locations:
-
+\subsection{Q\#2: Consider the below state of memory, where some values are already stored in different locations:}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Value} & 50 & 70 & 14 & 9 & 7 & 44 & 20 \\
+\textbf{Value} & 50 & & 70 & 14 & 9 & 7 & 44 & 20 \\
 \hline
 \textbf{Address} & 2024 & 2028 & 2032 & 2036 & 2040 & 2044 & 2048 & 2052 \\
 \hline
@@ -80,7 +73,7 @@ What would be the result of executing the following instructions?
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Value} & 50 & 98 & 70 & 64 & 37 & 7 & 44 & 14 \\
+\textbf{Value} & 50 & \textcolor{red}{98} & 70 & 64 & 37 & 7 & 44 & \textcolor{red}{14} \\
 \hline
 \textbf{Address} & 2024 & 2028 & 2032 & 2036 & 2040 & 2044 & 2048 & 2052 \\
 \hline
@@ -88,9 +81,12 @@ What would be the result of executing the following instructions?
 \end{center}
 
 \subsection*{Q\#3: Instruction Cycle Description}
-
 Using the figure below, describe the entire fetch / execute cycle detailing the result of each step in the cycle for the following machine instruction: \texttt{ADD 343, 546, 772}
-
+\begin{figure}
+  \centering
+  \includegraphics[width=15cm]{unit-22/figures/03.png}
+\end{figure}
+\newline
 \textbf{Instruction Fetch (IF):}
 \begin{itemize}
   \item Execution begins by moving the instruction at the address given by the PC (600) from memory to the control unit.
@@ -124,9 +120,7 @@ Using the figure below, describe the entire fetch / execute cycle detailing the 
 \end{itemize}
 
 \subsection*{Q\#4: Pipeline Instruction Throughput}
-
 A processor is operating at 32MHz. Each instruction takes a minimum of 6 cycles to execute. The processor has a six-stage pipeline. If a program starts execution at time 0, what is the theoretical maximum number of instructions that will have completed their execution at the end of 1 millisecond?
-
 \textbf{Calculation:}
 \begin{itemize}
   \item Speed = 32MHz = 32,000,000 cycles/second = 32,000 cycles/millisecond
@@ -170,31 +164,156 @@ Knowing that \texttt{x = 5} and the index \texttt{i} starts from 2, the result w
 \texttt{z = 1 * 2 * 3 * 4 * 5 = 120}
 
 \subsection*{Q\#6: Expression to MIPS Translation}
-
+Write MIPS assembly code for the following expression.
 \textbf{Expression:}  
 \[
 C = 12 \times A + 4 \times (B - 5)
 \]
-
-\textbf{Breakdown:}
+Ensure that the assembly code respects the order of evaluation in the above expression.
+Assuming, A = 10, and B = 9, show that your assembly code computes the correct answer. \\
+\textcolor{blue}{
+Let’s break the above expression into statements so that each one performs only one operation.
 \begin{align*}
 t0 &= 12 \times A \\
 t1 &= B - 5 \\
 t2 &= 4 \times t1 \\
 C &= t0 + t2
 \end{align*}
-
-\textbf{MIPS Assembly Code and Execution Results:}
-
+}
+Now we can assign registers, and write the code in MIPS assembly language.
 \begin{lstlisting}
-lw $s0, &A        # $s0 = 10
-lw $s1, &B        # $s1 = 9
-mul $t0, $s0, 12  # $t0 = 120
-sub $t1, $s1, 5   # $t1 = 4
-mul $t2, $t1, 4   # $t2 = 16
-add $s2, $t0, $t2 # $s2 = 136
-sw $s2, &C        # store result
+#MIPS Assembly Code #Execution Results
+lw $s0, &A          # $s0 = 10
+lw $s1, &B          # $s1 = 9
+mul $t0, $s0, 12    # $t0 = 120
+sub $t1, $s1, 5     # $t1 = 4
+mul $t2, $t1, 4     # $t2 = 16
+add $s2, $t0, $t2   # $s2 = 136
+sw $s2, &C          # store result
 \end{lstlisting}
 
 \textbf{Result:} \texttt{C = 136}
 
+\subsection*{Q\#7: Given the MIPS Instruction set, convert the following MIPS assembly code into
+Java/Python-like code. Consider the register assignment proposed at the start of the code.
+You may like to refer to the MIPS Instructions cheatsheet available at: }
+\url{https://jarrettbillingsley.github.io/teaching/classes/cs0447/guides/instructions.html}
+
+\begin{lstlisting}
+MIPS Assembly Code
+# $t1 = i
+# $t2 = tmp
+# $t3 = sum
+    and $t1, $t1, $0
+    and $t2, $t2, $0
+    and $t3, $t3, $0
+label:
+    bgt $t1, 14, exit
+    mul $t2, $t1, 2
+    add $t3, $t3, $t2
+    addi $t1, $t1, 1
+    j label
+exit:
+\end{lstlisting}
+Once we map the variables to registers and dry run the above code, we can easily see that it
+behaves like a for loop that starts from 0 and iterates until the value becomes 15 (or greater).
+Within the loop, it computes a running sum, which takes the value of iterator i, and doubles its
+value before adding it to the previous value of sum variable.
+\begin{lstlisting}
+tmp = 0;
+sum = 0;
+for (int i = 0; i < 15; i++){
+    tmp = i * 2;
+    sum = sum + tmp;
+}
+\end{lstlisting}
+OR (in a more concise form)
+\begin{lstlisting}
+sum = 0;
+for (int i = 0; i < 15; i++){
+    sum = sum + i * 2;
+}
+\end{lstlisting}
+
+\subsection*{Q\#8: Consider the following MIPS assembly instructions}
+\begin{itemize}
+  \item{(a)} divu \$s7, \$s4, \$s5
+  \item{(b)} srlv \$t3, \$t9, \$t7
+  \item{(c)} sra \$t2, \$t4, 5
+  \item{(d)} lw \$t5, 0x10(\$t4)
+\end{itemize}
+State the type of each instruction, find Field Values and Machine Code for each one of them.
+You may like to refer to the MIPS cheatsheet and instructions reference available at the links below:
+\begin{itemize}
+    \item \url{https://jarrettbillingsley.github.io/teaching/classes/cs0447/guides/instructions.html}
+    \item \url{http://alumni.cs.ucr.edu/~vladimir/cs161/mips.html}
+\end{itemize}
+\textbf{(a)} divu \$s7, \$s4, \$s5 \\
+This is an R-Type instruction. Field Values are given below:\\
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline 
+Opcode & Source 1 & Source 2 & Dest & Shift & Func \\
+\hline
+0 & 20 & 21 & 23&0&27 \\
+\hline
+\end{tabularx}
+Machine Code is given below:
+
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline
+Opcode&Source 1&Source 2&Dest&Shift&Func \\
+\hline
+000000&10100&10101&10111&00000&11011 \\
+\hline
+\end{tabularx}
+\textbf{(b)} srlv \$t3, \$t9, \$t7 \\
+This is an R-Type instruction. Field Values are given below: \\
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline
+Opcode&Source 1&Source 2&Dest&Shift&Func \\
+\hline
+0&25&15&11&0&6 \\
+\hline
+\end{tabularx}\\
+Machine Code is given below: \\
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|}
+\hline
+Opcode&Source 1&Source 2&Dest&Shift&Func\\
+\hline
+000000&11001&01111&01011&00000&000110\\
+\hline
+\end{tabularx}\\
+\textbf{(c)} sra \$t2, \$t4, 5 \\
+This is an I-Type instruction. Field Values are given below: \\
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+Opcode&Source 1&Dest&Value\\
+\hline
+3&12&10&5\\
+\hline
+\end{tabularx}
+Machine Code is given below:\\
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+Opcode&Source 1&Dest&Value\\
+\hline
+000011&01100&01010&0000 0000 0000 0101\\
+\hline
+\end{tabularx}\\
+\textbf{(d)} lw \$t5, 0x10(\$t4) \\
+This is an I-Type instruction. Field Values are given below:\\
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+Opcode&Source 1&Dest&Value\\
+\hline
+35&12&13&16\\
+\hline
+\end{tabularx}\\
+Machine Code is given below:\\
+\begin{tabularx}{\textwidth}{|X|X|X|X|}
+\hline
+Opcode&Source 1&Dest&Value\\
+\hline
+100011&01100&01101&0000 0000 0001 0000\\
+\hline
+\end{tabularx}

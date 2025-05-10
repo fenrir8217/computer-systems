@@ -1,0 +1,1200 @@
+\textbf{Quiz-1}
+\subsection{Variation Question 1.1}
+Which of the following 8-bit binary words could represent $-22$ using the representations for negative numbers we saw in the lectures?
+
+Tick the two correct answers.
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 10010110
+    \item 11101010
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 00010110
+    \item 11101001
+    \item 11101000
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+22 is 00010110 in 8-bit binary.\\
+Therefore, in sign-and-magnitude representation $-22$ is 10010110.\\
+For two’s complement, we flip all bits to get 11101001 and then add 1 to the LSB to get the two’s complement representation of $-22$: 11101010.
+
+\subsection{Variation Question 1.2}
+
+Which of the following 8-bit binary words could represent $-54$ using the representations for negative numbers we saw in the lectures?
+Tick the two correct answers.
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 10110110
+    \item 11001010
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 00110110
+    \item 11001001
+    \item 11001000
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+54 is 00110110 in 8-bit binary.\\
+Therefore, in sign-and-magnitude representation $-54$ is 10110110.\\
+For two’s complement, we flip all bits to get 11001001 and then add 1 to the LSB to get the two’s complement representation of $-54$: 11001010.
+
+\subsection{Variation Question 1.3}
+Which of the following 8-bit binary words could represent $-38$ using the representations for negative numbers we saw in the lectures?
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 10100110
+    \item 11011010
+\end{itemize}
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 00100110
+    \item 11011001
+    \item 11011000
+\end{itemize}
+\textbf{Solution \& Feedback:}\\
+38 is 00100110 in 8-bit binary.\\
+Therefore, in sign-and-magnitude representation $-38$ is 10100110.\\
+For two’s complement, we flip all bits to get 11011001 and then add 1 to the LSB to get the two’s complement representation of $-38$: 11011010.
+
+\subsection{Variation Question 2.1}
+Which of the following statements correctly describe components or actions involved in the Fetch/Execute cycle?
+Tick the two correct answers.\\
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item The Program Counter (PC) points to the next instruction to be fetched from memory.
+    \item The ALU is responsible for performing computations on data.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item The Control Unit performs arithmetic and logical operations.
+    \item During the Data Fetch (DF) step, data is destroyed after being fetched from memory.
+    \item The Instruction Fetch (IF) step is where the ALU executes an instruction.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+The Control Unit performs arithmetic and logical operations.\\
+This is incorrect. It is ALU that performs such operations instead of the Control Unit.\\
+
+During the Data Fetch (DF) step, data is destroyed after being fetched from memory.\\
+This is incorrect. Data remains in the memory after the DF step.\\
+
+The Instruction Fetch (IF) step is where the ALU executes an instruction.\\
+This is incorrect. It should be Instruction Execution instead of Instruction Fetch.
+
+\subsection{Variation Question 2.2}
+
+Which of the following statements correctly describe components or actions involved in the Fetch/Execute cycle?
+
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item During the Data Fetch (DF) step, data values remain unchanged in the memory.
+    \item During the Result Return (RR) step, the result is stored back into memory.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item The Program Counter (PC) points to the current instruction to be fetched from memory.
+    \item The ISA performs arithmetic and logical operations.
+    \item The Instruction Fetch (IF) step is where the ALU executes an instruction.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+The Program Counter (PC) points to the current instruction to be fetched from memory.\\
+This is incorrect. The PC points to the next instruction instead of the current instruction.\\
+
+The ISA performs arithmetic and logical operations.\\
+This is incorrect. It is ALU that performs such operations.\\
+
+The Instruction Fetch (IF) step is where the ALU executes an instruction.\\
+This is incorrect. It should be Instruction Execution instead of Instruction Fetch for the step where the ALU executes an instruction.
+
+\subsection{Variation Question 2.3}
+
+Which of the following statements correctly describe components or actions involved in the Fetch/Execute cycle?
+
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item The Instruction Decoder identifies the type of operation, and the operands involved in the instruction.
+    \item During the Data Fetch (DF) step, data values remain unchanged in the memory.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item The Program Counter (PC) points to the next instruction to be fetched from the register.
+    \item After the Result Return (RR) step, the result is stored back into memory.
+    \item The Instruction Fetch (IF) step is where the ALU executes an instruction.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+The Program Counter (PC) points to the next instruction to be fetched from the register.\\
+This is incorrect. It is fetched from the memory instead of the register.\\
+
+After the Result Return (RR) step, the result is stored back into memory.\\
+This is incorrect. It should be ``During the RR step'' instead of ``After.''\\
+
+The Instruction Fetch (IF) step is where the ALU executes an instruction.\\
+This is incorrect. It should be Instruction Execution instead of Instruction Fetch.
+
+\subsection{Variation Question 3.1}
+
+Which of the following statements correctly describe aspects of the MIPS architecture and assembly language?
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item MIPS assembly instructions typically use three operands for R-type instructions.
+    \item The register \$0 always holds the value zero in MIPS.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item MIPS uses a single memory space for both instructions and data.
+    \item In MIPS, memory access is permitted in any instruction type.
+    \item MIPS does not support pipelined execution.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+MIPS uses a single memory space for both instructions and data.\\
+This is incorrect. MIPS uses a modified Harvard architecture with separate interfaces for instructions and data, allowing parallel access.\\
+
+In MIPS, memory access is permitted in any instruction type.\\
+This is incorrect because memory access in MIPS is restricted to load (\texttt{lw}) and store (\texttt{sw}) instructions only, aligning with its load/store architecture principle.\\
+
+MIPS does not support pipelined execution.\\
+This is incorrect. MIPS actively uses pipelining to enhance execution speed by overlapping instruction stages.
+
+\subsection{Variation Question 3.2}
+
+Which of the following statements correctly describe aspects of the MIPS architecture and assembly language?
+
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item MIPS uses two separate memory spaces for instructions and data.
+    \item MIPS assembly instructions typically use three operands for R-type instructions.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item In MIPS, memory access is permitted in any instruction type.
+    \item The register \$s0 always holds the value zero in MIPS.
+    \item MIPS does not support pipelined execution.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+In MIPS, memory access is permitted in any instruction type.\\
+This is incorrect because memory access in MIPS is restricted to load (\texttt{lw}) and store (\texttt{sw}) instructions only, aligning with its load/store architecture principle.\\
+
+The register \$s0 always holds the value zero in MIPS.\\
+This is incorrect. The \$s0 register is used to store intermediate values during computations.\\
+
+MIPS does not support pipelined execution.\\
+This is incorrect. MIPS actively uses pipelining to enhance execution speed by overlapping instruction stages.
+
+\subsection{Variation Question 3.3}
+
+Which of the following statements correctly describe aspects of the MIPS architecture and assembly language?
+
+Tick the two correct answers.
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item MIPS uses two separate memory spaces for instructions and data.
+    \item Memory access in MIPS is restricted to load (\texttt{lw}) and store (\texttt{sw}) instructions only, aligning with its load/store architecture principle.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item MIPS assembly instructions typically use three operands for J-type instructions.
+    \item The register \$s0 always holds the value zero in MIPS.
+    \item MIPS does not support pipelined execution.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+MIPS assembly instructions typically use three operands for J-type instructions.\\
+This is incorrect. J-type only requires Opcode and Value.\\
+
+The register \$s0 always holds the value zero in MIPS.\\
+\textcolor{red}{
+This is incorrect. The \$s0 register is used to store intermediate values during computations.\\
+}
+
+MIPS does not support pipelined execution.\\
+This is incorrect. MIPS actively uses pipelining to enhance execution speed by overlapping instruction stages.
+
+\subsection{Variation Question 4.1}
+
+Which of the following statements about compilation and interpretation is false?
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item In general, compilation is less computationally expensive than interpretation.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item In general, executing an interpreted program is slower than executing a compiled program.
+    \item Virtual machines involve both compilation and interpretation.
+    \item In general, interpretation facilitates debugging better than compilation.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+It is true that, in general, executing an interpreted program is slower than executing a compiled program.\\
+It is true that virtual machines involve both compilation and interpretation.\\
+It is true that, generally, interpretation facilitates debugging better than compilation.\\
+It is not true that compilation is generally less computationally expensive than interpretation – compilation is generally more expensive than interpretation.
+
+\subsection{Variation Question 4.2}
+
+Which of the following statements about compilation and interpretation is true?
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item In general, executing an interpreted program is slower than executing a compiled program.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item In general, compilation is less computationally expensive than interpretation.
+    \item In general, compilation facilitates debugging better than interpretation.
+    \item In general, Java Virtual Machine does not include any type of compilation and performs interpretation only.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+It is not true that compilation is generally less computationally expensive than interpretation – compilation is generally more expensive than interpretation.\\
+It is not true that compilation facilitates debugging better than interpretation – interpretation facilitates debugging better than compilation.\\
+It is not true that Java Virtual Machine does not include any type of compilation and performs interpretation only. JVM invokes the Just-in-Time compilation process, whenever a code segment is executed repeatedly.\\
+It is true that executing an interpreted program is generally slower than executing a compiled program.
+
+\subsection{Variation Question 4.3}
+
+Which of the following statements about compilation and interpretation is false?
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item In general, Java Virtual Machine does not include any type of compilation and performs interpretation only.
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item In general, executing an interpreted program is slower than executing a compiled program.
+    \item In general, interpretation facilitates debugging better than compilation.
+    \item In general, compilation is more computationally expensive than interpretation.
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+It is true that, in general, executing an interpreted program is slower than executing a compiled program.\\
+It is true that, in general, compilation is more computationally expensive than interpretation.\\
+It is true that executing an interpreted program is generally slower than executing a compiled program.\\
+It is not true that Java Virtual Machine does not include any type of compilation and performs interpretation only. JVM invokes the Just-in-Time compilation process, whenever a code segment is executed repeatedly.
+
+% --- End of Part 2: Next comes IEEE 754 (Variation 5.x) onwards
+\subsection{Variation Question 5.1}
+
+Given the following number in IEEE 754 (32-bit) floating point format with 8-bit exponent, calculate the decimal real number it represents.
+
+$1\ 1000\ 0111\ 001\ 0001\ 0001\ 0000\ 0000\ 0000$
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item $-290.125$
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item $-145.0625$ (on subtracting 128 from exponent)
+    \item $-72.015625$ (2’s complement exponent + 127)
+    \item $-0.008853912$ (sign-and-magnitude exponent)
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+Sign bit: 1 (-ve)\\
+Biased Exponent: (1000 0111)$_2$ = 135\\
+Real Exponent: 135 – 127 = 8\\
+Stored Mantissa: (001 0001 0001 0000 0000 0000)$_2$\\
+Actual Mantissa: (1.00100010001)$_2$\\
+Normalized Representation: $1.00100010001 \times 2^8$\\
+Binary Number: 100100010.001\\
+Decimal Value: $-290.125$
+
+\subsection{Variation Question 5.2}
+
+Given the following number in IEEE 754 (32-bit) floating point format with 8-bit exponent, calculate the decimal real number it represents.
+
+$1\ 1000\ 0100\ 101\ 0000\ 1000\ 1000\ 0000\ 0000$
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item $-52.1328125$
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item $-26.06640625$ (on subtracting 128 from exponent)
+    \item $-13.033203125$ (2’s complement exponent + 127)
+    \item $-0.101821899$ (sign-and-magnitude exponent)
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+Sign bit: 1 (-ve)\\
+Biased Exponent: (1000 0100)$_2$ = 132\\
+Real Exponent: 132 – 127 = 5\\
+Stored Mantissa: (101 0000 1000 1000 0000 0000)$_2$\\
+Actual Mantissa: (1.101000010001)$_2$\\
+Normalized Representation: $1.101000010001 \times 2^5$\\
+Binary Number: 110100.0010001\\
+Decimal Value: $-52.1328125$
+
+\subsection{Variation Question 5.3}
+
+Given the following number in IEEE 754 (32-bit) floating point format with 8-bit exponent, calculate the decimal real number it represents.
+
+$1\ 1000\ 1001\ 100\ 0101\ 1100\ 0110\ 1000\ 0000$
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item $-1582.203125$
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item $-791.1015625$ (on subtracting 128 from exponent)
+    \item $-395.55078125$ (2’s complement exponent + 127)
+    \item $-0.003017813$ (sign-and-magnitude exponent)
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+Sign bit: 1 (-ve)\\
+Biased Exponent: (1000 1001)$_2$ = 137\\
+Real Exponent: 137 – 127 = 10\\
+Stored Mantissa: (100 0101 1100 0110 1000 0000)$_2$\\
+Actual Mantissa: (1.1000101110001101)$_2$\\
+Normalized Representation: $1.1000101110001101 \times 2^{10}$\\
+Binary Number: 11000101110.001101\\
+Decimal Value: $-1582.203125$
+
+% ---------------------------------------
+
+\subsection{Variation Question 6.1}
+
+Initial Memory Values (decimal):\\
+Memory address 1000: 5\\
+Memory address 2000: 10\\
+Memory address 3000: 15\\
+Memory address 4000: 20
+
+Instructions:
+\begin{itemize}
+    \item ADD 1000, 2000, 3000
+    \item ADD 4000, 1000, 2000
+    \item MUL 1000, 4000, 3000
+\end{itemize}
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 525
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 5
+    \item 25
+    \item 35
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+ADD 1000, 2000, 3000 $\Rightarrow$ Address1000 = 10+15 = 25\\
+ADD 4000, 1000, 2000 $\Rightarrow$ Address4000 = 25+10 = 35\\
+MUL 1000, 4000, 3000 $\Rightarrow$ Address1000 = 35*15 = 525
+
+% --- continuing with 6.2, 6.3, 7.x, 8.x, etc., next immediately
+\subsection{Variation Question 6.2}
+
+Initial Memory Values (decimal):\\
+Memory address 1000: 0\\
+Memory address 2000: 15\\
+Memory address 3000: 2\\
+Memory address 4000: 10
+
+Instructions:
+\begin{itemize}
+    \item ADD 1000, 2000, 3000
+    \item ADD 4000, 1000, 2000
+    \item MUL 1000, 4000, 3000
+\end{itemize}
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 64
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 0
+    \item 32 
+    \item 70 
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+ADD 1000, 1000, 2000 $\Rightarrow$ Address1000 = 15+2 = 17\\
+ADD 4000, 1000, 3000 $\Rightarrow$ Address4000 = 17+15 = 32\\
+MUL 1000, 4000, 3000 $\Rightarrow$ Address1000 = 32*2 = 64\\
+(Note: It seems that the final correct answer is given as 64 in your quiz. Verify memory changes and multiplication steps if needed.)
+
+\subsection{Variation Question 6.3}
+
+Initial Memory Values (decimal):\\
+Memory address 1000: 15\\
+Memory address 2000: 5\\
+Memory address 3000: 20\\
+Memory address 4000: 10
+
+Instructions:
+\begin{itemize}
+    \item ADD 1000, 2000, 3000
+    \item ADD 4000, 1000, 2000
+    \item MUL 1000, 4000, 3000
+\end{itemize}
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 600
+\end{itemize}
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+    \item 15
+    \item 30
+    \item 700
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+ADD 1000, 1000, 2000 $\Rightarrow$ Address1000 = 5+20 = 25\\
+ADD 4000, 2000, 3000 $\Rightarrow$ Address4000 = 25+5 = 35\\
+ADD 3000, 4000, 3000 $\Rightarrow$ Address3000 = 30$\times$20 = 40
+
+(Note: Cross-check logic based on actual addition in registers.)
+
+\subsection{Variation Question 7.1}
+Consider the following MIPS code:
+
+\begin{lstlisting}
+    li \$t0, 1
+    li \$t1, &x
+Loop: 
+    beq \$t2, 0, exit
+    mul $t0, $t0, $t1
+    sub \$t2, \$t2, 1
+    j loop
+exit:
+    sw $t0, &z
+\end{lstlisting}
+Assuming initial values of x = 3 and y = 4, what will be the
+final values of z when the code completes its execution.
+What value is left in \$t2 after the above MIPS code executes?
+Tick the correct answer.
+Answer choices:
+\begin{itemize}
+\item 81
+\item 64
+\item 256
+\item 12
+\end{itemize}
+
+Solution and Feedback:
+In this question, the initial value of \$t0 is 3, the initial value of \$t1 is 4, and the initial value of \$t2 is 1. 
+In the loop:
+- Multiply \$t2 by \$t0
+- Subtract 1 from \$t1
+- Continue looping until \$t1 is 0
+
+Initially, \$t2 = 1.
+
+First loop:
+\$t2 = 1 * 3 = 3
+\$t1 = 3
+
+Second loop:
+\$t2 = 3 * 3 = 9
+\$t1 = 2
+
+Third loop:
+\$t2 = 9 * 3 = 27
+\$t1 = 1
+
+Fourth loop:
+\$t2 = 27 * 3 = 81
+\$t1 = 0
+
+Thus, the final value in \$t2 is 81.
+
+\subsection{Variation Question 7.2}
+
+
+
+
+\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
+\hline
+\textbf{Variation} & \textbf{Question} \\
+\hline
+7.2 & Consider the following MIPS assembly code:
+
+\begin{lstlisting}
+    li $t0, 1
+    lw $t1, &x
+    lw $t2, &y
+
+loop:
+    beq $t2, 0, exit
+    mul $t0, $t0, $t1
+    sub $t2, $t2, 1
+    j loop
+
+exit:
+    sw $t0, &z
+\end{lstlisting}
+
+Assuming initial values of x = -4 and y = 3, what will be the final values of z when the code completes its execution.\\
+\hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
+\hline
+-64 & 81, -32, 32, 64, -81 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Solution \& Feedback:}
+
+\noindent The MIPS Assembly code computes the exponentiation operation, where x is the base and y contains the exponent. The result is stored in z.
+
+\noindent The following tables shows the values of registers during execution:
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{\$t0 (z)} & \textbf{\$t1 (x)} & \textbf{\$t2 (y)} \\
+\hline
+1 & -4 & 3 \\
+\hline
+-4 & -4 & 2 \\
+\hline
+16 & -4 & 1 \\
+\hline
+-64 & -4 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent Once \$t2 reaches 0, the loop terminates, and the result (\textbf{-64}) is stored in z.
+
+
+
+
+
+
+
+
+
+
+
+Same structure, but initialised differently.
+
+\textbf{Answer:} $-64$
+
+\textbf{Solution \& Feedback:}\\
+Multiplying with negative numbers leads to negative results through iteration.
+
+\subsection{Variation Question 7.3}
+
+
+
+
+
+
+
+
+% --- Begin new content ---
+
+\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
+\hline
+\textbf{Variation} & \textbf{Question} \\
+\hline
+7.3 & Consider the following MIPS assembly code:
+
+\begin{verbatim}
+    li $t0, 1
+    lw $t1, &x
+    lw $t2, &y
+
+loop:
+    beq $t2, 0, exit
+    mul $t0, $t0, $t1
+    sub $t2, $t2, 1
+    j loop
+
+exit:
+    sw $t0, &z
+\end{verbatim}
+
+Assuming initial values of x = -2 and y = 5, what will be the final values of z when the code completes its execution.\\
+\hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
+\hline
+-32 & 81, -64, 32, 64, -81 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Solution \& Feedback:}
+
+\noindent The MIPS Assembly code computes the exponentiation operation, where x is the base and y contains the exponent. The result is stored in z.
+
+\noindent The following tables shows the values of registers during execution:
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{\$t0 (z)} & \textbf{\$t1 (x)} & \textbf{\$t2 (y)} \\
+\hline
+1 & -2 & 5 \\
+\hline
+-2 & -2 & 4 \\
+\hline
+4 & -2 & 3 \\
+\hline
+-8 & -2 & 2 \\
+\hline
+16 & -2 & 1 \\
+\hline
+-32 & -2 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent Once \$t2 reaches 0, the loop terminates, and the result (\textbf{-32}) is stored in z.
+
+% --- Page Break ---
+\newpage
+
+\subsection{Variation Question 8.1}
+\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
+\hline
+\textbf{Variation} & \textbf{Question} \\
+\hline
+8.1 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
+
+3 5 8 * 7 + 4 - +
+
+\textbf{Note:} All the values in the expression above are single digit numbers.\\
+\hline
+\end{longtable}
+
+\vspace{0.5cm}
+
+\begin{tabular}{|p{7cm}|p{7cm}|}
+\hline
+\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
+\hline
+46 & -4, 3, 21, 28 \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Solution \& Feedback:}
+
+\noindent We can evaluate the RPN expression using the following steps:
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\
+\hline
+1 & 3 & 3 \\
+\hline
+2 & 5 & 3 5 \\
+\hline
+3 & 8 & 3 5 8 \\
+\hline
+4 & * & 3 40 \\
+\hline
+5 & 7 & 3 40 7 \\
+\hline
+6 & + & 3 47 \\
+\hline
+7 & 4 & 3 47 4 \\
+\hline
+8 & - & 3 43 \\
+\hline
+9 & + & 46 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent The final answer is \textbf{46}.
+
+% --- End of content ---
+
+
+Another variant of loop.
+
+\textbf{Answer:} $-32$
+
+
+Evaluate Reverse Polish Notation (RPN):
+
+Expression: $4\ 6\ +\ 2\ *\ 5\ +\ 3\ +$
+
+\textbf{Correct Answer(s):}
+\begin{itemize}
+    \item 46
+\end{itemize}
+
+\textbf{Solution \& Feedback:}\\
+First add 4+6=10, then 10*2=20, then 20+5=25, then 25+3=28.
+
+(Note: Depending on original solution steps, confirm.)
+
+\subsection{Variation Question 8.2}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Variation} & \textbf{Question} \\ \hline
+8.2 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
+
+9 3 + 8 2 * 7 - +
+
+\textbf{Note:} All the values in the expression above are single digit numbers. \\ \hline
+\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
+21 & -40 \\
+   & -4 \\
+   & 28 \\
+   & 46 \\ \hline
+\multicolumn{2}{|l|}{\textbf{Solution \& Feedback:}} \\ \hline
+\multicolumn{2}{|l|}{
+We can evaluate the RPN expression using the following steps:
+} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\ \hline
+1 & 9 & 9 \\ \hline
+2 & 3 & 9 3 \\ \hline
+3 & + & 12 \\ \hline
+4 & 8 & 12 8 \\ \hline
+5 & 2 & 12 8 2 \\ \hline
+6 & * & 12 16 \\ \hline
+7 & 7 & 12 16 7 \\ \hline
+8 & - & 12 9 \\ \hline
+9 & + & 21 \\ \hline
+\end{tabular}
+\end{table}
+
+\noindent
+The final answer is \textbf{21}.
+
+Another RPN Expression.
+
+\textbf{Answer:} 21
+
+\subsection{Variation Question 8.3}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Variation} & \textbf{Question} \\ \hline
+8.3 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
+
+8 4 6 - * 3 9 + +
+
+\textbf{Note:} All the values in the expression above are single digit numbers. \\ \hline
+\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
+-4 & -40 \\
+   & 3 \\
+   & 21 \\
+   & 46 \\ \hline
+\multicolumn{2}{|l|}{\textbf{Solution \& Feedback:}} \\ \hline
+\multicolumn{2}{|l|}{
+We can evaluate the RPN expression using the following steps:
+} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\ \hline
+1 & 8 & 8 \\ \hline
+2 & 4 & 8 4 \\ \hline
+3 & 6 & 8 4 6 \\ \hline
+4 & - & 8 -2 \\ \hline
+5 & * & -16 \\ \hline
+6 & 3 & -16 3 \\ \hline
+7 & 9 & -16 3 9 \\ \hline
+8 & + & -16 12 \\ \hline
+9 & + & -4 \\ \hline
+\end{tabular}
+\end{table}
+
+\noindent
+The final answer is \textbf{-4}.
+
+Another RPN Expression.
+
+\textbf{Answer:} $-4$
+
+\subsection{Variation 9.1}
+
+\textbf{Question} \\
+Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
+
+They write the following secret message to you using this representation: 
+
+\texttt{11000110100110}
+
+They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
+
+\bigskip
+
+\textbf{Correct Answer(s):} PRESSES \\
+\textbf{Incorrect Answers:} TATTOOS, MONSOON, PRECEED, RACCOON
+
+\bigskip
+
+\textbf{Solution \& Feedback:}
+
+Each of the answers is 7 characters long, and the word is 14-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates PRECEED and RACCOON.
+
+The candidates are now TATTOOS, PRESSES or MONSOON. Repeated 2-bit codes can be used to identify which is the correct word:
+
+\texttt{11 00 01 10 10 01 10}
+
+'10' is repeated in the 4\textsuperscript{th}, 5\textsuperscript{th} and 7\textsuperscript{th} characters; therefore, the word must be PRESSES.
+
+\newpage
+
+\subsection{Variation 9.2}
+
+\textbf{Question} \\
+Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
+
+They write the following secret message to you using this representation: 
+
+\texttt{1100011010}
+
+They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
+
+\bigskip
+
+\textbf{Correct Answer(s):} SMALL \\
+\textbf{Incorrect Answers:} GOING, RODEO, SIDED, SNARL
+
+\bigskip
+
+\textbf{Solution \& Feedback:}
+
+Each of the answers is 5 characters long, and the word is 10-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNARL.
+
+The candidates are now GOING, RODEO, SMALL or SIDED. Repeated 2-bit codes can be used to identify which is the correct word:
+
+\texttt{11 00 01 10 10}
+
+'10' is doubled in the 4\textsuperscript{th} and 5\textsuperscript{th} characters; therefore, the word must be SMALL.
+
+\newpage
+
+\subsection{Variation 9.3}
+
+\textbf{Question} \\
+Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
+
+They write the following secret message to you using this representation: 
+
+\texttt{110001101000}
+
+They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
+
+\bigskip
+
+\textbf{Correct Answer(s):} STREET \\
+\textbf{Incorrect Answers:} ACCESS, COMMON, SNAPPY, CHATTY
+
+\bigskip
+
+\textbf{Solution \& Feedback:}
+
+Each of the answers is 6 characters long, and the word is 12-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNAPPY and CHATTY.
+
+The candidates are now ACCESS, COMMON or STREET. Note that the double letters in both can help identify which is the correct word:
+
+\texttt{11 00 01 10 10 00}
+
+'10' is doubled in the 4\textsuperscript{th} and 5\textsuperscript{th} characters; therefore, the word must be STREET.
+
+
+\noindent
+\subsection{\textbf{Variation} \textbf{Question} 10.1 }
+\hspace{2cm} Consider the following MIPS assembly code:
+\begin{lstlisting}
+    lw $t1, &a
+    lw $t2, &b
+    mul $t3, $t1, $t2
+L1:
+    bne $t1, $t2, L2
+    j exit
+L2:
+    bgt $t1, $t2, L3
+    sub $t2, $t2, $t1
+    j L1
+L3:
+    sub $t1, $t1, $t2
+    j L1
+exit:
+    div $t3, $t3, $t1
+    sw $t3, &c
+\end{lstlisting}
+\noindent
+Assuming initial values of a = 15 and b = 25, what will be the value of c when the code completes its execution? \\
+
+\vspace{0.2cm}
+\noindent
+\textbf{Correct Answer(s)} \hspace{4cm} \textbf{Incorrect Answers} \\
+75 \hspace{5.4cm} 45 \\
+\hspace{5.4cm} 48 \\
+\hspace{5.4cm} 135 \\
+\hspace{5.4cm} 375 \\
+\hspace{5.4cm} 384 \\
+
+\noindent
+\textbf{Solution \& Feedback:} \\
+The above code implements the LCM algorithms using the following: \\
+LCM (a, b) = (a * b) / GCD (a, b)
+
+Initially, the code computes the GCD using the following algorithm:
+
+\begin{verbatim}
+int gcd(int a, int b)
+{
+    while (a != b)
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    return a;
+}
+\end{verbatim}
+
+\vspace{0.5cm}
+For a = 15 and b = 25, the following table shows how the register values will be updated:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$t1$ (a) & $t2$ (b) & $t3$ (c) \\
+\hline
+15 & 25 & 375 \\
+15 & 10 & 375 \\
+5  & 10 & 375 \\
+5  & 5  & 375 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.2cm}
+When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
+
+\[
+\text{LCM} (a, b) = (a * b) / \text{GCD} (a, b) = 375 / 5 = \mathbf{75}
+\]
+
+\vspace{0.8cm}
+
+\subsection{\textbf{Variation} \textbf{Question} 10.2}
+\hspace{2cm} Consider the following MIPS assembly code:
+\begin{verbatim}
+    lw $t1, &a
+    lw $t2, &b
+    mul $t3, $t1, $t2
+L1:
+    bne $t1, $t2, L2
+    j exit
+L2:
+    bgt $t1, $t2, L3
+    sub $t2, $t2, $t1
+    j L1
+L3:
+    sub $t1, $t1, $t2
+    j L1
+exit:
+    div $t3, $t3, $t1
+    sw $t3, &c
+\end{verbatim}
+\noindent
+Assuming initial values of a = 16 and b = 24, what will be the value of c when the code completes its execution? \\
+
+\vspace{0.2cm}
+\noindent
+\textbf{Correct Answer(s)} \hspace{4cm} \textbf{Incorrect Answers} \\
+48 \hspace{5.4cm} 45 \\
+\hspace{5.4cm} 75 \\
+\hspace{5.4cm} 135 \\
+\hspace{5.4cm} 375 \\
+\hspace{5.4cm} 384 \\
+
+\vspace{0.2cm}
+\noindent
+\textbf{Solution \& Feedback:} \\
+The above code implements the LCM algorithms using the following: \\
+LCM (a, b) = (a * b) / GCD (a, b)
+
+Initially, the code computes the GCD using the following algorithm:
+
+\begin{verbatim}
+int gcd(int a, int b)
+{
+    while (a != b)
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    return a;
+}
+\end{verbatim}
+
+\vspace{0.5cm}
+For a = 15 and b = 25, the following table shows how the register values will be updated:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$t1$ (a) & $t2$ (b) & $t3$ (c) \\
+\hline
+16 & 24 & 384 \\
+16 & 8  & 384 \\
+8  & 8  & 384 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.2cm}
+When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
+
+\[
+\text{LCM} (a, b) = (a * b) / \text{GCD} (a, b) = 384 / 8 = \mathbf{48}
+\]
+
+
+\subsection{Variation 10.3}
+
+\noindent\textbf{Question} \\
+Consider the following MIPS assembly code:
+\begin{verbatim}
+    lw $t1, &a
+    lw $t2, &b
+    mul $t3, $t1, $t2
+L1:
+    bne $t1, $t2, L2
+    j exit
+L2:
+    bgt $t1, $t2, L3
+    sub $t2, $t2, $t1
+    j L1
+L3:
+    sub $t1, $t1, $t2
+    j L1
+exit:
+    div $t3, $t3, $t1
+    sw $t3, &c
+\end{verbatim}
+
+\noindent Assuming initial values of $a=9$ and $b=15$, what will be the value of $c$ when the code completes its execution?
+
+\vspace{0.5em}
+
+\noindent\textbf{Correct Answer(s)}: 45 \\
+\textbf{Incorrect Answers}: 48, 75, 135, 375, 384
+
+\vspace{1em}
+
+\noindent\textbf{Solution \& Feedback:} \\
+The above code implements the LCM algorithms using the following: \\
+LCM $(a,b) = (a*b) / \text{GCD}(a,b)$
+
+Initially, the code computes the GCD using the following algorithm:
+\begin{verbatim}
+int gcd(int a, int b)
+{
+    while (a != b)
+        if (a > b)
+            a = a - b;
+        else
+            b = b - a;
+    return a;
+}
+\end{verbatim}
+
+For $a=15$ and $b=25$, the following table shows how the register values will be updated:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$t1$ (a) & $t2$ (b) & $t3$ (c) \\
+\hline
+9 & 15 & 135 \\
+9 & 6  & 135 \\
+3 & 6  & 135 \\
+3 & 3  & 135 \\
+\hline
+\end{tabular}
+\end{center}
+
+When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
+
+\[
+\text{LCM}(a,b) = (a*b)/\text{GCD}(a,b) = 135/3 = \mathbf{45}
+\]

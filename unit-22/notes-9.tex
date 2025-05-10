@@ -1,5 +1,5 @@
-\subsection{Topics 9 \& 10: Transport and Network Layers – Exercise Sheet [Solutions]}
-\subsection*{Q\#1: Describe a few reasons why an application developer might choose to run an application over UDP rather than the TCP protocol?}
+\textbf{Topics 9 \& 10: Transport and Network Layers}
+\subsection{Q\#1: Describe a few reasons why an application developer might choose to run an application over UDP rather than the TCP protocol?}
 \textcolor{blue}{
 An application developer might choose to run an application over UDP (User Datagram Protocol) instead of TCP (Transmission Control Protocol) for several reasons:
 \begin{enumerate}
@@ -12,7 +12,7 @@ An application developer might choose to run an application over UDP (User Datag
 \end{enumerate}
 These features make UDP a suitable choice for applications where speed, low latency, and efficiency are prioritized over reliability and guaranteed delivery.
 }
-\subsection*{Q\#2: Suppose that a Web server runs in Host C on port 80. Suppose this Web server uses persistent connections, and is currently receiving requests from two different Hosts, A and B. Are all of the requests being sent through the same socket at Host C? If they are being passed through different sockets, do both sockets have port 80? Discuss and explain.}
+\subsection{Q\#2: Suppose that a Web server runs in Host C on port 80. Suppose this Web server uses persistent connections, and is currently receiving requests from two different Hosts, A and B. Are all of the requests being sent through the same socket at Host C? If they are being passed through different sockets, do both sockets have port 80? Discuss and explain.}
 \textcolor{blue}{
 When a web server on Host C uses persistent connections and receives requests from two different hosts (A and B), the requests are not sent through the same socket i.e. the Web server creates a separate ``connection socket". Each connection socket \# is identified with a four-tuple:
 \begin{center}

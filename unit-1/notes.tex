@@ -176,6 +176,22 @@ This is known as sign extension.
 
 In Java, all integers are signed.
 
+\subsection{Comparison between difference methods}
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Representation} & \textbf{Minimum} & \textbf{Maximum} \\
+\hline
+Usual & $0$ & $2^n - 1$ \\
+\hline
+Sign-and-magnitude & $-(2^{n-1} - 1)$ & $2^{n-1} - 1$ \\
+\hline
+Two’s complement & $-2^{n-1}$ & $2^{n-1} - 1$ \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Representing Colour}
 
 A mixture of primary colours!

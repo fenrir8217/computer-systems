@@ -1,0 +1,160 @@
+\textbf{Topic 1: Data Representation}\\
+\subsection{Q\#1: We have discussed Binary, Denary (aka Decimal), and Hexadecimal number systems in class. Complete the following table, doing the necessary conversions (without using a calculator and with a little-bit of self learning using the notes given below).}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Decimal} & \textbf{Binary} & \textbf{Octal} & \textbf{Hexadecimal} \\
+\hline
+175 & 10101111 & 257 & AF \\
+\hline
+204 & \textbf{11001100} & 314 & CC \\
+\hline
+503 & 111110111 & 767 & 1F7 \\
+\hline
+3995 & 111110011011 & 7633 & \textbf{F9B} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Notes:} \textit{The \textbf{octal number system} is a base-8 numeral system that uses digits from 0 to 7. It is commonly used in computing as a more compact way to represent binary numbers, with each octal digit corresponding to a group of three binary digits. Octal is less commonly used today but was historically useful in systems like UNIX file permissions and in early computing architectures. For example, the binary number \texttt{110010} can be grouped as \texttt{110 010} and represented as \texttt{62} in octal. For more details, please read \textit{Chapter \#2, Section 2.2.4} of \textit{Forouzan}.}
+
+\vspace{1.5em}
+
+\subsection{Q\#2: In a positional number system with base $b$, the largest integer number that can be represented using $k$ digits is $b^k - 1$. Find the largest number in each of the following systems with \textbf{six} digits.}
+\begin{itemize}
+    \item[(a)] Binary \quad $2^6 - 1 = 63$
+    \item[(b)] Decimal \quad $10^6 - 1 = 999999$
+    \item[(c)] Hexadecimal \quad $16^6 - 1 = 16777215$
+    \item[(d)] Octal \quad $8^6 - 1 = 262143$
+\end{itemize}
+\subsection{Q\#3:} Without converting, find the minimum number of digits needed in the destination system for each of the following cases:
+\begin{itemize}
+    \item[a)] Five-digit decimal number converted to binary
+    \item[b)] Four-digit decimal converted to octal
+    \item[c)] Seven-digit decimal converted to hexadecimal
+    \newline
+    \textcolor{blue}{
+    \item[a)] A five-digit decimal number can range between 00000-99999. We will consider 99999 as an example
+value to be represented in binary. Taking log2 (99999) = log10 (99999) / log10 (2) = 16.61 ~= 17 bits.
+    \item[b)] A four-digit decimal number can range between 0000-9999. We will consider 9999 as an example
+value to be represented in octal. Taking log8 (9999) = log10 (9999) / log10 (8) = 4.43 ~= 5 digits.
+    \item[c)] A seven-digit decimal number can range between 0000000-9999999. We will consider 9999999 as
+an example value to be represented in hexadecimal.
+Taking log16 (9999999) = log10 (9999999) / log10 (16) = 5.81 ~= 6 digits.
+    }
+\end{itemize}
+\vspace{1.5em}
+\subsection{Q\#4: A company has decided to assign a unique bit pattern to each employee. If the company has 900
+employees, what is the minimum number of bits needed to create this system of representation? How
+many patterns are unassigned? If the company hires another 300 employees, should it increase the
+number of bits? Explain your answer.}
+For 900 employees, the minimum number of bits needed will be: log2 (900) = 9.81 ~= 10 bits
+Using 10 bits, we can represent 210 = 1024 different patterns. Assuming we don’t use the first pattern
+(0000000000)2 (as it doesn’t look good to call someone as employee zero!) and start with
+(0000000001)2, we will still have 1023 – 900 = 123 available patterns.
+If the company hires 300 more employees, they will require log2 (1200) = 10.23 ~= 11 bits, hence they
+will need to increase the pattern size by 1 more bit.
+\vspace{1.5em}
+\subsection{Q\#5: An audio signal is sampled 8000 times per second. Each sample is represented by 256 different
+levels. How many bits per second are needed to represent this signal?}
+For each sample, we have 256 different levels, therefore, we need log2 (256) = 8 bits / sample.
+Sampling rate is 8000 times/second, therefore, we need 8000 * 8 = 64000 bits/second = 64kbps.
+\vspace{1.5em}
+
+
+\textbf{Q\#6:} Show the results of the following operations (in 8 bits)
+
+\begin{itemize}
+  \item[a)] NOT $[(37)_{16} \text{ OR } (65)_{16}]$ \\
+  \quad $= \text{NOT } [(00110111)_2 \text{ OR } (01100101)_2]$ \\
+  \quad $= \text{NOT } (01110111)_2 = \mathbf{(10001000)_2}$
+
+  \item[b)] $[(99)_{16} \text{ AND } (33)_{16}] \text{ OR } [(00)_{16} \text{ AND } (FF)_{16}]$ \\
+  \quad $= [(10011001)_2 \text{ AND } (00110011)_2] \text{ OR } [(00000000)_2 \text{ AND } (11111111)_2]$ \\
+  \quad $= (00010001)_2 \text{ OR } (00000000)_2 = \mathbf{(00010001)_2}$
+
+  \item[c)] $[(99)_{16} \text{ XOR } (33)_{16}] \text{ AND } [(00)_{16} \text{ OR } (FF)_{16}]$ \\
+  \quad $= [(10011001)_2 \text{ XOR } (00110011)_2] \text{ AND } [(00000000)_2 \text{ OR } (11111111)_2]$ \\
+  \quad $= (10101010)_2 \text{ AND } (11111111)_2 = \mathbf{(10101010)_2}$
+\end{itemize}
+
+\textbf{Q\#7:} Compute the 2's complement (in 8 bits) for the following decimal numbers:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Decimal} & \textbf{Binary} & \textbf{1's Complement} & \textbf{2's Complement} \\
+\hline
+$-27$ & 00011011 & 11100100 & \textbf{11100101} \\
+$-80$ & 01010000 & 10101111 & \textbf{10110000} \\
+$-123$ & 01111011 & 10000100 & \textbf{10000101} \\
+$-128$ & 10000000 & 01111111 & \textbf{10000000} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Q\#8:} If we apply the two’s complement operation to a number twice, we should get the original number. Apply the two’s complement operation to each of the following numbers and see if we can get the original number.
+
+\begin{itemize}
+  \item[a)] $2^C(01110111) = 10001001$; $2^C(10001001) = \textbf{01110111}$
+  \item[b)] $2^C(11111100) = 00000100$; $2^C(00000100) = \textbf{11111100}$
+  \item[c)] $2^C(10101010) = 01010110$; $2^C(01010110) = \textbf{10101010}$
+  \item[d)] $2^C(11001110) = 00110010$; $2^C(00110010) = \textbf{11001110}$
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Q\#9:} Using 8-bit allocation, first convert each of the following decimal numbers to two’s complement, do the operation, and then convert the result to decimal.
+
+\begin{itemize}
+  \item[a)] $19 - 23$
+  \begin{itemize}
+    \item $19 = 00010011$, $23 = 00010111$, $-23 = 11101001$
+    \item $19 + (-23) = 00010011 + 11101001 = 11111100 = \textbf{-4}$
+  \end{itemize}
+
+  \item[b)] $65 - 78$
+  \begin{itemize}
+    \item $65 = 01000001$, $78 = 01001110$, $-78 = 10110010$
+    \item $65 + (-78) = 01000001 + 10110010 = 11110011 = \textbf{-13}$
+  \end{itemize}
+
+  \item[c)] $-85 - 35$
+  \begin{itemize}
+    \item $85 = 01010101$, $-85 = 10101011$, $35 = 00100011$, $-35 = 11011101$
+    \item $(-85) + (-35) = 10101011 + 11011101 = \textcolor{red}{1}10001000 = 10001000 = \textbf{-120}$\\
+    (The overflow bit, shown in red above, will be discarded but the answer is correct!)
+  \end{itemize}
+
+  \item[d)] $-120 - 100$
+  \begin{itemize}
+    \item $120 = 01111000$, $-120 = 10001000$, $100 = 01100100$, $-100 = 10011100$
+    \item $(-120) + (-100) = 10001000 + 10011100 = \textcolor{red}{1}00100100 = 00100100 = \textbf{35}$\\
+    (The overflow bit, shown in red above, will be discarded and the answer is incorrect!)
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+\textbf{Q\#10:} In which of the following situations does an overflow never occur? Justify your answer.
+
+\begin{itemize}
+  \item[a)] \textbf{Adding two positive integers} \\
+  Overflow \textit{can} occur if the result exceeds the maximum representable positive value for the integer type being used. For example, in a 32-bit system, adding two large positive integers can exceed the maximum value ($2^{31} - 1$ in signed integers).
+
+  \item[b)] \textbf{Adding one positive integer to a negative integer} \\
+  Overflow \textit{does not} occur in this case, because the result will always be within the range of representable values. If the positive and negative integers are of similar magnitudes, their sum will bring the value closer to zero, and if one dominates, the result will still be within the allowable range.
+
+  \item[c)] \textbf{Subtracting one positive integer from a negative integer} \\
+  Overflow \textit{can} occur if the negative integer is near the minimum representable value and the positive integer is large enough to push the result beyond the minimum value. For example, in a 32-bit system, subtracting a large positive integer from a small negative integer may exceed the lower bound of $-2^{31}$.
+
+  \item[d)] \textbf{Subtracting two negative integers} \\
+  Overflow \textit{can} occur when subtracting two negative integers (in other words, adding two negative integers) if the result exceeds the maximum representable positive value. This can happen if the absolute value of one of the negative integers is much larger than the other one, making the result a large positive number. An example for 8-bit signed numbers will be $(-10 - 127)$, which gives $+119$. \\
+  \textcolor{blue}{
+     \(-137  mod  256 = 256 - 137 = 119 \)
+  }
+\end{itemize}
+\vspace{2em}

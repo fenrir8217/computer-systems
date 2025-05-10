@@ -1,0 +1,623 @@
+\subsection{Question 1.1}
+\textbf{Match each binary number to the equivalent positive denary integer.}
+
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Items on the left} & \textbf{Items on the right} \\
+\hline
+1234 & 10011010010 \\
+1345 & 10101000001 \\
+1004 & 011111101100 \\
+1017 & 011111111001 \\
+\hline
+\end{tabular}
+
+\paragraph{Feedback:}
+Note that the answers are all 11-bits, so the most-significant bit is $2^{10} = 1024$. In order to avoid fully converting all four numbers, we can recognize the following:
+\begin{itemize}
+    \item 1234 and 1345 are both above 1024, so the MSB must be 1
+    \begin{itemize}
+        \item 1234 is even, so the LSB must be 0
+        \begin{itemize}
+            \item The only option with MSB = 1 and LSB = 0 is \textbf{10011010010}
+        \end{itemize}
+        \item 1345 is odd, so the LSB must be 1
+        \begin{itemize}
+            \item The only option with MSB = 1 and LSB = 1 is \textbf{10101000001}
+        \end{itemize}
+    \end{itemize}
+    \item 1004 and 1017 are both below 1024, so the MSB must be 0
+    \begin{itemize}
+        \item 1004 is even, so the LSB must be 0
+        \begin{itemize}
+            \item The only option with MSB = 0 and LSB = 0 is \textbf{011111101100}
+        \end{itemize}
+        \item 1017 is odd, so the LSB must be 1
+        \begin{itemize}
+            \item The only option with MSB = 0 and LSB = 1 is \textbf{011111111001}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+We could instead fully convert each number to binary; as an example, let’s convert 1234 to binary using the \textbf{left-to-right} method:
+\begin{lstlisting}
+???????????: 1234 - 2^10 = 210, so keep 210 and write 1
+1??????????: 210 - 2^9 = -310, so keep 210 and write 0
+10?????????: 210 - 2^8 = 46, so keep 210 and write 0
+100????????: 210 - 2^7 = 82, so keep 82 and write 1
+1001???????: 82 - 2^6 = 18, so keep 18 and write 1
+10011??????: 18 - 2^5 = -14, so keep 18 and write 0
+100110?????: 18 - 2^4 = 2, so keep 2 and write 1
+1001101????: 2 - 2^3 = -6, so keep 2 and write 0
+10011010???: 2 - 2^2 = -2, so keep 2 and write 0
+100110100??: 2 - 2^1 = 0, so write 1 in this column and 0 in all remaining columns
+10011010010
+\end{lstlisting}
+\subsection{1.2}
+
+\begin{tabularx}{\linewidth}{|l|X|}
+\hline
+\textbf{\#} & \textbf{Question} \\
+\hline
+1.2 & Match each binary number to the equivalent positive denary integer. \\
+\hline
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{|X|X|}
+\hline
+\textbf{Items on the left...} & \textbf{...match to these items on the right.} \\
+\hline
+1478 & 10111000110 \\
+1589 & 11000110101 \\
+1021 & 01111111101 \\
+1000 & 01111101000 \\
+\hline
+\end{tabularx}
+
+\textbf{Feedback:}
+
+\begin{itemize}
+  \item Note that the answers are all 11-bits, so the most-significant bit is $2^{10} = 1024$. In order to avoid fully converting all four numbers, we can recognize the following:
+  \begin{itemize}
+    \item 1478 and 1589 are both above 1024, so the MSB must be 1
+    \begin{itemize}
+      \item 1478 is even, so the LSB must be 0
+      \begin{itemize}
+        \item The only option with MSB = 1 and LSB = 0 is \textbf{10111000110}
+      \end{itemize}
+      \item 1589 is odd, so the LSB must be 1
+      \begin{itemize}
+        \item The only option with MSB = 1 and LSB = 1 is \textbf{11000110101}
+      \end{itemize}
+    \end{itemize}
+    \item 1000 and 1021 are both below 1024, so the MSB must be 0
+    \begin{itemize}
+      \item 1000 is even, so the LSB must be 0
+      \begin{itemize}
+        \item The only option with MSB = 0 and LSB = 0 is \textbf{01111101000}
+      \end{itemize}
+      \item 1021 is odd, so the LSB must be 1
+      \begin{itemize}
+        \item The only option with MSB = 0 and LSB = 1 is \textbf{01111111101}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+We could instead fully convert each number to binary; as an example, let’s convert (1021)$_{10}$ to binary using the \textbf{right-to-left} method:
+\begin{itemize}
+  \item ???????????2; 1021 / 2 = 510.5, so keep 510 and write 1
+  \item ??????????1; 510 / 2 = 255, so keep 255 and write 0
+  \item ?????????01; 255 / 2 = 127.5, so keep 127 and write 1
+  \item ????????101; 127 / 2 = 63.5, so keep 63 and write 1
+  \item ???????1101; 63 / 2 = 31.5, so keep 31 and write 1
+  \item ??????11101; 31 / 2 = 15.5, so keep 15 and write 1
+  \item ?????111101; 15 / 2 = 7.5, so keep 7 and write 1
+  \item ????1111101; 7 / 2 = 3.5, so keep 3 and write 1
+  \item ???11111101; 3 / 2 = 1.5, so keep 1 and write 1
+  \item ??111111101; 1 / 2 = 0.5, so write 1 in this column and 0 in all remaining columns
+\end{itemize}
+\textbf{01111111101}
+
+\subsection{1.2 \quad Match each binary number to the equivalent positive denary integer.}
+
+\begin{tabular}{|>{\raggedright\arraybackslash}p{6cm}|>{\raggedright\arraybackslash}p{6cm}|}
+\hline
+\textbf{Items on the left\ldots} & \textbf{\ldots match to these items on the right.} \\
+\hline
+1478 & 10111000110 \\
+1589 & 11000110101 \\
+1021 & 01111111101 \\
+1000 & 01111101000 \\
+\hline
+\end{tabular}
+
+\vspace{1em}
+\noindent \textbf{Feedback:}
+
+\noindent Note that the answers are all 11-bits, so the most-significant bit is $2^{10} = 1024$. In order to avoid fully converting all four numbers, we can recognize the following:
+
+\begin{itemize}
+  \item 1478 and 1589 are both above 1024, so the MSB must be 1
+  \begin{itemize}
+    \item 1478 is even, so the LSB must be 0
+    \begin{itemize}
+      \item The only option with MSB = 1 and LSB = 0 is \textbf{10111000110}
+    \end{itemize}
+    \item 1589 is odd, so the LSB must be 1
+    \begin{itemize}
+      \item The only option with MSB = 1 and LSB = 1 is \textbf{11000110101}
+    \end{itemize}
+  \end{itemize}
+  \item 1000 and 1021 are both below 1024, so the MSB must be 0
+  \begin{itemize}
+    \item 1000 is even, so the LSB must be 0
+    \begin{itemize}
+      \item The only option with MSB = 0 and LSB = 0 is \textbf{01111101000}
+    \end{itemize}
+    \item 1021 is odd, so the LSB must be 1
+    \begin{itemize}
+      \item The only option with MSB = 0 and LSB = 1 is \textbf{01111111101}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\vspace{1em}
+We could instead fully convert each number to binary; as an example, let's convert $1021_{10}$ to binary using the \textbf{right-to-left} method:
+
+\begin{lstlisting}
+???????????: 1021 / 2 = 510.5, so keep 510 and write 1
+??????????1: 510 / 2 = 255, so keep 255 and write 0
+?????????01: 255 / 2 = 127.5, so keep 127 and write 1
+????????101: 127 / 2 = 63.5, so keep 63 and write 1
+???????1101: 63 / 2 = 31.5, so keep 31 and write 1
+??????11101: 31 / 2 = 15.5, so keep 15 and write 1
+?????111101: 15 / 2 = 7.5, so keep 7 and write 1
+????1111101: 7 / 2 = 3.5, so keep 3 and write 1
+???11111101: 3 / 2 = 1.5, so keep 1 and write 1
+??111111101: 1 / 2 = 0.5, so write 1 in this column and 0 in all remaining columns
+01111111101
+\end{lstlisting}
+% Question 2.1
+\noindent
+\begin{tabular}{|p{0.5cm}|p{14cm}|}
+\hline
+\textbf{\#} & \textbf{Question} \\
+\hline
+2.1 & In the Fetch/Execute cycle, which step involves the Arithmetic-Logic Unit (ALU) \textit{performing} the required operation? \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Correct Answer(s)}} \\
+\multicolumn{2}{|l|}{Instruction Execution (EX)} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Incorrect Answers}} \\
+\multicolumn{2}{|l|}{Instruction Fetch (IF), Instruction Decode (ID), Result Return (RR)} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Feedback}} \\
+\multicolumn{2}{|p{14cm}|}{The Arithmetic-Logic Unit performs the required operation in the Instruction Execution step of the Fetch/Execute cycle.} \\
+\hline
+\end{tabular}
+
+\vspace{1.5em}
+
+% Question 2.2
+\noindent
+\begin{tabular}{|p{0.5cm}|p{14cm}|}
+\hline
+\textbf{\#} & \textbf{Question} \\
+\hline
+2.2 & In the Fetch/Execute cycle, which step is responsible for \textit{interpreting} the instruction? \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Correct Answer(s)}} \\
+\multicolumn{2}{|l|}{Instruction Decode (ID)} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Incorrect Answers}} \\
+\multicolumn{2}{|l|}{Instruction Fetch (IF), Data Fetch (DF), Instruction Execution (EX)} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Feedback}} \\
+\multicolumn{2}{|p{14cm}|}{The instruction is interpreted in the Instruction Decode step of the Fetch/Execute cycle.} \\
+\hline
+\end{tabular}
+
+% Question 3.1
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\# & Question \\
+\hline
+3.1 & I am designing a binary representation of some type of real world data. What is the \textbf{minimum number of bits} I would need to use in my representation so that it can represent at least \textbf{67,702 different items of data}?
+
+\textit{(For example, if the type of data were colours, what is the \textbf{minimum number of bits} I would need so that I can represent at least \textbf{67,702 different colours}?)}
+\\
+\hline
+\multicolumn{2}{|l|}{\textbf{Correct Answer}} \\
+\multicolumn{2}{|l|}{17} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Incorrect Answers}} \\
+\multicolumn{2}{|l|}{5, 12, 15, 16} \\
+\hline
+\multicolumn{2}{|p{14cm}|}{
+\textbf{Feedback} \newline
+Using 1 bit, we can have two different codes (0 and 1), so we can represent $2 = 2^1$ different items of data. Using 2 bits, we have four different codes (00, 01, 10 and 11), so we can represent $4 = 2^2$ different items of data. Using $n$ bits, we have $2^n$ different codes, so we can represent $2^n$ different items of data.
+
+We therefore want to compute the smallest whole number $n$ such that $2^n \geq 67702$. To find this, we first find the fractional number $m$ such that $2^m = 67702$; by using the laws of logarithms we have $m = \log_2(67702) \approx 16.0469\ldots$ Therefore, the smallest whole number $n$ is $m$ rounded up to the next integer; i.e. $n = 17$.
+} \\
+\hline
+\end{tabularx}
+
+
+
+\subsubsection{Question 4.1}
+
+What is the primary function of the \textbf{Control Unit (CU)} in a computer system?
+
+\textbf{Correct Answer}
+Perform the Fetch and Execute Cycle
+
+\textbf{Incorrect Answers}
+\begin{itemize}
+    \item Perform arithmetic and logical operations
+    \item Performing logical operations like AND, OR, and NOT
+    \item Manage the display of output on the screen
+\end{itemize}
+
+\textbf{Feedback}
+The control unit is where the Fetch and Execute Cycle happens and during this cycle, the control unit manages the flow of data between the CPU, memory, and input/output devices.
+
+\subsubsection{Question 4.2}
+
+The Output Unit of a computer system is responsible for:
+
+\textbf{Correct Answer}
+Sending processed data to output devices like printers or monitors
+
+\textbf{Incorrect Answers}
+\begin{itemize}
+    \item Performing basic mathematical operations like addition and subtraction
+    \item Control the flow of data between the CPU, memory, and input/output devices
+    \item Fetching instructions from memory
+\end{itemize}
+
+\textbf{Feedback}
+The output unit is responsible for moving processed data from the CPU to the output devices like monitors and printers.
+
+
+\begin{tabular}{|c|p{12cm}|}
+\hline
+\# & Question \\
+\hline
+5.1 & How would the real number \textbf{-73.75} be represented as an 11-bit \textbf{two's complement fixed point} binary number with a 3-bit fractional part? \\
+\hline
+\textbf{Correct Answer} & \textbf{Incorrect Answers} \\
+10110110010 & 01001001110, 10110110001, 11001001110 \\
+\hline
+\multicolumn{2}{|p{14cm}|}{
+\textbf{Feedback} \newline
+We represent $-73.75$ in two's complement by first representing $73.75$ and then flipping all bits and adding $1$ to the LSB.
+
+First, we convert $73.75$ to fixed point binary using any method; as an example, let's use the modified right-to-left method for fixed point numbers.
+
+Convert the integer part of the number:
+\begin{itemize}
+\item $73 / 2 = 36.5$, so keep $36$ and write $1$
+\item $36 / 2 = 18$, so keep $18$ and write $0$
+\item $18 / 2 = 9$, so keep $9$ and write $0$
+\item $9 / 2 = 4.5$, so keep $4$ and write $1$
+\item $4 / 2 = 2$, so keep $2$ and write $0$
+\item $2 / 2 = 1$, so keep $1$ and write $0$
+\item $1 / 2 = 0.5$, so write $1$ and fill remaining with $0$s
+\end{itemize}
+So we get: $01001001.???$
+
+Convert the fractional part of the number:
+\begin{itemize}
+\item $0.75 \times 2 = 1.5$, so write $1$
+\item $0.5 \times 2 = 1.0$, so write $1$, and $0$ after
+\end{itemize}
+So the full binary becomes: $01001001.110$
+
+Now, we flip all bits: $10110110.001$
+
+Finally, we add $1$ to the LSB: $10110110.010$
+
+Answer: \texttt{10110110010}
+} \\
+\hline
+\end{tabular}
+
+\begin{tabular}{|c|p{12cm}|}
+\hline
+\# & Question \\
+\hline
+5.2 & How would the real number \textbf{-52.625} be represented as an 11-bit \textbf{two's complement fixed point} binary number with a 4-bit fractional part? \\
+\hline
+\textbf{Correct Answer} & \textbf{Incorrect Answers} \\
+10010110110 & 01101001010, 10010110101, 11101001010 \\
+\hline
+\multicolumn{2}{|p{14cm}|}{
+\textbf{Feedback} \newline
+We represent $-52.625$ in two's complement by first representing $52.625$ and then flipping all bits and adding $1$ to the LSB.
+
+Convert the integer part of the number:
+\begin{itemize}
+\item $52 / 2 = 26$, so keep $26$ and write $0$
+\item $26 / 2 = 13$, so keep $13$ and write $0$
+\item $13 / 2 = 6.5$, so keep $6$ and write $1$
+\item $6 / 2 = 3$, so keep $3$ and write $0$
+\item $3 / 2 = 1.5$, so keep $1$ and write $1$
+\item $1 / 2 = 0.5$, so write $1$ and fill remaining with $0$s
+\end{itemize}
+So we get: $0110100.????$
+
+Convert the fractional part:
+\begin{itemize}
+\item $0.625 \times 2 = 1.25$, so write $1$
+\item $0.25 \times 2 = 0.5$, so write $0$
+\item $0.5 \times 2 = 1.0$, so write $1$ and $0$
+\end{itemize}
+So we get: $0110100.1010$
+
+Flip all bits: $1001011.0101$
+
+Add $1$ to LSB: $1001011.0110$
+
+Answer: \texttt{10010110110}
+} \\
+\hline
+\end{tabular}
+\newline
+
+\subsubsection{Question 6.1}
+
+Explain the purpose of the \textbf{Result Return (RR)} in the Fetch/Execute cycle. How does this step ensure the continuation of program execution, and why is it necessary?
+
+\textit{Please tick \textbf{all} correct answers.}
+
+\textbf{Correct Answers}
+\begin{itemize}
+    \item RR stores the result in a register or memory, making it accessible for subsequent instructions.
+    \item RR ensures that the result is returned to a memory location or register, allowing future instructions to access or modify it.
+    \item RR writes the result back into memory or a register, making it persist beyond the current instruction.
+\end{itemize}
+
+\textbf{Incorrect Answers}
+\begin{itemize}
+    \item RR updates the Program Counter (PC) to point to the next instruction in memory, ensuring the program progresses.
+    \item RR temporarily stores the result in the Arithmetic-Logic Unit (ALU) for reuse by the next instruction, ensuring high performance.
+    \item RR will reset the Program Counter and start a new cycle.
+\end{itemize}
+
+\textbf{Feedback}
+RR doesn’t update the PC directly. RR writes the result back to the memory. RR doesn’t reset or change the PC.
+
+\subsubsection{Question 6.2}
+
+What is the purpose of the \textbf{Data Fetch (DF)} step in the Fetch/Execute cycle? How does this step ensure the correct execution of an instruction, and why is it critical for the overall operation of the CPU?
+
+\textit{Please tick \textbf{all} correct answers.}
+
+\textbf{Correct Answers}
+\begin{itemize}
+    \item DF fetches the required data or operands from memory, enabling the ALU to perform the operation specified by the instruction.
+    \item DF is a step after the Instruction Decode and will interact with the memory.
+    \item DF can be skipped only when the instruction does not need to fetch any operands at all.
+\end{itemize}
+
+\textbf{Incorrect Answers}
+\begin{itemize}
+    \item DF updates the Program Counter (PC) to ensure the next instruction is executed in the correct order.
+    \item DF writes the computed result back to memory or a register for later use by subsequent instructions.
+    \item DF signals the Arithmetic-Logic Unit (ALU) to begin executing the operation once the data is fetched from memory.
+\end{itemize}
+
+\textbf{Feedback}
+The Program Counter is not updated during the Data Fetch phase; it’s updated during Instruction Fetch or after the current instruction is executed. Writing the result back to memory is part of the Result Return (RR) phase, not Data Fetch. The ALU begins execution in the \textbf{Instruction Execution (EX)} phase, not during the Data Fetch phase.
+
+\vspace{1.5em}
+
+\subsubsection{Question 7.1}
+
+Suppose we are working on a hypothetical computer that represents real numbers as 10-bit IEEE 754 floating point numbers, with a 3-bit exponent (and exponent bias $b = 3$).
+
+What denary number does the binary word \texttt{1001100000}, which follows the above representation, represent?
+
+\textbf{Correct Answer}
+\texttt{-0.375}
+
+\textbf{Incorrect Answers}
+0.375, 6, -6, 1.5, -1.5, 0.125, -0.125
+
+\textbf{Feedback}
+The sign bit is $1$, so we are representing a negative number.
+
+The biased exponent = $(001)_2 = 1$, so the true exponent is $1 - 3 = -2$.
+
+The mantissa with the hidden bit = $1.100000$.
+
+The number represented is therefore $-(1.100000 \times 2^{-2}) = -0.01100000$.
+
+We convert this from fixed point binary to denary by calculating $-(2^{-2} + 2^{-3}) = \textbf{-0.375}$.
+
+\subsubsection{Question 7.2}
+
+Suppose we are working on a hypothetical computer that represents real numbers as 10-bit IEEE 754 floating point numbers, with a 3-bit exponent (and exponent bias $b = 3$).
+
+What denary number does the binary word \texttt{0101100100}, which follows the above representation, represent?
+
+\textbf{Correct Answer}
+\texttt{6.25}
+
+\textbf{Incorrect Answers}
+-6.25, 44.5, -44.5, 1.5625, -1.5625, 2.25, -2.25
+
+\textbf{Feedback}
+The sign bit is $0$, so we are representing a positive number.
+
+The biased exponent = $(101)_2 = 5$, so the true exponent is $5 - 3 = 2$.
+
+The mantissa with the hidden bit = $1.100100$.
+
+The number represented is therefore $1.100100 \times 2^2 = 110.0100$.
+
+We convert this from fixed point binary to denary by calculating $2^2 + 2^1 + 2^{-2} = \textbf{6.25}$.
+
+\subsubsection{Question 8.1}
+An instruction requires 2 clock cycles for fetching the instruction (IF), 1 cycle for decoding (ID), 3 cycles for data fetching (DF), 2 cycles for execution (EX), and 1 cycle for result return (RR). If a processor operates at \textbf{2 GHz}, what is the total time required (in nanoseconds) to complete the instruction?
+\textbf{Correct Answer}
+4.5ns
+\textbf{Incorrect Answers}
+5ns, 9ns, 18ns
+
+\textbf{Feedback}
+The total number of cycles is 9.
+
+At 2 GHz, each cycle takes $1/(2 \times 10^9) = 0.5$ns.
+
+Therefore, $9 \times 0.5\text{ns} = 4.5\text{ns}$.
+\subsubsection{Question 8.2}
+
+An instruction requires 2 clock cycles for fetching the instruction (IF), 2 cycles for decoding (ID), 3 cycles for data fetching (DF), 3 cycles for execution (EX), and 2 cycles for result return (RR). If a processor operates at \textbf{4 GHz}, what is the total time required (in nanoseconds) to complete the instruction?
+
+\textbf{Correct Answer}
+3ns
+
+\textbf{Incorrect Answers}
+5ns, 12ns, 48ns
+
+\textbf{Feedback}
+The total number of cycles is 12.
+
+At 4 GHz, each cycle takes $1/(4 \times 10^9) = 0.25$ns.
+
+Therefore, $12 \times 0.25\text{ns} = 3\text{ns}$.
+\subsubsection{Question 9.1}
+
+A colour mixing computer takes two colours X and Y, which are represented using the 24-bit RGB truecolour representation discussed in the lecture, as inputs. Then, it mixes the colours by computing \textbf{NOT (X OR Y)} and outputs the result as Z.
+
+If the hexcode for the input X is \texttt{\#19A401} and the hexcode for the input Y is \texttt{\#B3D372}, then what will be the hexcode for the output Z?
+
+\textbf{Correct Answer}
+\texttt{\#44088C}
+
+\textbf{Incorrect Answers}
+\texttt{\#BBF773}, \texttt{\#118000}, \texttt{\#EE7FFF}, \texttt{\#1EFFFE}, \texttt{\#E10001}, \texttt{\#FF20AD}, \texttt{\#00DF52}
+
+\textbf{Feedback}
+We will first convert X and Y from hex to binary:
+
+X = (\#19A401)$_{16}$ = (000110010100000000000001)$_2$ \\
+Y = (\#B3D372)$_{16}$ = (101100111101001101110010)$_2$
+
+Then we OR these two binary strings bitwise:
+
+\begin{align*}
+000110010100000000000001 \\
+\text{OR } 101100111101001101110010 \\
+= 101110111101001101110011
+\end{align*}
+
+Then we NOT the result:
+
+\[
+\text{NOT } 101110111101001101110011 = 010001000010110010001100
+\]
+
+Finally, we convert this back to hex:
+
+\[
+(0100)_2 \ (0100)_2 \ (0000)_2 \ (1000)_2 \ (1000)_2 \ (1100)_2
+\]
+
+\[
+= 4_{16} \ 4_{16} \ 0_{16} \ 8_{16} \ 8_{16} \ C_{16}
+\]
+
+So, the final hex value is \texttt{\#44088C}.
+
+\subsubsection{Question 9.2}
+
+A colour mixing computer takes two colours X and Y, which are represented using the 24-bit RGB truecolour representation discussed in the lecture, as inputs. Then, it mixes the colours by computing \textbf{NOT (X AND Y)} and outputs the result as Z.
+
+If the hexcode for the input X is \texttt{\#FF00A9} and the hexcode for the input Y is \texttt{\#E12005}, then what will be the hexcode for the output Z?
+
+\textbf{Correct Answer:} \texttt{\#1EFFFF}
+
+\textbf{Incorrect Answers:}
+\texttt{\#BBF773}, \texttt{\#118000}, \texttt{\#EE7FFF}, \texttt{\#44088C}, \texttt{\#E10001}, \texttt{\#00DF52}
+
+\textbf{Feedback:}
+
+We will first convert X and Y from hex to binary: \\
+X = (\#FF00A9)$_{16}$ = (1111111100000000101001)$_2$ \\
+Y = (\#E12005)$_{16}$ = (1110000100000000000101)$_2$
+
+Then we AND these two binary strings bitwise:
+\[
+1111111100000000101001 \\
+\text{AND } 1110000100000000000101 = 1110000100000000000001
+\]
+
+Then we NOT the result:
+\[
+\text{NOT } 1110000100000000000001 = 0001111011111111111110
+\]
+
+Finally, we convert this back to hex:
+\[
+(0001)_2 \ (1110)_2 \ (1111)_2 \ (1111)_2 \ (1111)_2 \ (1110)_2
+\]
+\[
+= 1_{16} \ E_{16} \ F_{16} \ F_{16} \ F_{16} \ E_{16}
+\]
+
+So the final hex value is \texttt{\#1EFFFF}.
+
+\subsubsection{Question 10.1}
+
+Consider the following instruction: \\
+\texttt{ADD 800, 428, 884}
+
+Explain how the instruction is executed step-by-step, specifically focusing on the Data Fetch (DF) and Instruction Execution (EX) phases.
+
+\textit{Please tick \textbf{all} correct answers.}
+
+\textbf{Correct Answer:} \\
+After fetching the instruction, the memory addresses 428 and 884 are used to retrieve data from the memory, which are then processed in the ALU, and the result is written to memory location 800.
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+  \item The ALU adds the values from memory locations 428 and 884 directly in memory, and the result is stored in memory location 800.
+  \item The fetched values from memory are copied into the ALU, and the ALU performs the addition without using any registers.
+  \item The instruction is fetched, decoded, and then the ALU performs the addition of values stored in the registers without involving memory.
+\end{itemize}
+
+\textbf{Feedback:} \\
+The ALU will fetch the associated values from the memory and perform calculations internally (not in the memory).
+
+The ALU cannot operate on data directly from memory without using registers. Data must be loaded into registers before the ALU performs operations.
+
+The ALU needs to fetch the associated values from the memory before performing the execution step.
+
+\subsubsection{Question 10.2}
+
+Consider the following instruction: \\
+\texttt{SUB 2000, 1000, 1500}
+
+SUB is the opcode for the subtraction operation. Explain how the instruction is executed step-by-step, specifically focusing on the Data Fetch (DF) and Instruction Execution (EX) phases.
+
+\textit{Please tick \textbf{all} correct answers.}
+
+\textbf{Correct Answer:} \\
+After fetching the instruction, the memory addresses 1000 and 1500 are used to retrieve data from memory, which are then processed in the ALU, and the result is written to memory location 2000.
+
+\textbf{Incorrect Answers:}
+\begin{itemize}
+  \item The ALU calculates the values from memory locations 1000 and 1500 directly in memory, and the result is stored in memory location 2000.
+  \item The fetched values from memory are copied into the ALU, and the ALU performs the subtraction without using any registers.
+  \item The instruction is fetched, decoded, and then the ALU performs the subtraction of values stored in the registers without involving memory.
+\end{itemize}
+
+\textbf{Feedback:} \\
+The ALU will fetch the associated values from the memory and perform calculations internally (not in the memory).
+
+The ALU cannot operate on data directly from memory without using registers. Data must be loaded into registers before the ALU performs operations.
+
+The ALU needs to fetch the associated values from the memory before performing the execution step.

@@ -1,0 +1,144 @@
+\textbf{LHM Computer Systems 2022--23}
+\subsection{Question 1}
+\textbf{(a)}
+A Java method to calculate powers of 20 gives the following results.
+
+\begin{center}
+\begin{tabular}{cl}
+$n$ & $20^n$ \\
+0 & 1 \\
+1 & 20 \\
+2 & 400 \\
+3 & 8000 \\
+4 & 160000 \\
+5 & 3200000 \\
+6 & 64000000 \\
+7 & 1280000000 \\
+8 & -169803776 \\
+\end{tabular}
+\end{center}
+Out of the possible types \texttt{short}, \texttt{int}, \texttt{long}, \texttt{float} and \texttt{double}, which one must the method be using for its calculation? Explain your answer.
+
+Do an approximate calculation to explain why $n = 8$ is the value for which the results start to go wrong. \hfill [6 marks]
+
+\textbf{(b)}
+Describe the two techniques by which subroutine call and return instructions can be implemented. Outline an advantage or disadvantage of each technique. \hfill [4 marks]
+
+\textbf{(c)}
+Consider the following Java-like program code:
+
+\begin{lstlisting}[language=Java]
+int i, j, k = 0;
+
+for (i = n / 2; i <= n; i++)
+    for (j = 2; j <= n; j = j * 2)
+        k = k + n / 2;
+
+for (i = n / 4; i <= n; i++)
+    k = k + 1;
+\end{lstlisting}
+
+What is the time complexity of this algorithm (using ‘Big-O’ notation)? Justify your answer. \hfill [4 marks]
+
+{\color{blue}
+\begin{enumerate}[label=(\alph*)]
+    \item The data type cannot be floating point (float or double) because this would not overflow, but instead go to infinity. Therefore, it must be \texttt{short}, \texttt{int} or \texttt{long}; in order to find out which, we consider at what point the overflow occurs.
+
+    The maximum value for \texttt{int} is $2^{31} - 1$, which is larger than $20^7$ and smaller than $20^8$; therefore, for \texttt{int}, the results go wrong when $n \geq 8$. Therefore, the data type is \texttt{int}.
+    \item In the first technique, call to subroutine stores the return address in memory at the location of subroutine and then jumps to the instruction following that in memory. The return instruction will load the PC with the return address stored at the start of subroutine.
+
+    In the second technique, the call to subroutine pushes the return address onto a stack and jumps to the subroutine. The return instruction pops the return address from the stack and loads it into the PC.
+
+    A disadvantage of the first style is that it cannot deal with recursion, while an advantage of the second style is that it can.
+    \item The first outer loop executes $n/2$ times, which is $O(n)$. The inner loop executes $\log(n)$ times, which is $O(\log(n))$. The second outer loop executes $n/4$ times, which is $O(n)$. Therefore, the overall complexity = $O(n \cdot \log(n)) + O(n) = O(n \cdot \log(n))$.
+\end{enumerate}
+}
+\subsubsection{Question 2}
+
+\textbf{(a)}
+What is a deadlock? As well as defining what it is, you should use an example to explain clearly how a deadlock situation can occur between a set of 3 processes. \hfill [5 marks]
+
+\textbf{(b)}
+A program takes 800 seconds to run on a single core machine. Analysis shows that 20\% of the program is inherently sequential and the remaining 80\% consists of code that can, potentially, be run in parallel. If you had a processor with 10 cores, what is the minimum execution time that could be achieved? Explain why you would be very unlikely to achieve this speedup in practice. \hfill [7 marks]
+
+\textbf{(c)}
+An e-commerce application sells shoes. The application stores the current stock level of each shoe in memory. When a pair of shoes is purchased a thread is created. The thread:
+\begin{enumerate}
+    \item checks the current stock level for that shoe
+    \item calculates the new value and
+    \item updates the stock level.
+\end{enumerate}
+The stock level recorded is usually correct but occasionally the application shows an incorrect value.
+
+\begin{enumerate}
+    \item[(i)] Explain the (technical) reason why the application occasionally shows an incorrect value. Use an example to illustrate your explanation.
+    \item[(ii)] Explain what changes should be made to the program to correct this behaviour.
+    \item[(iii)] After these changes, the system works correctly. However, the performance has degraded. Explain clearly why the performance will have got worse.
+\end{enumerate}
+\hfill [8 marks]
+{\color{blue}
+\begin{enumerate}[label=(\alph*)]
+    \item A deadlock is a problem that occurs in concurrency when processes wait forever for each other to free resources. For example, three processes A, B and C could become deadlocked if A is waiting for B to free a resource, while B is waiting for C to free a resource, while C is waiting for A to free a resource.
+
+    \item The minimum execution time is $0.2 \cdot 800 + \left( \frac{0.8 \cdot 800}{10} \right) = 224$ seconds.
+
+    There are several potential reasons why you would be unlikely to achieve this in practice: for example, memory bandwidth, cache capacity, dependencies between apparently independent pieces of code, etc. The remaining marks would be given for showing a good understanding of this.
+
+    \item 
+    \begin{enumerate}[label=(\roman*)]
+        \item The technical reason is because race conditions can occur. A race condition is where two threads could be updating the same value at the same time, meaning one of the updates is overwritten. As an example, if there are ‘2’ pairs of boots left in stock, and two people buy it at the same time, then their threads could both see ‘2’ as the quantity in stage (i) of the threads at the same time, and then both calculate that ‘1’ should be the new value in stage (ii) of the threads at the same time, then both update the stock to ‘1’ in stage (iii) of the threads at the same time; despite the true quantity being ‘0’.
+
+        \item The program needs to identify the critical section (checking and updating the stock) and ensure only one thread can be in this section. For full marks, the answer will refer to locks or other mechanisms to ensure this.
+
+        \item The performance will have got worse because of the extra cost of protecting the critical section; now, only one thread can enter that section of the code at a time, meaning that those operations must be performed sequentially rather than concurrently.
+    \end{enumerate}
+\end{enumerate}
+}
+\subsubsection{Question 3}
+
+Alice wants to send a message to Bob. Alice and Bob communicate using the Internet, which has five layers in its protocol stack.
+
+\textbf{(a)}
+Alice is not sure whether to encrypt her message using a symmetric key encryption system or a public key encryption system. Describe one advantage and one disadvantage of public key crypto compared to symmetric key crypto. Then, use these differences to justify which cryptographic system you think Alice should choose to encrypt her message. \hfill [4 marks]
+
+\textbf{(b)}
+When the message is sent, the communication is initiated by Alice’s messaging application process on the Application Layer. Explain what sockets are and how the Application Layer uses sockets to ensure that the message goes to the correct host (Bob) and the correct process (Bob’s messaging application). \hfill [3 marks]
+
+\textbf{(c)}
+The Transport Layer utilises TCP for Alice and Bob’s communication. TCP is a connection-oriented protocol that provides a reliable flow of data between two computers. Before exchanging data, the client and server perform a “three-way handshake” in order to agree to establish a TCP connection.
+
+Describe the three steps of the handshake, with particular reference at each stage to the states of the client and server, as well as the values of any variables used. \hfill [8 marks]
+
+\textbf{(d)}
+Discuss the role and purpose of the Network Layer on both sides of Alice and Bob’s communication. \hfill [5 marks]
+{\color{blue}
+\begin{enumerate}[label=(\alph*)]
+    \item This question would not be examined this year.
+
+    \item Sockets are the interface between the Application and Transport Layers; a process sends and receives messages to and from its socket. Socket addresses are made up of an IP address and a port number. Bob’s IP address uniquely identifies Bob’s host machine, and the port number of the messaging process uniquely identifies that process. Therefore, Bob’s socket address used in this communication uniquely identifies the messaging process running on his host machine.
+
+    \item Before the handshake, both Alice and Bob’s hosts are in LISTEN state.
+
+    In the first step of the handshake, Alice sends a SYN message to Bob. This message’s TCP header has a sequence number $x$ and SYNbit = 1.
+
+    After this message is sent, Alice’s host is in SYNSENT state. Once it is received by Bob, Bob’s host is in SYNRCVD status.
+
+    In the second step of the handshake, Bob sends a SYNACK message to Alice. This message’s TCP header has sequence number $y$, acknowledgement number $x+1$, SYNbit = 1 and ACKbit = 1.
+
+    In the third step of the handshake, Alice sends an ACK message back to Bob. This message’s TCP header has sequence number $x+1$, acknowledgement number $y+1$ and ACKbit = 1.
+
+    Once Alice has sent this message, her host is in ESTAB state. Once Bob receives it, he is also in ESTAB state, and the connection is established.
+
+    \item Demonstrate understanding of the purpose of the network layer in general (3 marks); reference to this specific communication between Alice and Bob must be present in the answer to earn the other 2 marks. Points may include:
+    \begin{itemize}
+        \item Every host/router has network layer protocols
+        \item Has two key functions: forwarding and routing
+        \item Forwarding means moving packets from router’s input to appropriate router output
+        \item Routing means determining route taken by packets from source/Alice to destination/Bob
+        \item On sending/Alice side, it encapsulates segments into datagrams/packets
+        \item On receiving/Bob side, it delivers segments to transport layer
+        \item Third important function (in some architectures) is connection setup; i.e. two end hosts establish virtual connection
+    \end{itemize}
+\end{enumerate}
+}
+
