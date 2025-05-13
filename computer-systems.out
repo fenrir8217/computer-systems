@@ -1,0 +1,292 @@
+\BOOKMARK [1][-]{section.1}{Data Representation and Manipulation}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Binary}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Characters}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Number Bases}{section.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.3.1}{Decimal to Binary, Octal and Hexadecimal}{subsection.1.3}% 5
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Binary, Octal and Hexadecimal to Decimal}{subsection.1.3}% 6
+\BOOKMARK [3][-]{subsubsection.1.3.3}{Binary to Octal and Octal to Binary}{subsection.1.3}% 7
+\BOOKMARK [3][-]{subsubsection.1.3.4}{Binary to Hexadecimal and Hexadecimal to Binary}{subsection.1.3}% 8
+\BOOKMARK [3][-]{subsubsection.1.3.5}{Octal to Hexadecimal and Hexadecimal to Octal}{subsection.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.4}{Integers in Binary}{section.1}% 10
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Overflow}{subsection.1.4}% 11
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Two's Complement}{subsection.1.4}% 12
+\BOOKMARK [2][-]{subsection.1.5}{Real Numbers in Binary}{section.1}% 13
+\BOOKMARK [3][-]{subsubsection.1.5.1}{Fixed Point Decimal to Binary}{subsection.1.5}% 14
+\BOOKMARK [3][-]{subsubsection.1.5.2}{Fixed Point Binary to Decimal}{subsection.1.5}% 15
+\BOOKMARK [3][-]{subsubsection.1.5.3}{Floating Point Numbers}{subsection.1.5}% 16
+\BOOKMARK [3][-]{subsubsection.1.5.4}{Numerical Precision}{subsection.1.5}% 17
+\BOOKMARK [1][-]{section.2}{Introduction to Computer Architecture}{}% 18
+\BOOKMARK [2][-]{subsection.2.1}{Anatomy of a Computer System}{section.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Memory}{subsection.2.1}% 20
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Control unit}{subsection.2.1}% 21
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Arithmetic Logic Unit \(ALU\)}{subsection.2.1}% 22
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Input and Output Units}{subsection.2.1}% 23
+\BOOKMARK [2][-]{subsection.2.2}{The Fetch-Execute Cycle}{section.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Instruction Fetch \(IF\)}{subsection.2.2}% 25
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Instruction Decode \(ID\)}{subsection.2.2}% 26
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Data fetch \(DF\)}{subsection.2.2}% 27
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Instruction Execute \(EX\)}{subsection.2.2}% 28
+\BOOKMARK [3][-]{subsubsection.2.2.5}{Result Return \(RR\)}{subsection.2.2}% 29
+\BOOKMARK [2][-]{subsection.2.3}{Machine Instructions}{section.2}% 30
+\BOOKMARK [1][-]{section.3}{Instructions, Assembly Language and Machine Code}{}% 31
+\BOOKMARK [2][-]{subsection.3.1}{The von Neumann Architecture}{section.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Central Processing Unit \(CPU\)}{subsection.3.1}% 33
+\BOOKMARK [3][-]{subsubsection.3.1.2}{System Bus}{subsection.3.1}% 34
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Memory}{subsection.3.1}% 35
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Clock}{subsection.3.1}% 36
+\BOOKMARK [2][-]{subsection.3.2}{The Harvard Architecture}{section.3}% 37
+\BOOKMARK [2][-]{subsection.3.3}{MIPS R4000}{section.3}% 38
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Registers}{subsection.3.3}% 39
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Deep Pipeline}{subsection.3.3}% 40
+\BOOKMARK [2][-]{subsection.3.4}{Assembly Language}{section.3}% 41
+\BOOKMARK [2][-]{subsection.3.5}{Instruction Sets}{section.3}% 42
+\BOOKMARK [1][-]{section.4}{Compilation, Interpretation and the JVM}{}% 43
+\BOOKMARK [2][-]{subsection.4.1}{Levels of Programming Languages}{section.4}% 44
+\BOOKMARK [2][-]{subsection.4.2}{Language Processing Systems}{section.4}% 45
+\BOOKMARK [2][-]{subsection.4.3}{High-Level Program Execution}{section.4}% 46
+\BOOKMARK [2][-]{subsection.4.4}{Compilation}{section.4}% 47
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Lexical Analysis}{subsection.4.4}% 48
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Syntax Analysis \(Parsing\)}{subsection.4.4}% 49
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Semantic Analysis}{subsection.4.4}% 50
+\BOOKMARK [3][-]{subsubsection.4.4.4}{Intermediate Code Generation}{subsection.4.4}% 51
+\BOOKMARK [3][-]{subsubsection.4.4.5}{Optimisation}{subsection.4.4}% 52
+\BOOKMARK [3][-]{subsubsection.4.4.6}{Code Generation}{subsection.4.4}% 53
+\BOOKMARK [2][-]{subsection.4.5}{Interpretation}{section.4}% 54
+\BOOKMARK [2][-]{subsection.4.6}{Combined Compilation and Interpretation}{section.4}% 55
+\BOOKMARK [2][-]{subsection.4.7}{Compilation and Execution on Virtual Machines}{section.4}% 56
+\BOOKMARK [1][-]{section.5}{Subroutines and Stacks}{}% 57
+\BOOKMARK [2][-]{subsection.5.1}{How Subroutines Work}{section.5}% 58
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Call and Return Instructions}{subsection.5.1}% 59
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Method 1 \204 Storing Return Address as First Byte}{subsection.5.1}% 60
+\BOOKMARK [3][-]{subsubsection.5.1.3}{Introduction to Stacks}{subsection.5.1}% 61
+\BOOKMARK [3][-]{subsubsection.5.1.4}{Method 2 \204 Storing Return Address on a Stack}{subsection.5.1}% 62
+\BOOKMARK [3][-]{subsubsection.5.1.5}{Saving Registers}{subsection.5.1}% 63
+\BOOKMARK [2][-]{subsection.5.2}{Stacks for Calculations}{section.5}% 64
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Reverse Polish Notation \(RPN\)}{subsection.5.2}% 65
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Stack Machines}{subsection.5.2}% 66
+\BOOKMARK [2][-]{subsection.5.3}{Bitwise Boolean Operations}{section.5}% 67
+\BOOKMARK [2][-]{subsection.5.4}{Conditional and Unconditional Jumps}{section.5}% 68
+\BOOKMARK [1][-]{section.6}{The JVM and Java Bytecode}{}% 69
+\BOOKMARK [2][-]{subsection.6.1}{Execution on the JVM}{section.6}% 70
+\BOOKMARK [2][-]{subsection.6.2}{Stack Frames}{section.6}% 71
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Variable and Operand Storage}{subsection.6.2}% 72
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Local Variables}{subsection.6.2}% 73
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Slot Numbers}{subsection.6.2}% 74
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Stack Overflow}{subsection.6.2}% 75
+\BOOKMARK [2][-]{subsection.6.3}{Java Bytecode Instructions}{section.6}% 76
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Arithmetic}{subsection.6.3}% 77
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Pushing}{subsection.6.3}% 78
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Popping}{subsection.6.3}% 79
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Jumps}{subsection.6.3}% 80
+\BOOKMARK [2][-]{subsection.6.4}{Call and Return}{section.6}% 81
+\BOOKMARK [3][-]{subsubsection.6.4.1}{The Stack}{subsection.6.4}% 82
+\BOOKMARK [3][-]{subsubsection.6.4.2}{Runtime Constant Pool}{subsection.6.4}% 83
+\BOOKMARK [3][-]{subsubsection.6.4.3}{Static Method Calls}{subsection.6.4}% 84
+\BOOKMARK [3][-]{subsubsection.6.4.4}{Method Returns}{subsection.6.4}% 85
+\BOOKMARK [2][-]{subsection.6.5}{Java Disassembler}{section.6}% 86
+\BOOKMARK [1][-]{section.7}{Complexity of Algorithms}{}% 87
+\BOOKMARK [2][-]{subsection.7.1}{Algorithm Design and Analysis}{section.7}% 88
+\BOOKMARK [2][-]{subsection.7.2}{Time Complexity}{section.7}% 89
+\BOOKMARK [2][-]{subsection.7.3}{Complexity Class and Big-O Notation}{section.7}% 90
+\BOOKMARK [2][-]{subsection.7.4}{Algorithm and Problem Complexity}{section.7}% 91
+\BOOKMARK [1][-]{section.9}{Introduction to Operating Systems}{}% 92
+\BOOKMARK [2][-]{subsection.9.1}{Early Computers}{section.9}% 93
+\BOOKMARK [2][-]{subsection.9.2}{Operating System \(OS\)}{section.9}% 94
+\BOOKMARK [2][-]{subsection.9.3}{Components of a Computer System}{section.9}% 95
+\BOOKMARK [2][-]{subsection.9.4}{Evolution of Operating Systems}{section.9}% 96
+\BOOKMARK [3][-]{subsubsection.9.4.1}{Serial Processing}{subsection.9.4}% 97
+\BOOKMARK [3][-]{subsubsection.9.4.2}{Simple Batch Systems}{subsection.9.4}% 98
+\BOOKMARK [3][-]{subsubsection.9.4.3}{Multiprogrammed Batch Systems}{subsection.9.4}% 99
+\BOOKMARK [3][-]{subsubsection.9.4.4}{Time Sharing Systems}{subsection.9.4}% 100
+\BOOKMARK [2][-]{subsection.9.5}{Elements of an Operating System}{section.9}% 101
+\BOOKMARK [3][-]{subsubsection.9.5.1}{Firmware}{subsection.9.5}% 102
+\BOOKMARK [3][-]{subsubsection.9.5.2}{Memory}{subsection.9.5}% 103
+\BOOKMARK [3][-]{subsubsection.9.5.3}{Time Sharing}{subsection.9.5}% 104
+\BOOKMARK [2][-]{subsection.9.6}{Dual Mode}{section.9}% 105
+\BOOKMARK [2][-]{subsection.9.7}{System Calls}{section.9}% 106
+\BOOKMARK [1][-]{section.10}{Computer Architecture and OS Structures}{}% 107
+\BOOKMARK [2][-]{subsection.10.1}{Storage Structure and Memory Hierarchy}{section.10}% 108
+\BOOKMARK [2][-]{subsection.10.2}{I/O Structure}{section.10}% 109
+\BOOKMARK [2][-]{subsection.10.3}{I/O Mechanisms}{section.10}% 110
+\BOOKMARK [3][-]{subsubsection.10.3.1}{Programmed I/O}{subsection.10.3}% 111
+\BOOKMARK [3][-]{subsubsection.10.3.2}{Interrupt-Driven I/O}{subsection.10.3}% 112
+\BOOKMARK [3][-]{subsubsection.10.3.3}{Direct Memory Access \(DMA\)}{subsection.10.3}% 113
+\BOOKMARK [2][-]{subsection.10.4}{General Computer System Architectures}{section.10}% 114
+\BOOKMARK [3][-]{subsubsection.10.4.1}{Multiprocessor Sytems}{subsection.10.4}% 115
+\BOOKMARK [3][-]{subsubsection.10.4.2}{Non-Uniform Memory Access \(NUMA\)}{subsection.10.4}% 116
+\BOOKMARK [3][-]{subsubsection.10.4.3}{Multicore Systems}{subsection.10.4}% 117
+\BOOKMARK [3][-]{subsubsection.10.4.4}{Clustered Systems}{subsection.10.4}% 118
+\BOOKMARK [2][-]{subsection.10.5}{Operating System Services}{section.10}% 119
+\BOOKMARK [2][-]{subsection.10.6}{System Calls / OS Relationship}{section.10}% 120
+\BOOKMARK [2][-]{subsection.10.7}{OS Design and Implementation}{section.10}% 121
+\BOOKMARK [2][-]{subsection.10.8}{Operating System Structure}{section.10}% 122
+\BOOKMARK [3][-]{subsubsection.10.8.1}{Simple Structure}{subsection.10.8}% 123
+\BOOKMARK [3][-]{subsubsection.10.8.2}{More Complex or Non-Simple Structure}{subsection.10.8}% 124
+\BOOKMARK [3][-]{subsubsection.10.8.3}{Layered Approach}{subsection.10.8}% 125
+\BOOKMARK [3][-]{subsubsection.10.8.4}{Microkernel Structure}{subsection.10.8}% 126
+\BOOKMARK [3][-]{subsubsection.10.8.5}{Modular Approach}{subsection.10.8}% 127
+\BOOKMARK [3][-]{subsubsection.10.8.6}{Hybrid Approach}{subsection.10.8}% 128
+\BOOKMARK [2][-]{subsection.10.9}{User Classes and Interfaces}{section.10}% 129
+\BOOKMARK [3][-]{subsubsection.10.9.1}{System Call Interface}{subsection.10.9}% 130
+\BOOKMARK [3][-]{subsubsection.10.9.2}{Command-Line Interface}{subsection.10.9}% 131
+\BOOKMARK [3][-]{subsubsection.10.9.3}{Job Control Language Interface}{subsection.10.9}% 132
+\BOOKMARK [3][-]{subsubsection.10.9.4}{Graphical User Interface \(GUI\)}{subsection.10.9}% 133
+\BOOKMARK [3][-]{subsubsection.10.9.5}{Touchscreen Interface}{subsection.10.9}% 134
+\BOOKMARK [1][-]{section.11}{Process Management}{}% 135
+\BOOKMARK [2][-]{subsection.11.1}{Processes}{section.11}% 136
+\BOOKMARK [2][-]{subsection.11.2}{Process Structure}{section.11}% 137
+\BOOKMARK [2][-]{subsection.11.3}{Process Control Block \(PCB\)}{section.11}% 138
+\BOOKMARK [2][-]{subsection.11.4}{Process States}{section.11}% 139
+\BOOKMARK [2][-]{subsection.11.5}{Process Scheduling}{section.11}% 140
+\BOOKMARK [3][-]{subsubsection.11.5.1}{Types of Scheduler}{subsection.11.5}% 141
+\BOOKMARK [3][-]{subsubsection.11.5.2}{Types of Process}{subsection.11.5}% 142
+\BOOKMARK [3][-]{subsubsection.11.5.3}{Context Switching}{subsection.11.5}% 143
+\BOOKMARK [3][-]{subsubsection.11.5.4}{Dispatch Events}{subsection.11.5}% 144
+\BOOKMARK [3][-]{subsubsection.11.5.5}{Dispatcher}{subsection.11.5}% 145
+\BOOKMARK [3][-]{subsubsection.11.5.6}{Virtualisation and Swapping}{subsection.11.5}% 146
+\BOOKMARK [2][-]{subsection.11.6}{Process Creation}{section.11}% 147
+\BOOKMARK [3][-]{subsubsection.11.6.1}{Parent and Child Processes}{subsection.11.6}% 148
+\BOOKMARK [3][-]{subsubsection.11.6.2}{Process Creation in Unix}{subsection.11.6}% 149
+\BOOKMARK [2][-]{subsection.11.7}{Process Waiting}{section.11}% 150
+\BOOKMARK [2][-]{subsection.11.8}{Process Termination}{section.11}% 151
+\BOOKMARK [2][-]{subsection.11.9}{Execution of the Operating System}{section.11}% 152
+\BOOKMARK [3][-]{subsubsection.11.9.1}{Non-Process Kernel OS}{subsection.11.9}% 153
+\BOOKMARK [3][-]{subsubsection.11.9.2}{OS Execution within User Processes}{subsection.11.9}% 154
+\BOOKMARK [3][-]{subsubsection.11.9.3}{Process-Based OS}{subsection.11.9}% 155
+\BOOKMARK [1][-]{section.12}{Process Scheduling}{}% 156
+\BOOKMARK [2][-]{subsection.12.1}{Basic Concepts}{section.12}% 157
+\BOOKMARK [3][-]{subsubsection.12.1.1}{CPU and I/O Burst Cycle}{subsection.12.1}% 158
+\BOOKMARK [3][-]{subsubsection.12.1.2}{Dispatcher}{subsection.12.1}% 159
+\BOOKMARK [3][-]{subsubsection.12.1.3}{Levels of Scheduling}{subsection.12.1}% 160
+\BOOKMARK [2][-]{subsection.12.2}{Scheduling Criteria}{section.12}% 161
+\BOOKMARK [2][-]{subsection.12.3}{Scheduling Algorithms}{section.12}% 162
+\BOOKMARK [3][-]{subsubsection.12.3.1}{First Come First Serve \(FCFS\)}{subsection.12.3}% 163
+\BOOKMARK [3][-]{subsubsection.12.3.2}{Shortest Job First \(SJF\)}{subsection.12.3}% 164
+\BOOKMARK [3][-]{subsubsection.12.3.3}{Shortest Remaining Time First \(SRTF\)}{subsection.12.3}% 165
+\BOOKMARK [3][-]{subsubsection.12.3.4}{Priority Scheduling}{subsection.12.3}% 166
+\BOOKMARK [3][-]{subsubsection.12.3.5}{Round-Robin \(RR\)}{subsection.12.3}% 167
+\BOOKMARK [1][-]{section.14}{Concurrency and Synchronisation}{}% 168
+\BOOKMARK [2][-]{subsection.14.1}{Introduction to Concurrency}{section.14}% 169
+\BOOKMARK [3][-]{subsubsection.14.1.1}{Motivation}{subsection.14.1}% 170
+\BOOKMARK [3][-]{subsubsection.14.1.2}{Multiple Processes}{subsection.14.1}% 171
+\BOOKMARK [3][-]{subsubsection.14.1.3}{Key Terms}{subsection.14.1}% 172
+\BOOKMARK [3][-]{subsubsection.14.1.4}{Principles of Concurrency}{subsection.14.1}% 173
+\BOOKMARK [3][-]{subsubsection.14.1.5}{Difficulties of Concurrency}{subsection.14.1}% 174
+\BOOKMARK [2][-]{subsection.14.2}{OS Concerns and Process Interaction}{section.14}% 175
+\BOOKMARK [2][-]{subsection.14.3}{Resource Competition}{section.14}% 176
+\BOOKMARK [2][-]{subsection.14.4}{Critical Section Problem}{section.14}% 177
+\BOOKMARK [3][-]{subsubsection.14.4.1}{Critical Section}{subsection.14.4}% 178
+\BOOKMARK [3][-]{subsubsection.14.4.2}{Deadlock and Starvation}{subsection.14.4}% 179
+\BOOKMARK [3][-]{subsubsection.14.4.3}{Requirements for Solutions to the Problem}{subsection.14.4}% 180
+\BOOKMARK [2][-]{subsection.14.5}{Software Solutions}{section.14}% 181
+\BOOKMARK [3][-]{subsubsection.14.5.1}{Lock Variables}{subsection.14.5}% 182
+\BOOKMARK [3][-]{subsubsection.14.5.2}{Busy-Waiting \(Polling and Spinning\)}{subsection.14.5}% 183
+\BOOKMARK [3][-]{subsubsection.14.5.3}{Busy-Waiting \(Strict Alternation\)}{subsection.14.5}% 184
+\BOOKMARK [2][-]{subsection.14.6}{Hardware Solutions}{section.14}% 185
+\BOOKMARK [3][-]{subsubsection.14.6.1}{Disabling Interrupts}{subsection.14.6}% 186
+\BOOKMARK [3][-]{subsubsection.14.6.2}{Special Hardware Instructions}{subsection.14.6}% 187
+\BOOKMARK [2][-]{subsection.14.7}{Abstractions}{section.14}% 188
+\BOOKMARK [2][-]{subsection.14.8}{Parallelism and Concurrency}{section.14}% 189
+\BOOKMARK [2][-]{subsection.14.9}{Multicore Systems and Multithreading}{section.14}% 190
+\BOOKMARK [2][-]{subsection.14.10}{Multithreading Models}{section.14}% 191
+\BOOKMARK [3][-]{subsubsection.14.10.1}{Many-to-One Model}{subsection.14.10}% 192
+\BOOKMARK [3][-]{subsubsection.14.10.2}{One-to-One Model}{subsection.14.10}% 193
+\BOOKMARK [3][-]{subsubsection.14.10.3}{Many-to-Many Model}{subsection.14.10}% 194
+\BOOKMARK [2][-]{subsection.14.11}{Thread Interference and Memory Consistency}{section.14}% 195
+\BOOKMARK [1][-]{section.15}{Deadlocks}{}% 196
+\BOOKMARK [2][-]{subsection.15.1}{Reusable and Consumable Resources}{section.15}% 197
+\BOOKMARK [2][-]{subsection.15.2}{Deadlock Conditions}{section.15}% 198
+\BOOKMARK [2][-]{subsection.15.3}{Resource Allocation Graphs}{section.15}% 199
+\BOOKMARK [2][-]{subsection.15.4}{Deadlock Handling}{section.15}% 200
+\BOOKMARK [2][-]{subsection.15.5}{Deadlock Prevention}{section.15}% 201
+\BOOKMARK [3][-]{subsubsection.15.5.1}{Mutual Exclusion Prevention}{subsection.15.5}% 202
+\BOOKMARK [3][-]{subsubsection.15.5.2}{Hold-and-Wait Prevention}{subsection.15.5}% 203
+\BOOKMARK [3][-]{subsubsection.15.5.3}{No Preemption Prevention}{subsection.15.5}% 204
+\BOOKMARK [3][-]{subsubsection.15.5.4}{Circular Wait Prevention}{subsection.15.5}% 205
+\BOOKMARK [2][-]{subsection.15.6}{Deadlock Avoidance}{section.15}% 206
+\BOOKMARK [3][-]{subsubsection.15.6.1}{The Resource Matrix System}{subsection.15.6}% 207
+\BOOKMARK [3][-]{subsubsection.15.6.2}{Process Initiation Denial}{subsection.15.6}% 208
+\BOOKMARK [3][-]{subsubsection.15.6.3}{Resource Allocation Denial}{subsection.15.6}% 209
+\BOOKMARK [2][-]{subsection.15.7}{Deadlock Detection and Recovery}{section.15}% 210
+\BOOKMARK [2][-]{subsection.15.8}{Integrated Deadlock Strategy}{section.15}% 211
+\BOOKMARK [1][-]{section.16}{Introduction to Networks}{}% 212
+\BOOKMARK [2][-]{subsection.16.1}{The Internet}{section.16}% 213
+\BOOKMARK [2][-]{subsection.16.2}{Distributed Systems}{section.16}% 214
+\BOOKMARK [2][-]{subsection.16.3}{Internet, Intranet and Firewalls}{section.16}% 215
+\BOOKMARK [2][-]{subsection.16.4}{Network Principles}{section.16}% 216
+\BOOKMARK [2][-]{subsection.16.5}{Switching Schemes}{section.16}% 217
+\BOOKMARK [3][-]{subsubsection.16.5.1}{Circuit Switching}{subsection.16.5}% 218
+\BOOKMARK [3][-]{subsubsection.16.5.2}{Packet Switching}{subsection.16.5}% 219
+\BOOKMARK [2][-]{subsection.16.6}{Internet Structure \(Network of Networks\)}{section.16}% 220
+\BOOKMARK [2][-]{subsection.16.7}{Packet Loss and Delays}{section.16}% 221
+\BOOKMARK [2][-]{subsection.16.8}{Protocols}{section.16}% 222
+\BOOKMARK [2][-]{subsection.16.9}{Protocol Layers and Encapsulation}{section.16}% 223
+\BOOKMARK [2][-]{subsection.16.10}{Open Systems Interconnection \(OSI\) Model}{section.16}% 224
+\BOOKMARK [2][-]{subsection.16.11}{Large Messages and Message Consistency}{section.16}% 225
+\BOOKMARK [2][-]{subsection.16.12}{Ports and Addressing}{section.16}% 226
+\BOOKMARK [2][-]{subsection.16.13}{Datagram Packet Delivery}{section.16}% 227
+\BOOKMARK [1][-]{section.17}{Application Layer}{}% 228
+\BOOKMARK [2][-]{subsection.17.1}{Principles of Network Applications}{section.17}% 229
+\BOOKMARK [3][-]{subsubsection.17.1.1}{Client-Server Architecture}{subsection.17.1}% 230
+\BOOKMARK [3][-]{subsubsection.17.1.2}{Peer-to-Peer \(P2P\) Architecture}{subsection.17.1}% 231
+\BOOKMARK [3][-]{subsubsection.17.1.3}{Process Communication and Sockets}{subsection.17.1}% 232
+\BOOKMARK [2][-]{subsection.17.2}{Transport Services}{section.17}% 233
+\BOOKMARK [3][-]{subsubsection.17.2.1}{Transmission Control Protocol \(TCP\)}{subsection.17.2}% 234
+\BOOKMARK [3][-]{subsubsection.17.2.2}{User Datagram Protocol \(UDP\)}{subsection.17.2}% 235
+\BOOKMARK [2][-]{subsection.17.3}{Hypertext Transfer Protocol \(HTTP\)}{section.17}% 236
+\BOOKMARK [3][-]{subsubsection.17.3.1}{Non-Persistent HTTP}{subsection.17.3}% 237
+\BOOKMARK [3][-]{subsubsection.17.3.2}{Persistent HTTP}{subsection.17.3}% 238
+\BOOKMARK [3][-]{subsubsection.17.3.3}{HTTP Request Message}{subsection.17.3}% 239
+\BOOKMARK [3][-]{subsubsection.17.3.4}{HTTP Response Message}{subsection.17.3}% 240
+\BOOKMARK [2][-]{subsection.17.4}{Simple Mail Transfer Protocol \(SMTP\)}{section.17}% 241
+\BOOKMARK [2][-]{subsection.17.5}{Mail Access Protocols}{section.17}% 242
+\BOOKMARK [2][-]{subsection.17.6}{Domain Name System \(DNS\)}{section.17}% 243
+\BOOKMARK [3][-]{subsubsection.17.6.1}{The DNS Distibuted Hierarchical Database}{subsection.17.6}% 244
+\BOOKMARK [3][-]{subsubsection.17.6.2}{DNS Resolution}{subsection.17.6}% 245
+\BOOKMARK [3][-]{subsubsection.17.6.3}{DNS Caching and Records}{subsection.17.6}% 246
+\BOOKMARK [3][-]{subsubsection.17.6.4}{DNS Protocol Messages}{subsection.17.6}% 247
+\BOOKMARK [3][-]{subsubsection.17.6.5}{DNS Registration}{subsection.17.6}% 248
+\BOOKMARK [1][-]{section.18}{Transport Layer}{}% 249
+\BOOKMARK [2][-]{subsection.18.1}{Transport Layer Services and Protocols}{section.18}% 250
+\BOOKMARK [2][-]{subsection.18.2}{Multiplexing and Demultiplexing}{section.18}% 251
+\BOOKMARK [3][-]{subsubsection.18.2.1}{Connectionless Demultiplexing}{subsection.18.2}% 252
+\BOOKMARK [3][-]{subsubsection.18.2.2}{Connection-Oriented Demultiplexing}{subsection.18.2}% 253
+\BOOKMARK [2][-]{subsection.18.3}{User Datagram Protocol \(UDP\)}{section.18}% 254
+\BOOKMARK [3][-]{subsubsection.18.3.1}{UDP Checksum}{subsection.18.3}% 255
+\BOOKMARK [2][-]{subsection.18.4}{Principles of Reliable Data Transfer}{section.18}% 256
+\BOOKMARK [3][-]{subsubsection.18.4.1}{RDT over a Perfectly Reliable Channel \(RDT1.0\)}{subsection.18.4}% 257
+\BOOKMARK [3][-]{subsubsection.18.4.2}{RDT over a Channel With Bit Errors \(RDT2.0\)}{subsection.18.4}% 258
+\BOOKMARK [3][-]{subsubsection.18.4.3}{RDT With Corrupted Acknowledgements \(RDT2.1\)}{subsection.18.4}% 259
+\BOOKMARK [3][-]{subsubsection.18.4.4}{RDT Without Negative Acknowledgements \(RDT2.2\)}{subsection.18.4}% 260
+\BOOKMARK [3][-]{subsubsection.18.4.5}{RDT Over a Channel with Errors and Losses \(RDT3.0\)}{subsection.18.4}% 261
+\BOOKMARK [2][-]{subsection.18.5}{Transmission Control Protocol \(TCP\)}{section.18}% 262
+\BOOKMARK [3][-]{subsubsection.18.5.1}{TCP Round-Trip Time and Timeout}{subsection.18.5}% 263
+\BOOKMARK [3][-]{subsubsection.18.5.2}{TCP Retransmission Scenarios}{subsection.18.5}% 264
+\BOOKMARK [3][-]{subsubsection.18.5.3}{TCP Fast Retransmit}{subsection.18.5}% 265
+\BOOKMARK [3][-]{subsubsection.18.5.4}{TCP Flow Control}{subsection.18.5}% 266
+\BOOKMARK [3][-]{subsubsection.18.5.5}{TCP Connection Management}{subsection.18.5}% 267
+\BOOKMARK [1][-]{section.19}{Network Layer}{}% 268
+\BOOKMARK [2][-]{subsection.19.1}{Forwarding and Routing}{section.19}% 269
+\BOOKMARK [2][-]{subsection.19.2}{Network Service Model}{section.19}% 270
+\BOOKMARK [2][-]{subsection.19.3}{Router Input Ports}{section.19}% 271
+\BOOKMARK [2][-]{subsection.19.4}{Router Switching Fabrics}{section.19}% 272
+\BOOKMARK [3][-]{subsubsection.19.4.1}{Memory Switching Fabric}{subsection.19.4}% 273
+\BOOKMARK [3][-]{subsubsection.19.4.2}{Bus Switching Fabric}{subsection.19.4}% 274
+\BOOKMARK [3][-]{subsubsection.19.4.3}{Crossbar Switching Fabric}{subsection.19.4}% 275
+\BOOKMARK [2][-]{subsection.19.5}{Router Output Ports}{section.19}% 276
+\BOOKMARK [2][-]{subsection.19.6}{IP Datagram Fragmentation}{section.19}% 277
+\BOOKMARK [2][-]{subsection.19.7}{IP Addressing}{section.19}% 278
+\BOOKMARK [3][-]{subsubsection.19.7.1}{Classless Interdomain Routing \(CIDR\)}{subsection.19.7}% 279
+\BOOKMARK [2][-]{subsection.19.8}{Dynamic Host Configuration Protocol \(DHCP\)}{section.19}% 280
+\BOOKMARK [2][-]{subsection.19.9}{Network Address Translation \(NAT\)}{section.19}% 281
+\BOOKMARK [2][-]{subsection.19.10}{Network Layer Routing Algorithms}{section.19}% 282
+\BOOKMARK [2][-]{subsection.19.11}{Classification of Routing Algorithms}{section.19}% 283
+\BOOKMARK [2][-]{subsection.19.12}{Link-State Routing \(Dijkstra's Algorithm\)}{section.19}% 284
+\BOOKMARK [2][-]{subsection.19.13}{Distance-Vector Routing \(Bellman-Ford Algorithm\)}{section.19}% 285
+\BOOKMARK [2][-]{subsection.19.14}{Hierarchical Routing}{section.19}% 286
+\BOOKMARK [1][-]{section.20}{Network Security}{}% 287
+\BOOKMARK [2][-]{subsection.20.1}{Principles of Cryptography}{section.20}% 288
+\BOOKMARK [2][-]{subsection.20.2}{Symmetric Key Cryptography}{section.20}% 289
+\BOOKMARK [2][-]{subsection.20.3}{Public Key Cryptography}{section.20}% 290
+\BOOKMARK [3][-]{subsubsection.20.3.1}{Rivest, Shamir, Adelson \(RSA\) Encryption}{subsection.20.3}% 291
+\BOOKMARK [3][-]{subsubsection.20.3.2}{RSA Session Keys}{subsection.20.3}% 292
