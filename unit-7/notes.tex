@@ -69,10 +69,13 @@ The device controller moves data between the peripheral device it controls and i
 An OS has a device driver for each device controller.
 These are typically downloaded.
 The device driver is able to interact with its corresponding device controller and provides the OS with a uniform interface to the device.
-\begin{figure}[htp]
-  \centering
+\begin{figure}
   \includegraphics[width=12cm]{unit-7/figures/02.png}
-  \caption*{Storage Comparison}
+  \caption{Device Controller}
+\end{figure}
+\begin{figure}
+  \includegraphics[width=12cm]{unit-7/figures/device_controller.png}
+  \caption{Device Driver}
 \end{figure}
 \subsection{I/O Mechanisms}
 There are three types of I/O mechanism.
@@ -104,7 +107,7 @@ Interrupt driven I/O works as follows.
 \end{enumerate}
 Interrupt driven I/O is suitable for transferring small amounts of data.
 The CPU is less involved in the I/O operation and is free to execute other instructions.
-However, this reduces the speed of the I/O operation.
+Not really suitable for bulk data movement, such as disk I/O.
 
 \subsubsection{Direct Memory Access (DMA)}
 
@@ -131,9 +134,6 @@ The CPU is completely free to execute other instructions.
 However, both the DMA controller and the CPU share the bus that connects different hardware components.
 Thus, the CPU will experience slowdown during DMA transfer as it must wait for access to the bus.
 
-\subsubsection{Computer System Architecture}
-Single-processor and multiprocessor systems. Single-processor systems have one CPU, sometimes including special-purpose processors. In contrast, multiprocessor systems, which include parallel and multicore setups, share the bus, clock, memory, and peripherals. These systems range from servers to smartphones and offer benefits such as increased throughput, improved cost efficiency, and better reliability through graceful degradation.
-\pagebreak
 \subsection{General Computer System Architectures}
 
 \subsubsection{Multiprocessor Sytems}
@@ -150,19 +150,15 @@ Each processor is assigned a specific task.
 
 Symmetric multiprocessor systems follow a peer-to-peer relationship.
 Each processor is utilised and has an equal chance of being used.
-\subsubsection{\sout{Non-Uniform Memory Access (NUMA)}}
-\sout{
+{\color{gray}
+\subsubsection{Non-Uniform Memory Access (NUMA)}
 In non-uniform memory access (NUMA) systems, multiple processors are interconnected and each processor has its own memory.
 Each processor can access the other memories through their corresponding processors, but this is slower than direct access to its own memory.
-}
-\subsubsection{\sout{Multicore Systems}}
-\sout{
+\subsubsection{Multicore Systems}
 Multicore systems have multiple cores on a single chip.
 This is useful because on-chip communication is faster and consumes less power.
 This is used in blade servers to minimise physical space and power consumption.
-}
-\subsubsection{\sout{Clustered Systems}}
-\sout{
+\subsubsection{Clustered Systems}
 Clustered systems incorporate multiple interconnected computers with a shared network storage.
 This provides a high availability of computers and processors, which is useful if one computer fails.
 It also facilitates standby or backup servers, high-performance computing and parallelisation of applications.
@@ -177,16 +173,15 @@ Operating system installations typically include
 \end{itemize}
 
 \subsection{System Calls}
-
-System calls provide OS services to the user via an application programming interface (API).
-System calls APIs are typically written in C or C++, though some are written in assembly language.
-System calls are mostly accessed by programs via a high-level Application Programming Interface (API) rather than direct system call use
+\begin{itemize}
+  \item System calls provide OS services to the user via an application programming interface (API).
+  \item System calls APIs are typically written in C or C++, though some are written in assembly language.
+  \item System calls are mostly accessed by programs via a high-level Application Programming Interface (API) rather than direct system call use
 Three most common APIs are Win32 API for Windows, POSIX API for POSIX-based systems (including virtually all versions of UNIX, Linux, and Mac OS X), and Java API for the Java virtual machine (JVM)
-\newline
-Typically, there is a number associated with each system call.
-The system call interface maintains a table indexed according to these numbers.
-The system call interface invokes the requested system call in the OS kernel and returns the status of the system call and any return values.
-\newline
+\end{itemize}
+Typically, there is a number associated with each system call.\\ 
+The system call interface maintains a table indexed according to these numbers.\\
+The system call interface invokes the requested system call in the OS kernel and returns the status of the system call and any return values.\\
 The system call for reading data from one file and writing it to another is \texttt{cp <file1> <file2>}.
 This uses the following services.
 \begin{itemize}
@@ -241,10 +236,9 @@ System call APIs are used for program portability.
 A program using the API can be compiled and run on any system that supports the API\@.
 Invoking system calls directly is usually more difficult.
 Using a system call API is similar to implementing an interface.
-\begin{figure}[htp]
-  \centering
-  \includegraphics[width=12cm]{unit-7/figures/05.png}
-  \caption*{Standard C Library Example}
+\begin{figure}
+  \includegraphics[width=15cm]{unit-7/figures/05.png}
+  \caption{Standard C Library Example}
 \end{figure}
 \subsection{Dual Mode}
 
@@ -294,7 +288,7 @@ There are various ways to structure one.
   \item Modular approach
   \item Hybrid approach
 \end{itemize}
-
+{\color{gray}
 \subsubsection{Simple Structure}
 
 MS-DOS is an OS with a simple structure.
@@ -416,3 +410,4 @@ Processes can be swapped between main memory and the disk.
 `Virtual memory' allows for the execution of a process that is not entirely in memory.
 The process can use both virtual and physical memory as `logical' memory.
 This allows users to run programs that require more than the available physical memory and frees programmers from concern over memory limitations.
+}

@@ -507,14 +507,8 @@ final values of z when the code completes its execution.
 What value is left in \$t2 after the above MIPS code executes?
 Tick the correct answer.
 Answer choices:
-\begin{itemize}
-\item 81
-\item 64
-\item 256
-\item 12
-\end{itemize}
 
-Solution and Feedback:
+\textbf{Solution and Feedback:}
 In this question, the initial value of \$t0 is 3, the initial value of \$t1 is 4, and the initial value of \$t2 is 1. 
 In the loop:
 - Multiply \$t2 by \$t0
@@ -543,55 +537,28 @@ Thus, the final value in \$t2 is 81.
 
 \subsection{Variation Question 7.2}
 
-
-
-
-\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
-\hline
-\textbf{Variation} & \textbf{Question} \\
-\hline
-7.2 & Consider the following MIPS assembly code:
-
+\textbf{Question} \\
+Consider the following MIPS assembly code:
 \begin{lstlisting}
     li $t0, 1
     lw $t1, &x
     lw $t2, &y
-
 loop:
     beq $t2, 0, exit
     mul $t0, $t0, $t1
     sub $t2, $t2, 1
     j loop
-
 exit:
     sw $t0, &z
 \end{lstlisting}
 
 Assuming initial values of x = -4 and y = 3, what will be the final values of z when the code completes its execution.\\
-\hline
-\end{longtable}
 
-\vspace{0.5cm}
-
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline
-\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
-\hline
--64 & 81, -32, 32, 64, -81 \\
-\hline
-\end{tabular}
-
-\vspace{0.5cm}
-
-\noindent \textbf{Solution \& Feedback:}
-
-\noindent The MIPS Assembly code computes the exponentiation operation, where x is the base and y contains the exponent. The result is stored in z.
-
+\textbf{Correct Answer(s)} : -64  \\
+\noindent \textbf{Solution \& Feedback:} \\
+\noindent The MIPS Assembly code computes the exponentiation operation, where x is the base and y contains the exponent. The result is stored in z.\\
 \noindent The following tables shows the values of registers during execution:
 
-\vspace{0.5cm}
-
-\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{\$t0 (z)} & \textbf{\$t1 (x)} & \textbf{\$t2 (y)} \\
@@ -605,86 +572,33 @@ Assuming initial values of x = -4 and y = 3, what will be the final values of z 
 -64 & -4 & 0 \\
 \hline
 \end{tabular}
-\end{center}
-
-\vspace{0.5cm}
 
 \noindent Once \$t2 reaches 0, the loop terminates, and the result (\textbf{-64}) is stored in z.
 
-
-
-
-
-
-
-
-
-
-
-Same structure, but initialised differently.
-
-\textbf{Answer:} $-64$
-
-\textbf{Solution \& Feedback:}\\
-Multiplying with negative numbers leads to negative results through iteration.
-
 \subsection{Variation Question 7.3}
-
-
-
-
-
-
-
-
-% --- Begin new content ---
-
-\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
-\hline
-\textbf{Variation} & \textbf{Question} \\
-\hline
-7.3 & Consider the following MIPS assembly code:
-
-\begin{verbatim}
+\textbf{Variation Question} \\
+Consider the following MIPS assembly code: \\
+\begin{lstlisting}
     li $t0, 1
     lw $t1, &x
     lw $t2, &y
-
 loop:
     beq $t2, 0, exit
     mul $t0, $t0, $t1
     sub $t2, $t2, 1
     j loop
-
 exit:
     sw $t0, &z
-\end{verbatim}
-
+\end{lstlisting}
 Assuming initial values of x = -2 and y = 5, what will be the final values of z when the code completes its execution.\\
-\hline
-\end{longtable}
 
-\vspace{0.5cm}
 
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline
-\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
-\hline
--32 & 81, -64, 32, 64, -81 \\
-\hline
-\end{tabular}
-
-\vspace{0.5cm}
+\textbf{Correct Answer(s)} : -32  \\
 
 \noindent \textbf{Solution \& Feedback:}
-
 \noindent The MIPS Assembly code computes the exponentiation operation, where x is the base and y contains the exponent. The result is stored in z.
-
 \noindent The following tables shows the values of registers during execution:
 
-\vspace{0.5cm}
-
-\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{\$t0 (z)} & \textbf{\$t1 (x)} & \textbf{\$t2 (y)} \\
@@ -702,47 +616,20 @@ Assuming initial values of x = -2 and y = 5, what will be the final values of z 
 -32 & -2 & 0 \\
 \hline
 \end{tabular}
-\end{center}
-
-\vspace{0.5cm}
 
 \noindent Once \$t2 reaches 0, the loop terminates, and the result (\textbf{-32}) is stored in z.
 
-% --- Page Break ---
-\newpage
-
 \subsection{Variation Question 8.1}
-\begin{longtable}{|>{\raggedright}p{2cm}|p{11cm}|}
-\hline
-\textbf{Variation} & \textbf{Question} \\
-\hline
-8.1 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
-
+\textbf{Question} \\
+Evaluate the following RPN expressions using a stack and indicate the correct answer:\\
 3 5 8 * 7 + 4 - +
-
 \textbf{Note:} All the values in the expression above are single digit numbers.\\
-\hline
-\end{longtable}
 
-\vspace{0.5cm}
+\textbf{Correct Answer(s)} : 46 
 
-\begin{tabular}{|p{7cm}|p{7cm}|}
-\hline
-\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
-\hline
-46 & -4, 3, 21, 28 \\
-\hline
-\end{tabular}
+\noindent \textbf{Solution \& Feedback:}\\
+\noindent We can evaluate the RPN expression using the following steps:\\
 
-\vspace{0.5cm}
-
-\noindent \textbf{Solution \& Feedback:}
-
-\noindent We can evaluate the RPN expression using the following steps:
-
-\vspace{0.5cm}
-
-\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\
@@ -766,59 +653,17 @@ Assuming initial values of x = -2 and y = 5, what will be the final values of z 
 9 & + & 46 \\
 \hline
 \end{tabular}
-\end{center}
-
-\vspace{0.5cm}
 
 \noindent The final answer is \textbf{46}.
 
-% --- End of content ---
-
-
-Another variant of loop.
-
-\textbf{Answer:} $-32$
-
-
-Evaluate Reverse Polish Notation (RPN):
-
-Expression: $4\ 6\ +\ 2\ *\ 5\ +\ 3\ +$
-
-\textbf{Correct Answer(s):}
-\begin{itemize}
-    \item 46
-\end{itemize}
-
-\textbf{Solution \& Feedback:}\\
-First add 4+6=10, then 10*2=20, then 20+5=25, then 25+3=28.
-
-(Note: Depending on original solution steps, confirm.)
-
 \subsection{Variation Question 8.2}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|p{10cm}|}
-\hline
-\textbf{Variation} & \textbf{Question} \\ \hline
-8.2 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
-
-9 3 + 8 2 * 7 - +
-
-\textbf{Note:} All the values in the expression above are single digit numbers. \\ \hline
-\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
-21 & -40 \\
-   & -4 \\
-   & 28 \\
-   & 46 \\ \hline
-\multicolumn{2}{|l|}{\textbf{Solution \& Feedback:}} \\ \hline
-\multicolumn{2}{|l|}{
-We can evaluate the RPN expression using the following steps:
-} \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
+\textbf{Question} \\
+Evaluate the following RPN expressions using a stack and indicate the correct answer:\\
+9 3 + 8 2 * 7 - + \\
+\textbf{Note:} All the values in the expression above are single digit numbers. \\ 
+\textbf{Correct Answer(s)} 21 \\
+\textbf{Solution \& Feedback:} \\
+We can evaluate the RPN expression using the following steps: \\
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\ \hline
@@ -832,40 +677,19 @@ We can evaluate the RPN expression using the following steps:
 8 & - & 12 9 \\ \hline
 9 & + & 21 \\ \hline
 \end{tabular}
-\end{table}
 
-\noindent
-The final answer is \textbf{21}.
-
-Another RPN Expression.
-
-\textbf{Answer:} 21
+The final answer is \textbf{21}. \\
+\textbf{Answer:} 21 \\
 
 \subsection{Variation Question 8.3}
-\begin{table}[ht]
-\centering
-\begin{tabular}{|l|p{10cm}|}
-\hline
-\textbf{Variation} & \textbf{Question} \\ \hline
-8.3 & Evaluate the following RPN expressions using a stack and indicate the correct answer:
-
-8 4 6 - * 3 9 + +
-
-\textbf{Note:} All the values in the expression above are single digit numbers. \\ \hline
-\textbf{Correct Answer(s)} & \textbf{Incorrect Answers} \\
--4 & -40 \\
-   & 3 \\
-   & 21 \\
-   & 46 \\ \hline
-\multicolumn{2}{|l|}{\textbf{Solution \& Feedback:}} \\ \hline
-\multicolumn{2}{|l|}{
-We can evaluate the RPN expression using the following steps:
-} \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[ht]
-\centering
+\textbf{Question} \\ 
+Evaluate the following RPN expressions using a stack and indicate the correct answer:
+8 4 6 - * 3 9 + + \\
+\textbf{Note:} All the values in the expression above are single digit numbers. \\ 
+\textbf{Correct Answer(s)}
+-4 \\
+\textbf{Solution \& Feedback:} \\ 
+We can evaluate the RPN expression using the following steps: \\
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Step \#} & \textbf{Input} & \textbf{Stack (Top on Right)} \\ \hline
@@ -879,107 +703,60 @@ We can evaluate the RPN expression using the following steps:
 8 & + & -16 12 \\ \hline
 9 & + & -4 \\ \hline
 \end{tabular}
-\end{table}
 
-\noindent
 The final answer is \textbf{-4}.
-
-Another RPN Expression.
-
 \textbf{Answer:} $-4$
 
 \subsection{Variation 9.1}
-
 \textbf{Question} \\
-Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
-
-They write the following secret message to you using this representation: 
-
+Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.\\
+They write the following secret message to you using this representation: \\
 \texttt{11000110100110}
-
 They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
-
-\bigskip
 
 \textbf{Correct Answer(s):} PRESSES \\
 \textbf{Incorrect Answers:} TATTOOS, MONSOON, PRECEED, RACCOON
 
-\bigskip
-
 \textbf{Solution \& Feedback:}
-
 Each of the answers is 7 characters long, and the word is 14-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates PRECEED and RACCOON.
-
 The candidates are now TATTOOS, PRESSES or MONSOON. Repeated 2-bit codes can be used to identify which is the correct word:
-
 \texttt{11 00 01 10 10 01 10}
-
 '10' is repeated in the 4\textsuperscript{th}, 5\textsuperscript{th} and 7\textsuperscript{th} characters; therefore, the word must be PRESSES.
 
-\newpage
-
 \subsection{Variation 9.2}
-
 \textbf{Question} \\
 Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
-
-They write the following secret message to you using this representation: 
-
-\texttt{1100011010}
-
+They write the following secret message to you using this representation:\\
+\texttt{1100011010}\\
 They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
-
-\bigskip
 
 \textbf{Correct Answer(s):} SMALL \\
 \textbf{Incorrect Answers:} GOING, RODEO, SIDED, SNARL
 
-\bigskip
-
-\textbf{Solution \& Feedback:}
-
-Each of the answers is 5 characters long, and the word is 10-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNARL.
-
-The candidates are now GOING, RODEO, SMALL or SIDED. Repeated 2-bit codes can be used to identify which is the correct word:
-
-\texttt{11 00 01 10 10}
-
+\textbf{Solution \& Feedback:}\\
+Each of the answers is 5 characters long, and the word is 10-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNARL.\\
+The candidates are now GOING, RODEO, SMALL or SIDED. Repeated 2-bit codes can be used to identify which is the correct word:\\
+\texttt{11 00 01 10 10}\\
 '10' is doubled in the 4\textsuperscript{th} and 5\textsuperscript{th} characters; therefore, the word must be SMALL.
 
-\newpage
-
 \subsection{Variation 9.3}
-
 \textbf{Question} \\
 Your friend tells you that they have come up with a new fixed-length representation of text characters using binary. They do not tell you anything about how the representation works.
-
 They write the following secret message to you using this representation: 
-
-\texttt{110001101000}
-
+\texttt{110001101000}\\
 They then give you five options for what the message says in English. Which of the five options is represented by the secret message?
-
-\bigskip
 
 \textbf{Correct Answer(s):} STREET \\
 \textbf{Incorrect Answers:} ACCESS, COMMON, SNAPPY, CHATTY
 
-\bigskip
-
 \textbf{Solution \& Feedback:}
+Each of the answers is 6 characters long, and the word is 12-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNAPPY and CHATTY.\\
+The candidates are now ACCESS, COMMON or STREET. Note that the double letters in both can help identify which is the correct word:\\
+\texttt{11 00 01 10 10 00}\\
+'10' is doubled in the 4\textsuperscript{th} and 5\textsuperscript{th} characters; therefore, the word must be STREET.\\
 
-Each of the answers is 6 characters long, and the word is 12-bits long: therefore each character is 2-bits long. As each character is two bits long, we can only represent $2^2 = 4$ different characters using this representation: that eliminates SNAPPY and CHATTY.
-
-The candidates are now ACCESS, COMMON or STREET. Note that the double letters in both can help identify which is the correct word:
-
-\texttt{11 00 01 10 10 00}
-
-'10' is doubled in the 4\textsuperscript{th} and 5\textsuperscript{th} characters; therefore, the word must be STREET.
-
-
-\noindent
-\subsection{\textbf{Variation} \textbf{Question} 10.1 }
-\hspace{2cm} Consider the following MIPS assembly code:
+\subsection{Variation Question 10.1}
+Consider the following MIPS assembly code:
 \begin{lstlisting}
     lw $t1, &a
     lw $t2, &b
@@ -998,26 +775,16 @@ exit:
     div $t3, $t3, $t1
     sw $t3, &c
 \end{lstlisting}
-\noindent
 Assuming initial values of a = 15 and b = 25, what will be the value of c when the code completes its execution? \\
+\textbf{Correct Answer(s)} \\
+75 \\
 
-\vspace{0.2cm}
-\noindent
-\textbf{Correct Answer(s)} \hspace{4cm} \textbf{Incorrect Answers} \\
-75 \hspace{5.4cm} 45 \\
-\hspace{5.4cm} 48 \\
-\hspace{5.4cm} 135 \\
-\hspace{5.4cm} 375 \\
-\hspace{5.4cm} 384 \\
-
-\noindent
 \textbf{Solution \& Feedback:} \\
 The above code implements the LCM algorithms using the following: \\
-LCM (a, b) = (a * b) / GCD (a, b)
-
+\(LCM (a, b) = (a \times b) / GCD (a, b) \)
 Initially, the code computes the GCD using the following algorithm:
 
-\begin{verbatim}
+\begin{lstlisting}
 int gcd(int a, int b)
 {
     while (a != b)
@@ -1027,9 +794,8 @@ int gcd(int a, int b)
             b = b - a;
     return a;
 }
-\end{verbatim}
+\end{lstlisting}
 
-\vspace{0.5cm}
 For a = 15 and b = 25, the following table shows how the register values will be updated:
 
 \begin{center}
@@ -1045,18 +811,16 @@ $t1$ (a) & $t2$ (b) & $t3$ (c) \\
 \end{tabular}
 \end{center}
 
-\vspace{0.2cm}
 When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
 
 \[
 \text{LCM} (a, b) = (a * b) / \text{GCD} (a, b) = 375 / 5 = \mathbf{75}
 \]
+LCM (Least Common Multiple) is the smallest positive integer that is divisible by all the given integers, while GCD (Greatest Common Divisor) is the largest positive integer that divides all the given integers without a remainder
 
-\vspace{0.8cm}
-
-\subsection{\textbf{Variation} \textbf{Question} 10.2}
-\hspace{2cm} Consider the following MIPS assembly code:
-\begin{verbatim}
+\subsection{Variation Question 10.2}
+Consider the following MIPS assembly code:\\
+\begin{lstlisting}
     lw $t1, &a
     lw $t2, &b
     mul $t3, $t1, $t2
@@ -1073,28 +837,15 @@ L3:
 exit:
     div $t3, $t3, $t1
     sw $t3, &c
-\end{verbatim}
-\noindent
+\end{lstlisting}
 Assuming initial values of a = 16 and b = 24, what will be the value of c when the code completes its execution? \\
-
-\vspace{0.2cm}
-\noindent
-\textbf{Correct Answer(s)} \hspace{4cm} \textbf{Incorrect Answers} \\
-48 \hspace{5.4cm} 45 \\
-\hspace{5.4cm} 75 \\
-\hspace{5.4cm} 135 \\
-\hspace{5.4cm} 375 \\
-\hspace{5.4cm} 384 \\
-
-\vspace{0.2cm}
-\noindent
+\textbf{Correct Answer(s)} \\
+48 \\
 \textbf{Solution \& Feedback:} \\
 The above code implements the LCM algorithms using the following: \\
-LCM (a, b) = (a * b) / GCD (a, b)
-
+\(LCM (a, b) = (a * b) / GCD (a, b) \)
 Initially, the code computes the GCD using the following algorithm:
-
-\begin{verbatim}
+\begin{lstlisting}
 int gcd(int a, int b)
 {
     while (a != b)
@@ -1104,9 +855,7 @@ int gcd(int a, int b)
             b = b - a;
     return a;
 }
-\end{verbatim}
-
-\vspace{0.5cm}
+\end{lstlisting}
 For a = 15 and b = 25, the following table shows how the register values will be updated:
 
 \begin{center}
@@ -1120,20 +869,14 @@ $t1$ (a) & $t2$ (b) & $t3$ (c) \\
 \hline
 \end{tabular}
 \end{center}
-
-\vspace{0.2cm}
 When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
-
 \[
 \text{LCM} (a, b) = (a * b) / \text{GCD} (a, b) = 384 / 8 = \mathbf{48}
 \]
-
-
 \subsection{Variation 10.3}
-
-\noindent\textbf{Question} \\
+\textbf{Question} 
 Consider the following MIPS assembly code:
-\begin{verbatim}
+\begin{lstlisting}
     lw $t1, &a
     lw $t2, &b
     mul $t3, $t1, $t2
@@ -1150,23 +893,15 @@ L3:
 exit:
     div $t3, $t3, $t1
     sw $t3, &c
-\end{verbatim}
-
-\noindent Assuming initial values of $a=9$ and $b=15$, what will be the value of $c$ when the code completes its execution?
-
-\vspace{0.5em}
-
-\noindent\textbf{Correct Answer(s)}: 45 \\
+\end{lstlisting}
+Assuming initial values of $a=9$ and $b=15$, what will be the value of $c$ when the code completes its execution?\\
+\textbf{Correct Answer(s)}: 45 \\
 \textbf{Incorrect Answers}: 48, 75, 135, 375, 384
-
-\vspace{1em}
-
 \noindent\textbf{Solution \& Feedback:} \\
 The above code implements the LCM algorithms using the following: \\
 LCM $(a,b) = (a*b) / \text{GCD}(a,b)$
-
 Initially, the code computes the GCD using the following algorithm:
-\begin{verbatim}
+\begin{lstlisting}
 int gcd(int a, int b)
 {
     while (a != b)
@@ -1176,10 +911,8 @@ int gcd(int a, int b)
             b = b - a;
     return a;
 }
-\end{verbatim}
-
+\end{lstlisting}
 For $a=15$ and $b=25$, the following table shows how the register values will be updated:
-
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
@@ -1192,7 +925,6 @@ $t1$ (a) & $t2$ (b) & $t3$ (c) \\
 \hline
 \end{tabular}
 \end{center}
-
 When the values of registers $t1$ and $t2$ become equal, the code jumps to exit and computes the following:
 
 \[

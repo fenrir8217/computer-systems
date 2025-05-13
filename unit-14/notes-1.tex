@@ -136,7 +136,7 @@ Process 1 operates with outdated information
 
 \subsection{Critical Section Problem}
 
-\subsubsection{Critical Section}
+\textbf{Critical Section}
 
 In order to avoid race conditions, it is necessary to control the concurrent execution of critical sections.
 \textcolor{red}{This is achieved through strict serialisation, or mutual exclusion,} causing the critical sections to behave as atomic operations.
@@ -153,13 +153,13 @@ The process communicates to other processes that it has left the critical sectio
 It is important that the scope and length of critical sections is kept as small as possible.
 Large critical sections can be detrimental to the efficiency and throughput of a system.
 
-\subsubsection{Deadlock and Starvation}
+\textbf{Deadlock and Starvation}
 
 Enforcing mutual exclusion creates the problems of deadlocks (processes waiting forever for each other to free resources) and starvation (a process waiting forever to be granted entry to its critical section).
 Implementations of mutual exclusion must account for these problems.
 Critical sections must be as small as possible and processes must spend as little time as possible in a critical section.
 
-\subsubsection{Requirements for Solutions to the Problem}
+\textbf{Requirements for Solutions to the Problem}
 
 \begin{enumerate}
   \item Serialisation of access
@@ -178,7 +178,7 @@ Critical sections must be as small as possible and processes must spend as littl
     \item A process remains inside its critical section for a finite time only
   \end{itemize}
 \end{enumerate}
-
+\textbf{Solutions to the Critical Section Problem}
 \begin{enumerate}
   \item Software solutions
   \begin{itemize}
