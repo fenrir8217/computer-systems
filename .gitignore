@@ -39,3 +39,6 @@ Thumbs.db
 # Git internal (in case of zip extraction)
 .git/
 exercies/
+computer-systems.fdb_latexmk
+computer-systems.pdf
+computer-systems.synctex.gz
